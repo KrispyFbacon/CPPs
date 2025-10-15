@@ -6,9 +6,9 @@
 /*   By: frbranda <frbranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 14:54:50 by frbranda          #+#    #+#             */
-/*   Updated: 2025/10/15 15:22:12 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/10/15 17:51:35 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-
+#include "color.hpp"
