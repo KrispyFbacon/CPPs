@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: frbranda <frbranda@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/10/15 14:29:24 by frbranda          #+#    #+#              #
-#    Updated: 2025/10/15 14:29:26 by frbranda         ###   ########.fr        #
+#    Created: 2025/10/15 14:29:42 by frbranda          #+#    #+#              #
+#    Updated: 2025/10/15 14:57:40 by frbranda         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 #                                   SETTINGS                                   #
 #==============================================================================#
 
-NAME = MegaPhone
+NAME = PhoneBook
 
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
@@ -22,7 +22,7 @@ FLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -rf
 VAL = valgrind --leak-check=full --show-leak-kinds=all
 
-SRC = MegaPhone.cpp
+SRC = PhoneBook.cpp Contact.cpp
 
 OBJ_DIR = obj
 OBJS = $(SRC:%.cpp=$(OBJ_DIR)/%.o)

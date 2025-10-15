@@ -1,16 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   MegaPhone.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: frbranda <frbranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/15 10:36:29 by frbranda          #+#    #+#             */
-/*   Updated: 2025/10/15 12:57:27 by frbranda         ###   ########.fr       */
+/*   Created: 2025/10/15 14:29:32 by frbranda          #+#    #+#             */
+/*   Updated: 2025/10/15 14:29:34 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int main (void)
+#include <iostream>	// for std::count
+#include <cctype>	// for toupper()
+
+int main (int argc, char **argv)
 {
+	if (argc == 1)
+	{
+		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
+		return (1);
+	}
+	for (int i = 1; argv[i]; i++)
+	{
+		for (int j = 0; argv[i][j]; j++)
+			std::cout << (char)toupper(argv[i][j]);
+	}
+	std::cout << std::endl;
 	return (0);
 }
