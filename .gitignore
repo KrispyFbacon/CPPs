@@ -1,0 +1,10 @@
+# === Object files ===
+**/*.o
+
+# === Object folders (anywhere) ===
+**/obj/
+
+# === Root VSCode folder ===
+/.vscode/
+
+# === Executables ==

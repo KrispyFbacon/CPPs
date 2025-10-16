@@ -6,41 +6,16 @@
 /*   By: frbranda <frbranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 14:37:10 by frbranda          #+#    #+#             */
-/*   Updated: 2025/10/16 11:12:40 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/10/16 11:23:08 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
-class	Car
-{
-	private:
-		std::string	_brand;
-		std::string	_model;
-		int			_year;
-	public:
-		Car();
-		Car(std::string brand, std::string model, int year);
-
-		int	speed(int speed);
-
-		void		carSet(std::string brand, std::string model, int year);
-		void		brandSet(std::string brand);
-		std::string	brandGet() const;
-};
-
 Car::Car()
 {
 	std::cout << G << "New car constructed" << RST << std::endl;
 }
-
-// Car::Car(std::string brand, std::string model, int year) : _brand(brand), _model(model), _year(year)
-// {
-// 	std::cout << G << "New car constructed with: " << RST << std::endl;
-// 	std::cout << BOLD_C << "Brand: " << this->_brand << RST << std::endl;
-// 	std::cout << BOLD_C << "Model: " << this->_model << RST << std::endl;
-// 	std::cout << BOLD_C << "Year: " << this->_year << RST << std::endl;
-// }
 
 Car::Car(std::string brand, std::string model, int year)
 {
@@ -101,21 +76,6 @@ int	main (void)
 /**
  * ----------------------------------------------------------------------------
 */
-
-// class	PhoneBook
-// {
-// 	private:
-// 		std::string	_brand;
-// 		std::string	_model;
-// 		int			_year;
-// 	public:
-// 		PhoneBook(std::string brand, std::string model, int year);
-// 		int		speed(int MaxSpeed);
-// 		void	displayCar();
-		
-// 		void		setModel(std::string model);
-// 		std::string	getModel() const;
-// };
 
 // // constructer and "setter"
 // PhoneBook::PhoneBook(std::string brand, std::string model, int year)
