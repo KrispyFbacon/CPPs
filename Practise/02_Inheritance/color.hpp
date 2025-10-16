@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 15:03:23 by frbranda          #+#    #+#             */
-/*   Updated: 2025/10/16 17:02:24 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/10/16 14:09:17 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,28 +16,25 @@
 /**
  * @brief ANSI escape codes for terminal text color formatting.
  * 
- * Usage example:
- * 	std::cout << Color::R << "This is red text." << Color::RST << std::endl;
- * 	std::cout << Color::BOLD_B << "This is bold blue text." << Color::RST << std::endl;
+ * Usage:
+ * 		printf(R "This is red text." RESET);
+ * 		printf(B "This is blue text.\n" RESET);
  * 
  * Includes regular and bold color definitions for standard foreground colors.
  * 
- * @warning Always use Color::RST after a color constant to
- *          avoid unintentional styling.
+ * @warning Always use RESET after a color macro to
+ * 			avoid unintentional styling.
  * 
  * Categories:
  * - RESET: Resets all styles to default.
  * - Regular Colors: BLACK, R (Red), G (Green), Y (Yellow), B (Blue),
- *                   M (Magenta), C (Cyan), W (White).
+ * 					 M (Magenta), C (Cyan), W (White).
  * - Bold Colors: BOLD_<COLOR> for bold versions of regular colors.
  */
 
-/* RESET / CLEAR*/
+/* RESET*/
 /** @brief Reset all text formatting. */
 # define RST	"\033[0m"
-
-/** @brief Clear screen */
-# define CLEAR		"\033[2J\033[H"
 
 /* Regular Colors */
 /** @brief Regular black text. */
@@ -75,43 +72,5 @@
 /** @brief Bold white text. */
 # define BOLD_W		"\033[1;37m"
 
-/* Background colors */
-# define BG_BLACK	"\033[40m"
-# define BG_R		"\033[41m"
-# define BG_G		"\033[42m"
-# define BG_Y		"\033[43m"
-# define BG_B		"\033[44m"
-# define BG_M		"\033[45m"
-# define BG_C		"\033[46m"
-# define BG_W		"\033[47m"
-
-/* Bright Foreground */
-# define BRIGHT_BLACK	"\033[90m"
-# define BRIGHT_R		"\033[91m"
-# define BRIGHT_G		"\033[92m"
-# define BRIGHT_Y		"\033[93m"
-# define BRIGHT_B		"\033[94m"
-# define BRIGHT_M		"\033[95m"
-# define BRIGHT_C		"\033[96m"
-# define BRIGHT_W		"\033[97m"
-
-/* Bright Background */
-# define BG_BRIGHT_BLACK	"\033[100m"
-# define BG_BRIGHT_R		"\033[101m"
-# define BG_BRIGHT_G		"\033[102m"
-# define BG_BRIGHT_Y		"\033[103m"
-# define BG_BRIGHT_B		"\033[104m"
-# define BG_BRIGHT_M		"\033[105m"
-# define BG_BRIGHT_C		"\033[106m"
-# define BG_BRIGHT_W		"\033[107m"
-
-
-/** @brief White text, Red background */
-# define WR_BG		"\033[1;97;41m"  // bold white + red background
-
-
-/* CUSTOM COLORS? */
-# define RGB(r, g, b)     "\033[38;2;" #r ";" #g ";" #b "m"
-# define BG_RGB(r, g, b)  "\033[48;2;" #r ";" #g ";" #b "m"
 
 #endif

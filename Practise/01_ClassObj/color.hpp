@@ -6,12 +6,12 @@
 /*   By: frbranda <frbranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 15:03:23 by frbranda          #+#    #+#             */
-/*   Updated: 2025/10/15 15:04:38 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/10/16 14:09:27 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COLOR_H
-# define COLOR_H
+#ifndef COLOR_HPP
+# define COLOR_HPP
 
 /**
  * @brief ANSI escape codes for terminal text color formatting.
