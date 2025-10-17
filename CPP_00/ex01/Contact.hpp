@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 14:56:15 by frbranda          #+#    #+#             */
-/*   Updated: 2025/10/17 10:07:11 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/10/17 15:38:20 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ class	Contact
 		std::string	_DarkestSecret;
 	public:
 		Contact();
+		~Contact();
 
 		//Setters
 		void	setFirstName(const std::string FirstName);

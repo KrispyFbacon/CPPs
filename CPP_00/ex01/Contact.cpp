@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 14:56:01 by frbranda          #+#    #+#             */
-/*   Updated: 2025/10/17 11:36:59 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/10/17 15:38:04 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,11 @@
 Contact::Contact()
 {
 	std::cout << G << "Contact slot initialized." << RST << std::endl;
+}
+
+Contact::~Contact()
+{
+	std::cout << R << "Contact destroyed" << RST << std::endl;
 }
 
 // Setters

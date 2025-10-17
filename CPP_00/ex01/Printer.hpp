@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 09:47:05 by frbranda          #+#    #+#             */
-/*   Updated: 2025/10/17 11:58:06 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/10/17 14:44:14 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <iostream>
 # include <string>
+#include <iomanip>
 # include "Color.hpp"
 
 /**
@@ -35,6 +36,9 @@ class Printer
 		static void boom();
 		static void empty();
 
+		//add
+		static void added();
+		
 		//search
 		static void startTable();
 

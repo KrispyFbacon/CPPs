@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 11:54:00 by frbranda          #+#    #+#             */
-/*   Updated: 2025/10/17 11:58:15 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/10/17 14:53:47 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void Printer::prompt(const std::string &prompt)
 // Errors
 void Printer::invalidCommand()
 {
-	std::cout << BOLD_R << "HUH????? CAN'T YOU READ?\n"
+	std::cout << BOLD_R << "  HUH????? CAN'T YOU READ?\n"
 			  << BOLD_C << "--> (ADD, SEARCH, EXIT) <--"
 			  << RST << std::endl;
 }
@@ -39,12 +39,21 @@ void Printer::empty()
 			  << RST << std::endl;
 }
 
+// Add
+void Printer::added()
+{
+	std::cout << BOLD_G << "✅ Contact added successfully!" << RST << std::endl;
+}
+
 // Search
 void Printer::startTable()
 {
-	std::cout << BOLD_C
-			  << "| Index|First Name| Last Name| Nickname|"
-			  << RST << std::endl;
+	std::cout << BOLD_W
+			  << "|" << BOLD_C << std::setw(10) << "Index" << BOLD_W
+			  << "|" << BOLD_C << std::setw(10) << "First name" << BOLD_W
+			  << "|" << BOLD_C << std::setw(10) << "Last name" << BOLD_W
+			  << "|" << BOLD_C << std::setw(10) << "Nickname" << BOLD_W
+			  << "|" << BOLD_C << RST <<std::endl;
 }
 
 // exit

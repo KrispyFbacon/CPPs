@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 15:03:23 by frbranda          #+#    #+#             */
-/*   Updated: 2025/10/17 09:47:17 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/10/17 14:11:15 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@
  * @brief ANSI escape codes for terminal text color formatting.
  * 
  * Usage example:
- * 	std::cout << Color::R << "This is red text." << Color::RST << std::endl;
- * 	std::cout << Color::BOLD_B << "This is bold blue text." << Color::RST << std::endl;
+ * 	std::cout << R << "This is red text." << RST << std::endl;
+ * 	std::cout << BOLD_B << "This is bold blue text." << RST << std::endl;
  * 
  * Includes regular and bold color definitions for standard foreground colors.
  * 
- * @warning Always use Color::RST after a color constant to
+ * @warning Always use 'RST' after a color constant to
  *          avoid unintentional styling.
  * 
  * Categories:
@@ -111,7 +111,7 @@
 
 
 /* CUSTOM COLORS? */
-# define RGB(r, g, b)     "\033[38;2;" #r ";" #g ";" #b "m"
-# define BG_RGB(r, g, b)  "\033[48;2;" #r ";" #g ";" #b "m"
+# define RGB(r, g, b)		"\033[38;2;" #r ";" #g ";" #b "m"
+# define BG_RGB(r, g, b)	"\033[48;2;" #r ";" #g ";" #b "m"
 
 #endif
