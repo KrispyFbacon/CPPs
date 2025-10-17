@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 14:47:16 by frbranda          #+#    #+#             */
-/*   Updated: 2025/10/16 17:15:31 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/10/17 11:28:12 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,12 @@ int	main (void)
 
 	while (true)
 	{
-		std::cout << BOLD_W << "Enter a Command (ADD, SEARCH, EXIT): " << RST;
+		Printer::prompt("Enter a Command (ADD, SEARCH, EXIT): ");
 		if (!std::getline(std::cin, input))
 		{
-			std::cout << CLEAR;
-			std::cout << WR_BG << "💥💥💥 BOOM! 💥💥💥" << std::endl;
-			std::cout << "💣 Getline failed? " << RST << std::endl;
-			std::cout << BOLD_R << "  WHAT DID YOU DO? " << RST << std::endl;
+			std::cin.clear();
+			std::cout << std::endl;
+			Printer::boom();
 			break ;
 		}
 		std::cout << CLEAR;
@@ -35,14 +34,11 @@ int	main (void)
 			phonebook.search();
 		else if (input == "EXIT")
 		{
-			std::cout << BOLD_M << "Bye Bye! :c" << RST << std::endl;
+			Printer::exit();
 			break ;
 		}
 		else
-		{
-			std::cout << BOLD_R << " HUH???????? CAN'T YOU READ?\n"
-			<< BOLD_C << " --> (ADD, SEARCH, EXIT) <-- " << RST << std::endl;
-		}
+			Printer::invalidCommand();
 	}
 	return (0);
 }

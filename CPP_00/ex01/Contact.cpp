@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 14:56:01 by frbranda          #+#    #+#             */
-/*   Updated: 2025/10/16 15:15:05 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/10/17 11:36:59 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,32 +14,31 @@
 
 Contact::Contact()
 {
-	std::cout << G << "Contact created" << RST << std::endl;
+	std::cout << G << "Contact slot initialized." << RST << std::endl;
 }
 
-
 // Setters
-void	Contact::setFirstName(std::string FirstName)
+void	Contact::setFirstName(const std::string FirstName)
 {
 	this->_FirstName = FirstName;
 }
 
-void	Contact::setLastName(std::string LastName)
+void	Contact::setLastName(const std::string LastName)
 {
 	this->_LastName = LastName;
 }
 
-void	Contact::setNickName(std::string NickName)
+void	Contact::setNickName(const std::string NickName)
 {
 	this->_NickName = NickName;
 }
 
-void	Contact::setPhoneNumber(std::string PhoneNumber)
+void	Contact::setPhoneNumber(const std::string PhoneNumber)
 {
 	this->_PhoneNumber = PhoneNumber;
 }
 
-void	Contact::setDarkestSecret(std::string DarkestSecret)
+void	Contact::setDarkestSecret(const std::string DarkestSecret)
 {
 	this->_DarkestSecret = DarkestSecret;
 }

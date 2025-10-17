@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 14:56:15 by frbranda          #+#    #+#             */
-/*   Updated: 2025/10/16 15:11:00 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/10/17 10:07:11 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include <iostream>
 #include <string>
-#include "color.hpp" // my color lib
+#include "Color.hpp" // my color lib
 
 class	Contact
 {
@@ -29,11 +29,11 @@ class	Contact
 		Contact();
 
 		//Setters
-		void	setFirstName(std::string FirstName);
-		void	setLastName(std::string LastName);
-		void	setNickName(std::string NickName);
-		void	setPhoneNumber(std::string PhoneNumber);
-		void	setDarkestSecret(std::string DarkestSecret);
+		void	setFirstName(const std::string FirstName);
+		void	setLastName(const std::string LastName);
+		void	setNickName(const std::string NickName);
+		void	setPhoneNumber(const std::string PhoneNumber);
+		void	setDarkestSecret(const std::string DarkestSecret);
 
 		//Getters
 		std::string	getFirstName() const;

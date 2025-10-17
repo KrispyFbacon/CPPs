@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 14:54:50 by frbranda          #+#    #+#             */
-/*   Updated: 2025/10/16 17:24:21 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/10/17 11:42:03 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 #include <iostream>
 #include <string>
-#include "color.hpp" // my color lib
+#include "Color.hpp" // my color lib
+#include "Printer.hpp" // prints and errors
 #include "Contact.hpp"
 
 class	PhoneBook
@@ -28,6 +29,9 @@ class	PhoneBook
 
 		void	add();
 		void	search();
+		
+		std::string	getInput(const std::string &prompt);
+		std::string formatField(const std::string &str);
 };
 
 #endif
