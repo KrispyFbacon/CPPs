@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 14:37:10 by frbranda          #+#    #+#             */
-/*   Updated: 2025/10/17 16:56:59 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/10/22 15:10:42 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,35 +24,37 @@ PhoneBook::~PhoneBook()
 
 void	PhoneBook::add()
 {
-	std::string	input;
+	std::string	input[5];
 	int			index = this->_i % 8;
 	
 	std::cout << BOLD_C << "Adding contact" << RST << std::endl;
 
-	input = getInput("Enter First Name: ");
-	if (input.empty())
+	input[0] = getInput("Enter First Name: ");
+	if (input[0].empty())
 		return;
-	this->contact[index].setFirstName(input);
 
-	input = getInput("Enter Last Name: ");
-	if (input.empty())
+	input[1] = getInput("Enter Last Name: ");
+	if (input[1].empty())
 		return;
-	this->contact[index].setLastName(input);
 
-	input = getInput("Enter Nick Name: ");
-	if (input.empty())
+	input[2] = getInput("Enter Nick Name: ");
+	if (input[2].empty())
 		return;
-	this->contact[index].setNickName(input);
 	
-	input = getInput("Enter Phone Number: ");
-	if (input.empty())
+	input[3] = getInput("Enter Phone Number: ");
+	if (input[3].empty())
 		return;
-	this->contact[index].setPhoneNumber(input);
 
-	input = getInput("Enter Darkest Secret: ");
-	if (input.empty())
+	input[4] = getInput("Enter Darkest Secret: ");
+	if (input[4].empty())
 		return;
-	this->contact[index].setDarkestSecret(input);
+
+	this->contact[index].setFirstName(input[0]);
+	this->contact[index].setLastName(input[1]);
+	this->contact[index].setNickName(input[2]);
+	this->contact[index].setPhoneNumber(input[3]);
+	this->contact[index].setDarkestSecret(input[4]);
+	
 	this->_i++;
 	Printer::added();
 	// this->contact[index].setFirstName(getInput("Enter First Name: "));
