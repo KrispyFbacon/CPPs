@@ -6,13 +6,13 @@
 /*   By: frbranda <frbranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 14:37:10 by frbranda          #+#    #+#             */
-/*   Updated: 2025/10/22 15:10:42 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/10/24 12:23:41 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
-PhoneBook::PhoneBook() : _i(0)
+PhoneBook::PhoneBook() : _index(0)
 {
 	std::cout << G << "Phonebook Ready!" << RST << std::endl;
 }
@@ -25,7 +25,7 @@ PhoneBook::~PhoneBook()
 void	PhoneBook::add()
 {
 	std::string	input[5];
-	int			index = this->_i % 8;
+	int			index = this->_index % MAX_CONTACTS;
 	
 	std::cout << BOLD_C << "Adding contact" << RST << std::endl;
 
@@ -55,11 +55,8 @@ void	PhoneBook::add()
 	this->contact[index].setPhoneNumber(input[3]);
 	this->contact[index].setDarkestSecret(input[4]);
 	
-	this->_i++;
+	this->_index++;
 	Printer::added();
-	// this->contact[index].setFirstName(getInput("Enter First Name: "));
-	// if (this->contact[index].getFirstName().empty())
-	// 	return;
 }
 
 void	PhoneBook::search()
@@ -67,14 +64,14 @@ void	PhoneBook::search()
 	std::string	index;
 	int			i;
 	
-	if (this->_i == 0)
+	if (this->_index == 0)
 	{
 		std::cout << BOLD_R << "No contacts saved yet!" << RST << std::endl;
 		return;
 	}
 	
 	Printer::startTable();
-	for (i = 0; i < std::min(this->_i, 8); i++)
+	for (i = 0; i < std::min(this->_index, MAX_CONTACTS); i++)
 	{
 		std::cout << BOLD_W << "|" << BOLD_Y
 				  << std::setw(10) << i
@@ -121,7 +118,7 @@ std::string PhoneBook::formatField(const std::string &str)
 	return (std::string(10 - str.length(), ' ') + str);
 }
 
-bool PhoneBook::isValidIndex(const std::string &index)
+bool PhoneBook::isValidIndex(const std::string &index) const
 {
 	int	i;
 	
@@ -135,7 +132,7 @@ bool PhoneBook::isValidIndex(const std::string &index)
 	}
 	
 	i = index[0] - '0';
-	if (i < 0 || i >= std::min(this->_i, 8))
+	if (i < 0 || i >= std::min(this->_index, MAX_CONTACTS))
 	{
 		std::cout << BOLD_R << "No contact at this index!" << RST << std::endl;
 		return false;

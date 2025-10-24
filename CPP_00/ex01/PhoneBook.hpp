@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 14:54:50 by frbranda          #+#    #+#             */
-/*   Updated: 2025/10/17 16:49:31 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/10/24 12:54:32 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,22 +20,25 @@
 #include "Printer.hpp" // prints and errors
 #include "Contact.hpp"
 
+#define	MAX_CONTACTS 8
+
 class	PhoneBook
 {
 	private:
-		int		_i;
-		Contact	contact[8];
+		int		_index;
+		Contact	contact[MAX_CONTACTS];
+
+		std::string	getInput(const std::string &prompt);
+		std::string formatField(const std::string &str);
+		bool isValidIndex(const std::string &index) const;
+		void displayContact(const int &index) const;
+		
 	public:
 		PhoneBook();
 		~PhoneBook();
 
 		void	add();
 		void	search();
-		
-		std::string	getInput(const std::string &prompt);
-		std::string formatField(const std::string &str);
-		bool isValidIndex(const std::string &index);
-		void displayContact(const int &index) const;
 };
 
 #endif

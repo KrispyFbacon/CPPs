@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 09:47:05 by frbranda          #+#    #+#             */
-/*   Updated: 2025/10/17 14:44:14 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/10/24 13:13:46 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,21 @@
 
 # include <iostream>
 # include <string>
-#include <iomanip>
+# include <iomanip>
 # include "Color.hpp"
 
+
+/**
+ * @brief Optional screen clear macro.
+ * 	Set CLEAR_T to 1 to enable clearing between user inputs.
+ */
+#define CLEAR_T 1
+#if CLEAR_T
+	#define CLEAR_() std::cout <<  CLEAR
+#else
+	#define CLEAR_()
+#endif
+	
 /**
  * @brief Handles all user-facing messages, errors, and prompts.
  * 

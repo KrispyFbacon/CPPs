@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 11:54:00 by frbranda          #+#    #+#             */
-/*   Updated: 2025/10/17 14:53:47 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/10/24 12:50:07 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ void Printer::invalidCommand()
 
 void Printer::boom()
 {
-	std::cout << CLEAR;
+	//std::cout << CLEAR;
+	CLEAR_();
 	std::cout << WR_BG << "💥💥💥 BOOM! 💥💥💥" << std::endl;
 	std::cout << "💣 Getline failed? " << RST << std::endl;
 	std::cout << BOLD_R << " WHAT DID YOU DO? " << RST << std::endl;
