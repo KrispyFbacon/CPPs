@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 14:37:10 by frbranda          #+#    #+#             */
-/*   Updated: 2025/10/24 12:23:41 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/10/24 18:56:23 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,11 @@ void	PhoneBook::add()
 	if (input[2].empty())
 		return;
 	
-	input[3] = getInput("Enter Phone Number: ");
+	input[3] = getInput(P_PHONE);
 	if (input[3].empty())
 		return;
 
-	input[4] = getInput("Enter Darkest Secret: ");
+	input[4] = getInput(P_DARK);
 	if (input[4].empty())
 		return;
 
@@ -92,22 +92,46 @@ void	PhoneBook::search()
 	displayContact(i);
 }
 
-std::string	PhoneBook::getInput(const std::string &prompt)
+
+std::string PhoneBook::getInput(const std::string &prompt)
 {
 	std::string input;
-
+		
 	while (true)
 	{
 		Printer::prompt(prompt);
+		
 		if (!std::getline(std::cin, input))
 		{
-			std::cin.clear();
-			std::cout << std::endl;
-			return "";
+			if (std::cin.eof())
+			{
+				std::cin.clear();
+				std::cout << std::endl;
+				return "";
+			}
 		}
-		if (!input.empty())
-			return input;
-		Printer::empty();
+		
+		input = trim(input);
+		
+		if (input.empty())
+		{
+			Printer::empty();
+			continue ;
+		}
+
+		if (prompt == P_PHONE && !isValidNumber(input))
+		{
+			Printer::error("Invalid phone number! Use only digits.");
+			continue ;
+		}
+
+		if ((prompt != P_DARK && prompt != P_PHONE) && !isValidName(input))
+		{
+			Printer::error("Invalid name! Use only letters.");
+			continue ;
+		}
+		
+		return input;
 	}
 }
 

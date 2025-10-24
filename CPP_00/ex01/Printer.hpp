@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 09:47:05 by frbranda          #+#    #+#             */
-/*   Updated: 2025/10/24 13:37:58 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/10/24 16:34:02 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ class Printer
 		static void prompt(const std::string &prompt);
 		
 		//erros
+		static void error(const std::string &error);
 		static void invalidCommand();
 		static void boom();
 		static void empty();

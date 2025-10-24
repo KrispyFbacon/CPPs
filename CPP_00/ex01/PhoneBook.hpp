@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 14:54:50 by frbranda          #+#    #+#             */
-/*   Updated: 2025/10/24 12:54:32 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/10/24 18:54:11 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,12 @@
 #include "Color.hpp" // my color lib
 #include "Printer.hpp" // prints and errors
 #include "Contact.hpp"
+#include "Utils.hpp"
 
 #define	MAX_CONTACTS 8
+
+#define	P_PHONE "Enter Phone Number: "
+#define	P_DARK "Enter Darkest Secret: "
 
 class	PhoneBook
 {

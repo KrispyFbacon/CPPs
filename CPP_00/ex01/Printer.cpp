@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 11:54:00 by frbranda          #+#    #+#             */
-/*   Updated: 2025/10/24 13:19:12 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/10/24 18:11:18 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@ void Printer::prompt(const std::string &prompt)
 }
 
 // Errors
+void Printer::error(const std::string &error)
+{
+	std::cout << BOLD_R << error << RST << std::endl;
+}
+
 void Printer::invalidCommand()
 {
 	std::cout << BOLD_R << "  HUH????? CAN'T YOU READ?\n"
