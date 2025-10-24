@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 14:47:16 by frbranda          #+#    #+#             */
-/*   Updated: 2025/10/24 12:42:36 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/10/24 13:19:17 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ int	main (void)
 			Printer::boom();
 			break ;
 		}
-		//std::cout << CLEAR;
 		CLEAR_();
 		if (input == "ADD")
 			phonebook.add();

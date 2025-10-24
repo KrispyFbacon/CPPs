@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 09:47:05 by frbranda          #+#    #+#             */
-/*   Updated: 2025/10/24 13:13:46 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/10/24 13:18:12 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
  * @brief Optional screen clear macro.
  * 	Set CLEAR_T to 1 to enable clearing between user inputs.
  */
-#define CLEAR_T 1
+#define CLEAR_T 0
 #if CLEAR_T
 	#define CLEAR_() std::cout <<  CLEAR
 #else
