@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 14:54:50 by frbranda          #+#    #+#             */
-/*   Updated: 2025/10/24 18:54:11 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/10/27 13:13:37 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 
 #define	P_PHONE "Enter Phone Number: "
 #define	P_DARK "Enter Darkest Secret: "
+#define P_INDEX "Insert an index to view details: "
 
 class	PhoneBook
 {

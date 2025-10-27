@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 14:37:10 by frbranda          #+#    #+#             */
-/*   Updated: 2025/10/24 18:56:23 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/10/27 13:14:22 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	PhoneBook::search()
 				  << BOLD_W << "|" << RST
 				  << std::endl;
 	}
-	index = getInput("Insert an index to view details: ");
+	index = getInput(P_INDEX);
 	if (!isValidIndex(index))
 		return ;
 
@@ -125,7 +125,8 @@ std::string PhoneBook::getInput(const std::string &prompt)
 			continue ;
 		}
 
-		if ((prompt != P_DARK && prompt != P_PHONE) && !isValidName(input))
+		if ((prompt != P_DARK && prompt != P_PHONE && prompt!= P_INDEX)
+			&& !isValidName(input))
 		{
 			Printer::error("Invalid name! Use only letters.");
 			continue ;
