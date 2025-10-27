@@ -6,7 +6,7 @@
 #    By: frbranda <frbranda@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/15 14:29:42 by frbranda          #+#    #+#              #
-#    Updated: 2025/10/24 13:56:43 by frbranda         ###   ########.fr        #
+#    Updated: 2025/10/27 14:22:45 by frbranda         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ FLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -rf
 VAL = valgrind --leak-check=full --show-leak-kinds=all
 
-SRC = main.cpp 
+SRC = main.cpp Zombie.cpp newZombie.cpp randomChump.cpp
 
 OBJ_DIR = obj
 OBJS = $(SRC:%.cpp=$(OBJ_DIR)/%.o)
