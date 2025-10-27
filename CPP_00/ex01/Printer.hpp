@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 09:47:05 by frbranda          #+#    #+#             */
-/*   Updated: 2025/10/24 16:34:02 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/10/27 14:05:01 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ class Printer
 		
 		//search
 		static void startTable();
+		static void field(const std::string &label, const std::string &value, int width);
 
 		//exit
 		static void exit();

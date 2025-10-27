@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 11:54:00 by frbranda          #+#    #+#             */
-/*   Updated: 2025/10/24 18:11:18 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/10/27 14:06:41 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,13 @@ void Printer::startTable()
 			  << "|" << BOLD_C << std::setw(10) << "Last name" << BOLD_W
 			  << "|" << BOLD_C << std::setw(10) << "Nickname" << BOLD_W
 			  << "|" << BOLD_C << RST <<std::endl;
+}
+
+void Printer::field(const std::string &label, const std::string &value, int width)
+{
+	std::cout << BOLD_C << std::left << std::setw(width)
+			  << label << RST << " "
+			  << BOLD_Y << value << RST << std::endl;
 }
 
 // exit

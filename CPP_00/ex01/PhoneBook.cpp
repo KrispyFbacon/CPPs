@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 14:37:10 by frbranda          #+#    #+#             */
-/*   Updated: 2025/10/27 13:14:22 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/10/27 14:10:32 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ void	PhoneBook::add()
 	
 	std::cout << BOLD_C << "Adding contact" << RST << std::endl;
 
-	input[0] = getInput("Enter First Name: ");
+	input[0] = getInput(P_FIRST);
 	if (input[0].empty())
 		return;
 
-	input[1] = getInput("Enter Last Name: ");
+	input[1] = getInput(P_SECOND);
 	if (input[1].empty())
 		return;
 
@@ -45,7 +45,7 @@ void	PhoneBook::add()
 	if (input[3].empty())
 		return;
 
-	input[4] = getInput(P_DARK);
+	input[4] = getInput("Enter Darkest Secret: ");
 	if (input[4].empty())
 		return;
 
@@ -84,7 +84,7 @@ void	PhoneBook::search()
 				  << BOLD_W << "|" << RST
 				  << std::endl;
 	}
-	index = getInput(P_INDEX);
+	index = getInput("Insert an index to view details: ");
 	if (!isValidIndex(index))
 		return ;
 
@@ -125,8 +125,7 @@ std::string PhoneBook::getInput(const std::string &prompt)
 			continue ;
 		}
 
-		if ((prompt != P_DARK && prompt != P_PHONE && prompt!= P_INDEX)
-			&& !isValidName(input))
+		if ((prompt == P_FIRST || prompt == P_SECOND) && !isValidName(input))
 		{
 			Printer::error("Invalid name! Use only letters.");
 			continue ;
@@ -167,16 +166,13 @@ bool PhoneBook::isValidIndex(const std::string &index) const
 
 void PhoneBook::displayContact(const int &index) const
 {
+	const int width = 13;
+
 	std::cout << BOLD_G << "\n=== Contact Details ===" << RST << std::endl;
-	std::cout << BOLD_W << "First Name: "
-			  << BOLD_Y << this->contact[index].getFirstName() << std::endl;
-	std::cout << BOLD_W << "Last Name: "
-			  << BOLD_Y << this->contact[index].getLastName() << std::endl;
-	std::cout << BOLD_W << "Nickname: "
-			  << BOLD_Y << this->contact[index].getNickName() << std::endl;
-	std::cout << BOLD_W << "Phone Number: "
-			  << BOLD_Y << this->contact[index].getPhoneNumber() << std::endl;
-	std::cout << BOLD_W << "Dark Secret: "
-			  << BOLD_Y << this->contact[index].getDarkestSecret()
-			  << RST << std::endl;
+
+	Printer::field("First Name:", this->contact[index].getFirstName(), width);
+	Printer::field("Last Name:", this->contact[index].getLastName(), width);
+	Printer::field("Nickname:", this->contact[index].getNickName(), width);
+	Printer::field("Phone Number:", this->contact[index].getPhoneNumber(), width);
+	Printer::field("Dark Secret:", this->contact[index].getDarkestSecret(), width);
 }
