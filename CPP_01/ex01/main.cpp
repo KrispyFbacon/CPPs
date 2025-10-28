@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 14:28:27 by frbranda          #+#    #+#             */
-/*   Updated: 2025/10/28 14:20:36 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/10/28 14:40:00 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,14 @@
 
 int	main(void)
 {
-	std::cout << BOLD_W << "\n==Stack Zombie==" << RST << std::endl;
-	Zombie z("Foo");
-	z.announce();
+	int	N = 5;
 	
-	std::cout << BOLD_W << "\n==Heap Zombie (in main)==" << RST << std::endl;
-	Zombie* z2 = new Zombie("Bacon");
-	z2->announce();
-	
-	std::cout << BOLD_W << "\n==Heap Zombie (calling newZombie)=="
-			  << RST << std::endl;
-	Zombie* z3 = newZombie("Bob");
-	z3->announce();
-	delete(z3);
+	Zombie* Horde = zombieHorde(N, "Bacon");
 
-	std::cout << BOLD_W << "\n==randomChump called==" << RST << std::endl;
-	randomChump("Random");
-	delete (z2);
-	
-	std::cout << BOLD_W << "\n==Automatically destroying Stack Zombies=="
-			  << RST << std::endl;
+	for (int i = 0; i < N; i++)
+		Horde[i].announce();
+
+	delete [] Horde;
+		
 	return (0);
 }

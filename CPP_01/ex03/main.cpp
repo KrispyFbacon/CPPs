@@ -6,33 +6,30 @@
 /*   By: frbranda <frbranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 14:28:27 by frbranda          #+#    #+#             */
-/*   Updated: 2025/10/28 14:20:36 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/10/28 17:09:35 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include <iostream>
+
+# define RST	"\033[0m"
+
+# define Y		"\033[0;33m"
+# define C		"\033[0;36m"
 
 int	main(void)
 {
-	std::cout << BOLD_W << "\n==Stack Zombie==" << RST << std::endl;
-	Zombie z("Foo");
-	z.announce();
+	std::string		str = "HI THIS IS BRAIN";
 	
-	std::cout << BOLD_W << "\n==Heap Zombie (in main)==" << RST << std::endl;
-	Zombie* z2 = new Zombie("Bacon");
-	z2->announce();
-	
-	std::cout << BOLD_W << "\n==Heap Zombie (calling newZombie)=="
-			  << RST << std::endl;
-	Zombie* z3 = newZombie("Bob");
-	z3->announce();
-	delete(z3);
+	std::string*	str_ptr = &str;
+	std::string&	str_ref = str;
 
-	std::cout << BOLD_W << "\n==randomChump called==" << RST << std::endl;
-	randomChump("Random");
-	delete (z2);
+	std::cout << "Address of str:      " << C << &str << RST << std::endl;
+	std::cout << "Address in str_ptr:  " << C << str_ptr << RST << std::endl;
+	std::cout << "Address of str_ref:  " << C << &str_ref << RST << std::endl;
 	
-	std::cout << BOLD_W << "\n==Automatically destroying Stack Zombies=="
-			  << RST << std::endl;
-	return (0);
+	std::cout << std::endl;
+	std::cout << "Value of str:        " << Y << str << RST << std::endl;
+	std::cout << "Value via str_ptr:   " << Y << *str_ptr << RST << std::endl;
+	std::cout << "Value via str_ref:   " << Y << str_ref << RST << std::endl;
 }
