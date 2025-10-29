@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   Weapon.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: frbranda <frbranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 14:19:34 by frbranda          #+#    #+#             */
-/*   Updated: 2025/10/28 17:07:48 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/10/29 12:36:51 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_HPP
-# define ZOMBIE_HPP
+#ifndef WEAPON_HPP
+# define WEAPON_HPP
 
 #include <iostream>
 #include <iomanip>
@@ -33,28 +33,28 @@
 
 //bold color
 # define BOLD_Y		"\033[1;33m"
+# define BOLD_B		"\033[1;34m"
 # define BOLD_M		"\033[1;35m"
 # define BOLD_C		"\033[1;36m"
 # define BOLD_W		"\033[1;37m"
 
-# define Z_COLOR Y
+// Options
+# define WEAPON		BOLD_Y
+# define HUMAN		BOLD_C
 
-class	Zombie
+class	Weapon
 {
 	private:
-		std::string _name;
+		std::string _type;
 
-	public:
-		Zombie();
-		Zombie(const std::string &name);
-		~Zombie();
+		Weapon();
 		
-		void	setName(const std::string &name);
-		std::string getName() const;
-
-		void announce( void );
+	public:
+		Weapon(const std::string &type);
+		~Weapon();
+		
+		void	setType(const std::string &type);
+		std::string getType() const;
 };
-
-Zombie* zombieHorde( int N, std::string name );
 
 #endif

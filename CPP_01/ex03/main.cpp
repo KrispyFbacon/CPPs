@@ -6,30 +6,34 @@
 /*   By: frbranda <frbranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 14:28:27 by frbranda          #+#    #+#             */
-/*   Updated: 2025/10/28 17:09:35 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/10/29 12:38:08 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#include "Weapon.hpp"
+#include "HumanA.hpp"
+#include "HumanB.hpp"
 
-# define RST	"\033[0m"
-
-# define Y		"\033[0;33m"
-# define C		"\033[0;36m"
-
-int	main(void)
+int main()
 {
-	std::string		str = "HI THIS IS BRAIN";
-	
-	std::string*	str_ptr = &str;
-	std::string&	str_ref = str;
-
-	std::cout << "Address of str:      " << C << &str << RST << std::endl;
-	std::cout << "Address in str_ptr:  " << C << str_ptr << RST << std::endl;
-	std::cout << "Address of str_ref:  " << C << &str_ref << RST << std::endl;
-	
+	{
+		Weapon club = Weapon("crude spiked club");
+		HumanA bob("Bob", club);
+		
+		bob.attack();
+		club.setType("Nuke");
+		bob.attack();
+	}
 	std::cout << std::endl;
-	std::cout << "Value of str:        " << Y << str << RST << std::endl;
-	std::cout << "Value via str_ptr:   " << Y << *str_ptr << RST << std::endl;
-	std::cout << "Value via str_ref:   " << Y << str_ref << RST << std::endl;
+	{
+		Weapon funny = Weapon("Hydrogen Bomb");
+		HumanB bacon("Bacon");
+		
+		bacon.attack();
+		bacon.setWeapon(funny);
+		bacon.attack();
+		funny.setType("Coughing Baby");
+		bacon.attack();
+	}
+	return 0;
 }

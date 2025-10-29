@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   zombieHorde.cpp                                    :+:      :+:    :+:   */
+/*   HumanA.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: frbranda <frbranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 14:22:05 by frbranda          #+#    #+#             */
-/*   Updated: 2025/10/28 15:48:55 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/10/29 12:36:58 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "Zombie.hpp"
+#include "HumanA.hpp"
 
-Zombie* zombieHorde( int N, std::string name )
+HumanA::HumanA(const std::string& name, Weapon& weaponType) 
+	: _name(name), _weapon(weaponType)
 {
-	Zombie* newHorde = new Zombie[N];
+	std::cout << G << "HumanA " << this->_name << " Created!"
+			  << RST << std::endl;
+}
 
-	for (int i = 0; i < N; i++)
-	{
-		newHorde[i].setName(name);
-		std::cout << W <<"Set name Zombie[" 
-				  << M << i
-				  << W << "]: "
-				  << Z_COLOR << newHorde[i].getName() 
-				  << RST << std::endl;
-	}
-	return (newHorde);
+HumanA::~HumanA()
+{
+	std::cout << R << "HumanA " << this->_name << " Destroyed!"
+			  << RST << std::endl;
+}
+
+void	HumanA::attack()
+{
+	std::cout << HUMAN << this->_name 
+			  << RST << " attacks with their "
+			  << WEAPON << this->_weapon.getType()
+			  << RST << std::endl;
 }
