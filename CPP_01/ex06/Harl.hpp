@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 17:15:12 by frbranda          #+#    #+#             */
-/*   Updated: 2025/10/30 18:16:47 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/10/30 18:08:38 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,15 @@
 # define BOLD_C		"\033[1;36m"
 # define BOLD_W		"\033[1;37m"
 
+enum levelType
+{
+	DEBUG,
+	INFO,
+	WARNING,
+	ERROR,
+	INVALID
+};
+
 class	Harl
 {
 	private:
@@ -47,13 +56,13 @@ class	Harl
 		void info( void );
 		void warning( void );
 		void error( void );
-	
+
+		void	switchFilter(int levelIndex);
 	public:
 		Harl();
 		~Harl();
 		
-		void complain( std::string level );
-
+		void	complain( std::string level );
 };
 
 #endif

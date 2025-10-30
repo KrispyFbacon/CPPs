@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 17:14:50 by frbranda          #+#    #+#             */
-/*   Updated: 2025/10/30 18:16:32 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/10/30 18:10:17 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,27 +59,44 @@ void	Harl::error(void)
 			  << RST << std::endl;
 }
 
+
+
 void Harl::complain( std::string level )
 {
 	std::string levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 
-	void (Harl::*funcPtr[4])() = {
-			&Harl::debug,
-			&Harl::info,
-			&Harl::warning,
-			&Harl::error
-			};
-
+	int	levelIndex = -1;
+	
 	for (int i = 0; i < 4; i++)
 	{
 		if (levels[i] == level)
 		{
-			(this->*funcPtr[i])();
-			return ;
+			levelIndex = i;
+			break ;
 		}
 	}
-	std::cerr << BOLD_R << "Complaining about " 
-			  << BOLD_W << level
-			  << BOLD_R << " but it's a insignificant problems!\n" << "\t\t(bad test)"
-			  << RST << std::endl;
+	
+	switchFilter(levelIndex);
+}
+
+void Harl::switchFilter(int levelIndex)
+{
+	switch(levelIndex)
+	{
+		case DEBUG:
+			this->debug();
+		case INFO:
+			this->info();
+		case WARNING:
+			this->warning();
+		case ERROR:
+			this->error();
+			break ;
+		default:
+			std::cerr << BOLD_R
+					  << "[ Probably complaining about "
+					  << "insignificant problems ]"
+					  << RST << std::endl;
+			break;
+	}
 }
