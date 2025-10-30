@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 17:14:50 by frbranda          #+#    #+#             */
-/*   Updated: 2025/10/30 18:10:17 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/10/30 18:19:59 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,26 +59,6 @@ void	Harl::error(void)
 			  << RST << std::endl;
 }
 
-
-
-void Harl::complain( std::string level )
-{
-	std::string levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
-
-	int	levelIndex = -1;
-	
-	for (int i = 0; i < 4; i++)
-	{
-		if (levels[i] == level)
-		{
-			levelIndex = i;
-			break ;
-		}
-	}
-	
-	switchFilter(levelIndex);
-}
-
 void Harl::switchFilter(int levelIndex)
 {
 	switch(levelIndex)
@@ -99,4 +79,22 @@ void Harl::switchFilter(int levelIndex)
 					  << RST << std::endl;
 			break;
 	}
+}
+
+void Harl::complain( std::string level )
+{
+	std::string levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+
+	int	levelIndex = -1;
+	
+	for (int i = 0; i < 4; i++)
+	{
+		if (levels[i] == level)
+		{
+			levelIndex = i;
+			break ;
+		}
+	}
+	
+	switchFilter(levelIndex);
 }
