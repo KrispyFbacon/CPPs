@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 17:14:50 by frbranda          #+#    #+#             */
-/*   Updated: 2025/10/30 18:16:32 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/10/31 12:47:05 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,6 @@ void Harl::complain( std::string level )
 	}
 	std::cerr << BOLD_R << "Complaining about " 
 			  << BOLD_W << level
-			  << BOLD_R << " but it's a insignificant problems!\n" << "\t\t(bad test)"
+			  << BOLD_R << " but it doesn't matter!\n" << "\t\t(bad test)"
 			  << RST << std::endl;
 }

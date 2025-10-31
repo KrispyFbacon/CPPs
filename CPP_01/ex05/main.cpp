@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 14:28:27 by frbranda          #+#    #+#             */
-/*   Updated: 2025/10/30 18:15:03 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/10/31 12:47:24 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static std::string	toUpperCase(const std::string& str)
 
 int main(int argc, char* argv[])
 {
-	if (argc != 2)
+	if (argc > 2)
 	{
 		std::cout << BOLD_R << "Error:\nInvalid argument count\n"
 				  << RST << std::endl;
@@ -32,7 +32,16 @@ int main(int argc, char* argv[])
 		std::cout << BOLD_Y << "Choose: "
 				  << RST << "[DEBUG], [INFO], [WARNING], [ERROR]\n"
 				  << RST << std::endl;
-		return (1); 
+		return (1);
+	}
+	else if (argc == 1)
+	{
+		Harl harl;
+		harl.complain("DEBUG");
+		harl.complain("INFO");
+		harl.complain("WARNING");
+		harl.complain("ERROR");
+		return (0);
 	}
 	
 	std::string argument = argv[1];
