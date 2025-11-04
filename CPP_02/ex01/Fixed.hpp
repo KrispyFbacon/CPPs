@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 14:19:34 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/04 16:32:15 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/04 18:16:03 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 # define FIXED_HPP
 
 #include <iostream>
-#include <iomanip>
-#include <string>
+#include <cmath>
 
 // reset color / clear terminal
 # define RST	"\033[0m"
@@ -30,17 +29,24 @@ class	Fixed
 {
 	private:
 		int					_value;
-		static const int	_fractionalBits = 8;
+		static const int	_bits;
 		
 	public:
 		Fixed();
-		Fixed(const Fixed& other); //Copy constructor
-		Fixed& operator=(const Fixed& other); // Copy assignment operator (not constructor)
+		Fixed(const Fixed& other);
+		Fixed(const int num);
+		Fixed(const long num);
+		Fixed& operator=(const Fixed& other);
 		~Fixed();
+
+
+		float toFloat( void ) const;
+		int toInt( void ) const;
 
 		void setRawBits( int const raw );
 		int getRawBits( void ) const;
 };
 
+std::ostream& operator<<(std::ostream& os, const Fixed& fixedPoint);
 
 #endif

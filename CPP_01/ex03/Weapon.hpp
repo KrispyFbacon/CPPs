@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 14:19:34 by frbranda          #+#    #+#             */
-/*   Updated: 2025/10/29 12:36:51 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/04 12:00:34 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ class	Weapon
 		~Weapon();
 		
 		void	setType(const std::string &type);
-		std::string getType() const;
+		const std::string& getType() const;
 };
 
 #endif
