@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 13:22:56 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/04 18:16:36 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/05 15:41:27 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,22 @@ Fixed::Fixed() : _value(0)
 	std::cout << G << "Default constructor called" << RST << std::endl;
 }
 
-Fixed::Fixed(const Fixed& other)
-{
-	std::cout << Y << "Copy constructor called" << RST << std::endl;
-	*this = other; //calls assigment operator
-}
-
 Fixed::Fixed(const int num)
 {
 	std::cout << G << "Int constructor called" << RST << std::endl;
 	this->_value = num;
 }
 
-Fixed::Fixed(const long num)
+Fixed::Fixed(const float num)
 {
 	std::cout << G << "Long constructor called" << RST << std::endl;
-	(long)this->_value = num;
+	(float)this->_value = num;
+}
+
+Fixed::Fixed(const Fixed& other)
+{
+	std::cout << Y << "Copy constructor called" << RST << std::endl;
+	*this = other; //calls assigment operator
 }
 
 Fixed& Fixed::operator=(const Fixed& other)
@@ -52,6 +52,18 @@ Fixed::~Fixed()
 	std::cout << R << "Destructor called" << RST << std::endl;
 }
 
+
+float Fixed::toFloat( void ) const
+{
+	
+}
+
+int Fixed::toInt( void ) const
+{
+	
+}
+
+
 void Fixed::setRawBits( int const raw )
 {
 	std::cout << "setRawBits member function called" << std::endl;
@@ -64,8 +76,10 @@ int Fixed::getRawBits( void ) const
 	return this->_value;
 }
 
+
+
 std::ostream& operator<<(std::ostream& os, const Fixed& fixedPoint)
 {
 	os << fixedPoint.getRawBits();
-	return (*os);
+	return (os);
 }
