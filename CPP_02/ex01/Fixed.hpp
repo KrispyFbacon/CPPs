@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 14:19:34 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/05 15:41:19 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/05 17:41:53 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ class	Fixed
 		
 	public:
 		Fixed();
+		Fixed(const Fixed& other);
 		Fixed(const int num);
 		Fixed(const float num);
-		Fixed(const Fixed& other);
 		Fixed& operator=(const Fixed& other);
 		~Fixed();
 

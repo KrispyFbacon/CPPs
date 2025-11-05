@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 14:28:27 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/04 17:21:35 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/05 18:11:27 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int main( void )
 	Fixed const d( b );
 
 	a = Fixed( 1234.4321f );
-	
+
 	std::cout << "a is " << a << std::endl;
 	std::cout << "b is " << b << std::endl;
 	std::cout << "c is " << c << std::endl;

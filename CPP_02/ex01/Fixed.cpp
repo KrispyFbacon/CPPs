@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 13:22:56 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/05 15:41:27 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/05 17:49:25 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,22 @@ Fixed::Fixed() : _value(0)
 	std::cout << G << "Default constructor called" << RST << std::endl;
 }
 
-Fixed::Fixed(const int num)
-{
-	std::cout << G << "Int constructor called" << RST << std::endl;
-	this->_value = num;
-}
-
-Fixed::Fixed(const float num)
-{
-	std::cout << G << "Long constructor called" << RST << std::endl;
-	(float)this->_value = num;
-}
-
 Fixed::Fixed(const Fixed& other)
 {
 	std::cout << Y << "Copy constructor called" << RST << std::endl;
 	*this = other; //calls assigment operator
+}
+
+Fixed::Fixed(const int num)
+{
+	std::cout << G << "Int constructor called" << RST << std::endl;
+	this->_value = num << _bits;
+}
+
+Fixed::Fixed(const float num)
+{
+	std::cout << G << "Float constructor called" << RST << std::endl;
+	this->_value = num * (1 << _bits);
 }
 
 Fixed& Fixed::operator=(const Fixed& other)
@@ -55,12 +55,12 @@ Fixed::~Fixed()
 
 float Fixed::toFloat( void ) const
 {
-	
+	return (float)this->_value / (1 << _bits);
 }
 
 int Fixed::toInt( void ) const
 {
-	
+	return this->_value >> _bits;
 }
 
 
@@ -77,9 +77,8 @@ int Fixed::getRawBits( void ) const
 }
 
 
-
 std::ostream& operator<<(std::ostream& os, const Fixed& fixedPoint)
 {
-	os << fixedPoint.getRawBits();
+	os << fixedPoint.toFloat();
 	return (os);
 }
