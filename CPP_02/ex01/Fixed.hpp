@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 14:19:34 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/05 17:41:53 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/05 18:18:57 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,15 @@ class	Fixed
 		static const int	_bits;
 		
 	public:
+		// Orthodox Canonical Form
 		Fixed();
 		Fixed(const Fixed& other);
-		Fixed(const int num);
-		Fixed(const float num);
 		Fixed& operator=(const Fixed& other);
 		~Fixed();
+
+		// Extra Constructors
+		Fixed(const int num);
+		Fixed(const float num);
 
 
 		float toFloat( void ) const;
