@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 13:22:56 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/05 18:18:38 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/06 10:42:07 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ Fixed::Fixed(const int num)
 Fixed::Fixed(const float num)
 {
 	std::cout << G << "Float constructor called" << RST << std::endl;
-	this->_value = num * (1 << _bits);
+	this->_value = roundf(num * (1 << _bits));
 }
 
 
