@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: frbranda <frbranda@student.42.fr>          +#+  +:+       +#+        */
+/*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 13:22:56 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/06 17:30:20 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/07 12:01:39 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,34 +16,32 @@
 
 const int Fixed::_bits = 8;
 
-bool Fixed::_debug = false;
-
 Fixed::Fixed() : _value(0)
 {
-	if (_debug) std::cout << G << "Default constructor called" << RST << std::endl;
+	if (DEBUG) std::cout << G << "Fixed Default constructor called" << RST << std::endl;
 }
 
 Fixed::Fixed(const int num)
 {
-	if (_debug) std::cout << G << "Int constructor called" << RST << std::endl;
+	if (DEBUG) std::cout << G << "Fixed Int constructor called" << RST << std::endl;
 	this->_value = num << _bits;
 }
 
 Fixed::Fixed(const float num)
 {
-	if (_debug) std::cout << G << "Float constructor called" << RST << std::endl;
+	if (DEBUG) std::cout << G << "Fixed Float constructor called" << RST << std::endl;
 	this->_value = roundf(num * (1 << _bits));
 }
 
 Fixed::Fixed(const Fixed& other)
 {
-	if (_debug) std::cout << Y << "Copy constructor called" << RST << std::endl;
+	if (DEBUG) std::cout << Y << "Fixed Copy constructor called" << RST << std::endl;
 	*this = other; //calls assigment operator
 }
 
 Fixed& Fixed::operator=(const Fixed& other)
 {
-	if (_debug) std::cout << Y << "Copy assignment operator called" << RST << std::endl;
+	if (DEBUG) std::cout << Y << "Fixed Copy assignment operator called" << RST << std::endl;
 	if (this != &other)
 	{
 		this->_value = other._value;
@@ -53,7 +51,7 @@ Fixed& Fixed::operator=(const Fixed& other)
 
 Fixed::~Fixed()
 {
-	if (_debug) std::cout << R << "Destructor called" << RST << std::endl;
+	if (DEBUG) std::cout << R << "Fixed Destructor called" << RST << std::endl;
 }
 
 /* ------------------------- Comparisons Operators ------------------------- */

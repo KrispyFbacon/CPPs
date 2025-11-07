@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: frbranda <frbranda@student.42.fr>          +#+  +:+       +#+        */
+/*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 14:19:34 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/06 16:49:40 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/07 11:58:42 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,15 @@
 
 #include <iostream>
 #include <cmath>
+#include "Color.hpp"
 
-// reset color / clear terminal
-# define RST	"\033[0m"
-# define CLEAR	"\033[2J\033[H"
-
-// color
-# define R		"\033[0;31m"
-# define G		"\033[0;32m"
-# define Y		"\033[0;33m"
-
-//bold color
-# define BOLD_C		"\033[1;36m"
+# define DEBUG true
 
 class	Fixed
 {
 	private:
 		int					_value;
 		static const int	_bits;
-		static bool 		_debug;
 		
 	public:
 		Fixed();
