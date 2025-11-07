@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 11:38:42 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/07 17:31:32 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/07 17:36:28 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include "Fixed.hpp"
 
-# define SHOW_INFO true
+# define SHOW_INFO false
 
 class	Point
 {
