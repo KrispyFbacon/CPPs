@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 14:19:34 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/07 11:58:42 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/07 17:30:10 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <cmath>
 #include "Color.hpp"
 
-# define DEBUG true
+# define DEBUG false
 
 class	Fixed
 {

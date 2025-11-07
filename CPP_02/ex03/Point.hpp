@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 11:38:42 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/07 13:16:05 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/07 17:31:32 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define POINT_HPP
 
 #include "Fixed.hpp"
+
+# define SHOW_INFO true
 
 class	Point
 {
@@ -27,7 +29,8 @@ class	Point
 		Point& operator=(const Point& other);
 		~Point();
 
-		
+		const Fixed& getX() const;
+		const Fixed& getY() const;
 };
 
 bool bsp( Point const a, Point const b, Point const c, Point const point);
