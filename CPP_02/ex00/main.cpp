@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: frbranda <frbranda@student.42.fr>          +#+  +:+       +#+        */
+/*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 14:28:27 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/04 14:16:29 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/11 11:06:22 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,13 @@ int main( void )
 	Fixed c;
 	
 	c = b;
-	
-	std::cout << a.getRawBits() << std::endl;
-	std::cout << b.getRawBits() << std::endl;
-	std::cout << c.getRawBits() << std::endl;
+
+	std::cout << "A: "<< a.getRawBits() << std::endl;
+	std::cout << "B: "<< b.getRawBits() << std::endl;
+	std::cout << "C: "<< c.getRawBits() << std::endl;
+
+	b.setRawBits(4);
+	std::cout << "B: "<< b.getRawBits() << std::endl;	
 
 	return (0);
 }
