@@ -6,7 +6,7 @@
 #    By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/15 14:29:42 by frbranda          #+#    #+#              #
-#    Updated: 2025/11/12 17:51:35 by frbranda         ###   ########.fr        #
+#    Updated: 2025/11/12 17:51:48 by frbranda         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 #                                   SETTINGS                                   #
 #==============================================================================#
 
-NAME = scavTrap
+NAME = fragTrap
 
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
@@ -22,7 +22,7 @@ FLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -rf
 VAL = valgrind --leak-check=full --show-leak-kinds=all
 
-SRC = main.cpp ClapTrap.cpp ScavTrap.cpp
+SRC = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp
 
 OBJ_DIR = obj
 OBJS = $(SRC:%.cpp=$(OBJ_DIR)/%.o)

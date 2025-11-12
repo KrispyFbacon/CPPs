@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 13:22:56 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/12 18:03:26 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/12 18:03:35 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void ScavTrap::attack(const std::string& target)
 			  << NUM_COLOR << this->_AD
 			  << DMG_COLOR << " points of damage!"
 			  << RST << std::endl;
-	
+
 	this->_SP--;
 }
 

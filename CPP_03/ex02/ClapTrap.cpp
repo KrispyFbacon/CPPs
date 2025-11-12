@@ -1,69 +1,73 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.cpp                                       :+:      :+:    :+:   */
+/*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 13:22:56 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/12 18:03:26 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/12 17:35:37 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
+#include "ClapTrap.hpp"
 
-ScavTrap::ScavTrap() : ClapTrap("Default ScavTrap")
+ClapTrap::ClapTrap() 
+			: _name("unknown") , _HP(10), _SP(10), _AD(0), _type("ClapTrap")
 {
-	_initScavStats();
-	std::cout << CLASS_COLOR << "ScavTrap "
+	std::cout << CLASS_COLOR << "ClapTrap " 
 			  << G << "Default Constructor called"
 			  << RST << std::endl;
 }
 
-ScavTrap::ScavTrap(const std::string& name) : ClapTrap(name)
+ClapTrap::ClapTrap(const std::string& name)
+			: _name(name), _HP(10), _SP(10), _AD(0), _type("ClapTrap")
 {
-	_initScavStats();
-	std::cout << CLASS_COLOR << "ScavTrap "
+	std::cout << CLASS_COLOR << "ClapTrap "
 			  << NAME_COLOR << this->_name
 			  << G << " Constructor called"
 			  << RST << std::endl;
 }
 
-ScavTrap::ScavTrap(const ScavTrap& other) : ClapTrap(other)
+ClapTrap::ClapTrap(const ClapTrap& other)
 {
-	this->_guardMode = other._guardMode;
-	std::cout << CLASS_COLOR << "ScavTrap "
+	*this = other;
+	std::cout << CLASS_COLOR << "ClapTrap "
 			  << NAME_COLOR << this->_name
 			  << G << " Copy Constructor called"
 			  << RST << std::endl;
 }
 
-ScavTrap::~ScavTrap()
+ClapTrap::~ClapTrap()
 {
-	std::cout << CLASS_COLOR << "ScavTrap "
+	std::cout << CLASS_COLOR << "ClapTrap "
 			  << NAME_COLOR << this->_name
 			  << R << " Destructor called"
 			  << RST << std::endl;
 }
 
-ScavTrap& ScavTrap::operator=(const ScavTrap& other)
+ClapTrap& ClapTrap::operator=(const ClapTrap& other)
 {
-	std::cout << CLASS_COLOR << "ScavTrap "
+	std::cout << CLASS_COLOR << "ClapTrap "
 			  << G << "Copy assignment operator called"
 			  << RST << std::endl;
 	if (this != &other)
 	{
-		ClapTrap::operator=(other);
-		this->_guardMode = other._guardMode;
+		this->_name = other._name;
+		this->_HP = other._HP;
+		this->_SP = other._SP;
+		this->_AD = other._AD;
+		this->_type = other._type;
 	}
 	return (*this);
 }
 
-void ScavTrap::attack(const std::string& target)
+
+void ClapTrap::attack(const std::string& target)
 {
 	if (this->_HP == 0)
 	{
-		std::cout << CLASS_COLOR << "ScavTrap "
+		std::cout << CLASS_COLOR << "ClapTrap "
 				  << NAME_COLOR << this->_name
 				  << RST << " cannot "
 				  << DMG_COLOR << "attack"
@@ -73,7 +77,7 @@ void ScavTrap::attack(const std::string& target)
 	}
 	else if (this->_SP == 0)
 	{
-		std::cout << CLASS_COLOR << "ScavTrap "
+		std::cout << CLASS_COLOR << "ClapTrap "
 				  << NAME_COLOR << this->_name
 				  << RST << " cannot "
 				  << DMG_COLOR << "attack"
@@ -81,7 +85,7 @@ void ScavTrap::attack(const std::string& target)
 				  << std::endl;
 		return ;
 	}
-	std::cout << CLASS_COLOR << "ScavTrap "
+	std::cout << CLASS_COLOR << "ClapTrap "
 			  << NAME_COLOR << this->_name
 			  << DMG_COLOR << " attacks "
 			  << NAME_COLOR << target
@@ -93,51 +97,76 @@ void ScavTrap::attack(const std::string& target)
 	this->_SP--;
 }
 
-void ScavTrap::guardGate()
+void ClapTrap::takeDamage(unsigned int amount)
 {
-	if (_guardMode == true)
+	if (this->_HP == 0)
 	{
-		std::cout << CLASS_COLOR << "ScavTrap "
+		std::cout << CLASS_COLOR << this->_type << " "
 				  << NAME_COLOR << this->_name
-				  << RST << " already in "
-				  << GUARD_COLOR << "Gate Keeper mode!"
-				  << RST << std::endl;
+				  << RST << " STOP! STOP! HE IS ALREADY DEAD! "
+				  << "SWEET JESUS, LORD HAVE MERCY, MY BABY!"
+				  << std::endl;
 		return ;
 	}
-	else if (this->_HP == 0)
+	std::cout << CLASS_COLOR << this->_type << " "
+			  << NAME_COLOR << this->_name
+			  << DMG_COLOR << " takes "
+			  << NUM_COLOR << amount
+			  << DMG_COLOR << " hit points!"
+			  << RST << std::endl;
+	
+	if (amount >= this->_HP)
+		this->_HP = 0;
+	else
+		this->_HP -= amount;
+}
+
+void ClapTrap::beRepaired(unsigned int amount)
+{
+	if (this->_HP == 0)
 	{
-		std::cout << CLASS_COLOR << "ScavTrap "
+		std::cout << CLASS_COLOR << this->_type << " "
 				  << NAME_COLOR << this->_name
-				  << RST << " cannot enter "
-				  << GUARD_COLOR << "Gate Keeper mode"
+				  << RST << " cannot "
+				  << HEAL_COLOR << "repair"
 				  << RST << ", because it's dead!"
 				  << std::endl;
 		return ;
 	}
 	else if (this->_SP == 0)
 	{
-		std::cout << CLASS_COLOR << "ScavTrap "
+		std::cout << CLASS_COLOR << this->_type << " "
 				  << NAME_COLOR << this->_name
-				  << RST << " cannot enter "
-				  << GUARD_COLOR << "Gate Keeper mode"
+				  << RST << " cannot "
+				  << HEAL_COLOR << "repair"
 				  << RST << ", because it doesn't have energy!"
 				  << std::endl;
 		return ;
 	}
-	std::cout << CLASS_COLOR << "ScavTrap "
+	std::cout << CLASS_COLOR << this->_type << " "
 			  << NAME_COLOR << this->_name
-			  << GUARD_COLOR << " is now in Gate Keeper mode! "
-			  << "I don't know what that means."
+			  << HEAL_COLOR << " repairs itself, recovering "
+			  << NUM_COLOR << amount
+			  << HEAL_COLOR  << " health points!"
 			  << RST << std::endl;
-	this->_guardMode = true;
+	
+	this->_HP += amount;
 	this->_SP--;
 }
 
-void ScavTrap::_initScavStats()
+// Setters
+void ClapTrap::setSP(const unsigned int& SP)
 {
-	this->_HP = 100;
-	this->_SP = 50;
-	this->_AD = 20;
-	this->_type = "ScavTrap";
-	this->_guardMode = false;
+	this->_SP = SP;
+}
+
+// Getters
+const unsigned int& ClapTrap::getAD() const
+{
+	return this->_AD;
+}
+
+const unsigned int& ClapTrap::getSP() const
+{
+	return this->_SP;
 }
