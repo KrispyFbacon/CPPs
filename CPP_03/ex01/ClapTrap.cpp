@@ -6,20 +6,22 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 13:22:56 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/12 15:37:48 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/12 17:35:37 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap() : _name("unknown") , _HP(10), _SP(10), _AD(0)
+ClapTrap::ClapTrap() 
+			: _name("unknown") , _HP(10), _SP(10), _AD(0), _type("ClapTrap")
 {
 	std::cout << CLASS_COLOR << "ClapTrap " 
 			  << G << "Default Constructor called"
 			  << RST << std::endl;
 }
 
-ClapTrap::ClapTrap(const std::string& name) : _name(name), _HP(10), _SP(10), _AD(0)
+ClapTrap::ClapTrap(const std::string& name)
+			: _name(name), _HP(10), _SP(10), _AD(0), _type("ClapTrap")
 {
 	std::cout << CLASS_COLOR << "ClapTrap "
 			  << NAME_COLOR << this->_name
@@ -55,6 +57,7 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& other)
 		this->_HP = other._HP;
 		this->_SP = other._SP;
 		this->_AD = other._AD;
+		this->_type = other._type;
 	}
 	return (*this);
 }
@@ -98,14 +101,14 @@ void ClapTrap::takeDamage(unsigned int amount)
 {
 	if (this->_HP == 0)
 	{
-		std::cout << CLASS_COLOR << "ClapTrap "
+		std::cout << CLASS_COLOR << this->_type << " "
 				  << NAME_COLOR << this->_name
 				  << RST << " STOP! STOP! HE IS ALREADY DEAD! "
 				  << "SWEET JESUS, LORD HAVE MERCY, MY BABY!"
 				  << std::endl;
 		return ;
 	}
-	std::cout << CLASS_COLOR << "ClapTrap "
+	std::cout << CLASS_COLOR << this->_type << " "
 			  << NAME_COLOR << this->_name
 			  << DMG_COLOR << " takes "
 			  << NUM_COLOR << amount
@@ -122,7 +125,7 @@ void ClapTrap::beRepaired(unsigned int amount)
 {
 	if (this->_HP == 0)
 	{
-		std::cout << CLASS_COLOR << "ClapTrap "
+		std::cout << CLASS_COLOR << this->_type << " "
 				  << NAME_COLOR << this->_name
 				  << RST << " cannot "
 				  << HEAL_COLOR << "repair"
@@ -132,7 +135,7 @@ void ClapTrap::beRepaired(unsigned int amount)
 	}
 	else if (this->_SP == 0)
 	{
-		std::cout << CLASS_COLOR << "ClapTrap "
+		std::cout << CLASS_COLOR << this->_type << " "
 				  << NAME_COLOR << this->_name
 				  << RST << " cannot "
 				  << HEAL_COLOR << "repair"
@@ -140,7 +143,7 @@ void ClapTrap::beRepaired(unsigned int amount)
 				  << std::endl;
 		return ;
 	}
-	std::cout << CLASS_COLOR << "ClapTrap "
+	std::cout << CLASS_COLOR << this->_type << " "
 			  << NAME_COLOR << this->_name
 			  << HEAL_COLOR << " repairs itself, recovering "
 			  << NUM_COLOR << amount
@@ -151,6 +154,13 @@ void ClapTrap::beRepaired(unsigned int amount)
 	this->_SP--;
 }
 
+// Setters
+void ClapTrap::setSP(const unsigned int& SP)
+{
+	this->_SP = SP;
+}
+
+// Getters
 const unsigned int& ClapTrap::getAD() const
 {
 	return this->_AD;

@@ -6,67 +6,83 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 14:28:27 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/12 16:47:02 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/12 17:05:16 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
 
 int main()
 {
 	std::cout << BOLD_C << "╔════════════════════════════════╗" << RST << std::endl;
-	std::cout << BOLD_C << "║  Test 1: Basic functionality   ║" << RST << std::endl;
+	std::cout << BOLD_C << "║  Test 1: Basic ClapTrap        ║" << RST << std::endl;
 	std::cout << BOLD_C << "╚════════════════════════════════╝" << RST << std::endl;
 	{
-		ClapTrap clap("Clappy");
+		ClapTrap scav("Clappy");
 		ClapTrap bacon("Bacon");
 
-		clap.attack("Bacon");
-		bacon.takeDamage(clap.getAD());
+		scav.attack("Bacon");
+		bacon.takeDamage(scav.getAD());
 		bacon.beRepaired(0);
 	}
-		
+	
 	std::cout << BOLD_C << "\n╔════════════════════════════════╗" << RST << std::endl;
-	std::cout << BOLD_C << "║  Test 2: Energy depletion      ║" << RST << std::endl;
+	std::cout << BOLD_C << "║  Test 2: Basic ScavTrap        ║" << RST << std::endl;
 	std::cout << BOLD_C << "╚════════════════════════════════╝" << RST << std::endl;
 	{
-		ClapTrap clap("Tired");
+		ScavTrap scav("Scavy");
+		ScavTrap bacon("Bacon");
+
+		scav.attack("Bacon");
+		bacon.takeDamage(scav.getAD());
+		bacon.beRepaired(10);
+		bacon.guardGate();
+		bacon.guardGate();
+	}
+	
+	std::cout << BOLD_C << "\n╔════════════════════════════════╗" << RST << std::endl;
+	std::cout << BOLD_C << "║  Test 3: Energy depletion      ║" << RST << std::endl;
+	std::cout << BOLD_C << "╚════════════════════════════════╝" << RST << std::endl;
+	{
+		ScavTrap scav("Tired");
 		
-		// Use all 10 energy points
-		while (clap.getSP() > 0)
-			clap.attack("Enemy");
+		scav.setSP(5);
+		while (scav.getSP() > 0)
+			scav.attack("Enemy");
 		
-		// Try to attack with no energy
-		clap.attack("Enemy");
-		clap.beRepaired(5);
+		scav.attack("Enemy");
+		scav.beRepaired(5);
+		scav.guardGate();
 	}
 		
 	std::cout << BOLD_C << "\n╔════════════════════════════════╗" << RST << std::endl;
-	std::cout << BOLD_C << "║  Test 3: Death                 ║" << RST << std::endl;
+	std::cout << BOLD_C << "║  Test 4: Death                 ║" << RST << std::endl;
 	std::cout << BOLD_C << "╚════════════════════════════════╝" << RST << std::endl;
 	{
-		ClapTrap clap("Doomed");
+		ScavTrap scav("Doomed");
 		
-		clap.takeDamage(10);  // Kill it
-		clap.attack("Enemy");  // Try to attack while dead
-		clap.beRepaired(5);	// Try to repair while dead
-		clap.takeDamage(5);	// Hit dead body
+		scav.takeDamage(200);
+		scav.attack("Enemy");
+		scav.beRepaired(5);
+		scav.takeDamage(5);
+		scav.guardGate();
 	}
 		
 	std::cout << BOLD_C << "\n╔════════════════════════════════╗" << RST << std::endl;
-	std::cout << BOLD_C << "║  Test 4: Copy functionality    ║" << RST << std::endl;
+	std::cout << BOLD_C << "║  Test 5: Copy functionality    ║" << RST << std::endl;
 	std::cout << BOLD_C << "╚════════════════════════════════╝" << RST << std::endl;
 	{
-		ClapTrap original("Original");
+		ScavTrap original("Original");
 		original.attack("Enemy");
 		
-		ClapTrap copy(original);  // Copy constructor
+		ScavTrap copy(original);
 		copy.attack("Enemy");
 		
-		ClapTrap assigned("Assigned");
-		assigned = original;  // Copy assignment
+		ScavTrap assigned("Assigned");
+		assigned = original;
 		assigned.attack("Enemy");
 	}
-		
+	
 	return 0;
 }
