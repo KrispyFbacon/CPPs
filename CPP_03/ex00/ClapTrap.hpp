@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 14:19:34 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/11 18:13:15 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/12 13:07:41 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,14 @@
 #include <iostream>
 #include "Color.hpp"
 
+/* Class and identifier colors */
 #define CLASS_COLOR	BOLD_Y
-#define NAME_COLOR	C
+#define NAME_COLOR	RGB_BOLD(100, 150, 250)
+
+/* Action colors */
 #define DMG_COLOR	RGB(220, 69, 0)
 #define HEAL_COLOR	RGB(152, 251, 152)
+#define NUM_COLOR	RGB_BOLD(255, 165, 0)
 
 class	ClapTrap
 {
@@ -42,7 +46,8 @@ class	ClapTrap
 		void takeDamage(unsigned int amount);
 		void beRepaired(unsigned int amount);
 
-		const std::string& getName() const;
+		const unsigned int& getAD() const;
+		const unsigned int& getSP() const;
 };
 
 

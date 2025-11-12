@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 15:03:23 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/11 12:07:06 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/12 12:02:38 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,8 +135,8 @@
  */
 
 
-# define RGB(r, g, b)		"\033[38;2;" #r ";" #g ";" #b "m"
-# define BG_RGB(r, g, b)	"\033[48;2;" #r ";" #g ";" #b "m"
+# define RGB(r, g, b)		"\033[0;38;2;" #r ";" #g ";" #b "m"
+# define BG_RGB(r, g, b)	"\033[0;48;2;" #r ";" #g ";" #b "m"
 
 # define RGB_COMBO(fr, fg, fb, br, bg, bb) \
 	"\033[38;2;" #fr ";" #fg ";" #fb ";48;2;" #br ";" #bg ";" #bb "m"

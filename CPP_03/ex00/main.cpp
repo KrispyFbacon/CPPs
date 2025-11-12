@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 14:28:27 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/11 17:48:05 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/12 13:13:12 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 
 int main()
 {
-		
 	std::cout << BOLD_C << "╔════════════════════════════════╗" << RST << std::endl;
 	std::cout << BOLD_C << "║  Test 1: Basic functionality   ║" << RST << std::endl;
 	std::cout << BOLD_C << "╚════════════════════════════════╝" << RST << std::endl;
 	{
 		ClapTrap clap("Clappy");
-		
-		clap.attack("Target1");
-		clap.takeDamage(3);
-		clap.beRepaired(5);
+		ClapTrap bacon("Bacon");
+
+		clap.attack("Nick");
+		bacon.takeDamage(clap.getAD());
+		bacon.beRepaired(0);
 	}
 		
 	std::cout << BOLD_C << "\n╔════════════════════════════════╗" << RST << std::endl;
@@ -33,7 +33,7 @@ int main()
 		ClapTrap clap("Tired");
 		
 		// Use all 10 energy points
-		for (int i = 0; i < 10; i++)
+		while (clap.getSP() > 0)
 			clap.attack("Enemy");
 		
 		// Try to attack with no energy
