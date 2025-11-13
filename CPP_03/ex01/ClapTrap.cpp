@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 13:22:56 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/12 17:35:37 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/13 13:35:46 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,9 @@ ClapTrap::ClapTrap(const std::string& name)
 }
 
 ClapTrap::ClapTrap(const ClapTrap& other)
+			: _name(other._name), _HP(other._AD), _SP(other._SP), _AD(other._AD),
+				_type(other._type)
 {
-	*this = other;
 	std::cout << CLASS_COLOR << "ClapTrap "
 			  << NAME_COLOR << this->_name
 			  << G << " Copy Constructor called"
@@ -161,6 +162,11 @@ void ClapTrap::setSP(const unsigned int& SP)
 }
 
 // Getters
+const unsigned int& ClapTrap::getHP() const
+{
+	return this->_HP;
+}
+
 const unsigned int& ClapTrap::getAD() const
 {
 	return this->_AD;
@@ -169,4 +175,13 @@ const unsigned int& ClapTrap::getAD() const
 const unsigned int& ClapTrap::getSP() const
 {
 	return this->_SP;
+}
+
+void displayStats(const std::string& type, const ClapTrap& bot)
+{
+	std::cout << CLASS_COLOR << type
+			  << BOLD_W << " - HP: " << NUM_COLOR << bot.getHP()
+			  << BOLD_W << ", SP: " << NUM_COLOR << bot.getSP()
+			  << BOLD_W << ", AD: " << NUM_COLOR << bot.getAD()
+			  << RST << std::endl;
 }

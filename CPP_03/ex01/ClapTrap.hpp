@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 14:19:34 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/12 17:15:13 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/13 13:36:02 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,11 @@ class	ClapTrap
 		void setSP(const unsigned int& SP);
 		
 		// Getters
+		const unsigned int& getHP() const;
 		const unsigned int& getSP() const;
 		const unsigned int& getAD() const;
 };
 
+void displayStats(const std::string& type, const ClapTrap& bot);
 
 #endif
