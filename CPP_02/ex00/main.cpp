@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 14:28:27 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/11 11:06:22 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/13 14:45:49 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int main( void )
 	std::cout << "C: "<< c.getRawBits() << std::endl;
 
 	b.setRawBits(4);
-	std::cout << "B: "<< b.getRawBits() << std::endl;	
+	std::cout << "B: "<< b.getRawBits() << std::endl;
 
 	return (0);
 }

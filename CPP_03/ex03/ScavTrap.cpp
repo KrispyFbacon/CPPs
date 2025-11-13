@@ -1,67 +1,69 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   FragTrap.cpp                                       :+:      :+:    :+:   */
+/*   ScavTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 13:22:56 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/13 17:55:44 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/12 18:03:35 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "FragTrap.hpp"
+#include "ScavTrap.hpp"
 
-FragTrap::FragTrap() : ClapTrap("Default FragTrap")
+ScavTrap::ScavTrap() : ClapTrap("Default ScavTrap")
 {
-	_initFragStats();
-	std::cout << CLASS_COLOR << "FragTrap "
+	_initScavStats();
+	std::cout << CLASS_COLOR << "ScavTrap "
 			  << G << "Default Constructor called"
 			  << RST << std::endl;
 }
 
-FragTrap::FragTrap(const std::string& name) : ClapTrap(name)
+ScavTrap::ScavTrap(const std::string& name) : ClapTrap(name)
 {
-	_initFragStats();
-	std::cout << CLASS_COLOR << "FragTrap "
+	_initScavStats();
+	std::cout << CLASS_COLOR << "ScavTrap "
 			  << NAME_COLOR << this->_name
 			  << G << " Constructor called"
 			  << RST << std::endl;
 }
 
-FragTrap::FragTrap(const FragTrap& other) : ClapTrap(other)
+ScavTrap::ScavTrap(const ScavTrap& other) : ClapTrap(other)
 {
-	std::cout << CLASS_COLOR << "FragTrap "
+	this->_guardMode = other._guardMode;
+	std::cout << CLASS_COLOR << "ScavTrap "
 			  << NAME_COLOR << this->_name
 			  << G << " Copy Constructor called"
 			  << RST << std::endl;
 }
 
-FragTrap::~FragTrap()
+ScavTrap::~ScavTrap()
 {
-	std::cout << CLASS_COLOR << "FragTrap "
+	std::cout << CLASS_COLOR << "ScavTrap "
 			  << NAME_COLOR << this->_name
 			  << R << " Destructor called"
 			  << RST << std::endl;
 }
 
-FragTrap& FragTrap::operator=(const FragTrap& other)
+ScavTrap& ScavTrap::operator=(const ScavTrap& other)
 {
-	std::cout << CLASS_COLOR << "FragTrap "
+	std::cout << CLASS_COLOR << "ScavTrap "
 			  << G << "Copy assignment operator called"
 			  << RST << std::endl;
 	if (this != &other)
 	{
 		ClapTrap::operator=(other);
+		this->_guardMode = other._guardMode;
 	}
 	return (*this);
 }
 
-void FragTrap::attack(const std::string& target)
+void ScavTrap::attack(const std::string& target)
 {
 	if (this->_HP == 0)
 	{
-		std::cout << CLASS_COLOR << "FragTrap "
+		std::cout << CLASS_COLOR << "ScavTrap "
 				  << NAME_COLOR << this->_name
 				  << RST << " cannot "
 				  << DMG_COLOR << "attack"
@@ -71,7 +73,7 @@ void FragTrap::attack(const std::string& target)
 	}
 	else if (this->_SP == 0)
 	{
-		std::cout << CLASS_COLOR << "FragTrap "
+		std::cout << CLASS_COLOR << "ScavTrap "
 				  << NAME_COLOR << this->_name
 				  << RST << " cannot "
 				  << DMG_COLOR << "attack"
@@ -79,7 +81,7 @@ void FragTrap::attack(const std::string& target)
 				  << std::endl;
 		return ;
 	}
-	std::cout << CLASS_COLOR << "FragTrap "
+	std::cout << CLASS_COLOR << "ScavTrap "
 			  << NAME_COLOR << this->_name
 			  << DMG_COLOR << " attacks "
 			  << NAME_COLOR << target
@@ -87,44 +89,55 @@ void FragTrap::attack(const std::string& target)
 			  << NUM_COLOR << this->_AD
 			  << DMG_COLOR << " points of damage!"
 			  << RST << std::endl;
-	
+
 	this->_SP--;
 }
 
-void FragTrap::highFivesGuys()
+void ScavTrap::guardGate()
 {
-	if (this->_HP == 0)
+	if (_guardMode == true)
 	{
-		std::cout << CLASS_COLOR << "FragTrap "
+		std::cout << CLASS_COLOR << "ScavTrap "
 				  << NAME_COLOR << this->_name
-				  << RST << " cannot "
-				  << HIGHFIVE_COLOR << "High-Five"
-				  << RST << ", because it's dead! :("
+				  << RST << " already in "
+				  << GUARD_COLOR << "Gate Keeper mode!"
+				  << RST << std::endl;
+		return ;
+	}
+	else if (this->_HP == 0)
+	{
+		std::cout << CLASS_COLOR << "ScavTrap "
+				  << NAME_COLOR << this->_name
+				  << RST << " cannot enter "
+				  << GUARD_COLOR << "Gate Keeper mode"
+				  << RST << ", because it's dead!"
 				  << std::endl;
 		return ;
 	}
 	else if (this->_SP == 0)
 	{
-		std::cout << CLASS_COLOR << "FragTrap "
+		std::cout << CLASS_COLOR << "ScavTrap "
 				  << NAME_COLOR << this->_name
-				  << RST << " cannot "
-				  << HIGHFIVE_COLOR << "High-Five"
-				  << RST << ", because it doesn't have energy! :("
+				  << RST << " cannot enter "
+				  << GUARD_COLOR << "Gate Keeper mode"
+				  << RST << ", because it doesn't have energy!"
 				  << std::endl;
 		return ;
 	}
-	std::cout << CLASS_COLOR << "FragTrap "
+	std::cout << CLASS_COLOR << "ScavTrap "
 			  << NAME_COLOR << this->_name
-			  << HIGHFIVE_COLOR << " is trying to High-Five but no one is there "
-			  << "Wow what a loser! 💀"
+			  << GUARD_COLOR << " is now in Gate Keeper mode! "
+			  << "I don't know what that means."
 			  << RST << std::endl;
+	this->_guardMode = true;
 	this->_SP--;
 }
 
-void FragTrap::_initFragStats()
+void ScavTrap::_initScavStats()
 {
 	this->_HP = 100;
-	this->_SP = 100;
-	this->_AD = 30;
-	this->_type = "FragTrap";
+	this->_SP = 50;
+	this->_AD = 20;
+	this->_type = "ScavTrap";
+	this->_guardMode = false;
 }
