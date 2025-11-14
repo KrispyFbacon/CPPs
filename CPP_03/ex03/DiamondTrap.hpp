@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 14:19:34 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/14 11:36:49 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/14 13:10:11 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,7 @@
 #include "ScavTrap.hpp"
 #include "FragTrap.hpp"
 
-#define WHOAMI_COLOR RGB_BOLD(218, 165, 32)
-//RGB_BOLD(186, 85, 211)
-//RGB_BOLD(0, 206, 209) 
+#define WHOAMI_COLOR RGB_BOLD(220, 165, 30)
 
 class	DiamondTrap : public ScavTrap, public FragTrap
 {

@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 13:22:56 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/14 12:55:00 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/14 13:06:49 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,8 @@ void DiamondTrap::whoAmI()
 		std::cout << CLASS_COLOR << "DiamondTrap "
 				  << NAME_COLOR << this->_name
 				  << RST << " is too tired to think "
-				  << "or maybe it has alzheimer and doesn't know"
-				  << HIGHFIVE_COLOR << "Who it is 💀"
+				  << "or maybe it has alzheimer and doesn't know "
+				  << WHOAMI_COLOR << "Who it is 💀"
 				  << std::endl;
 		return ;
 	}
