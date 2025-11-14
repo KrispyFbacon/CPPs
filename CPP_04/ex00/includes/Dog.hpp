@@ -1,38 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Point.hpp                                          :+:      :+:    :+:   */
+/*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/07 11:38:42 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/14 14:03:14 by frbranda         ###   ########.fr       */
+/*   Created: 2025/10/27 14:19:34 by frbranda          #+#    #+#             */
+/*   Updated: 2025/11/14 17:06:56 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef POINT_HPP
-# define POINT_HPP
+#ifndef DOG_HPP
+# define DOG_HPP
 
-#include "Fixed.hpp"
+#include "Animal.hpp"
 
-# define SHOW_INFO false
-
-class	Point
+class	Dog : public Animal
 {
-	private:
-		const Fixed _x;
-		const Fixed _y;
 	public:
-		Point();
-		Point(const float x, const float y); 
-		Point(const Point& other);
-		Point& operator=(const Point& other);
-		~Point();
+		Dog();
+		Dog(const Dog& other);
+		
+		~Dog();
+		
+		Dog& operator=(const Dog& other);
 
-		const Fixed& getX() const;
-		const Fixed& getY() const;
+		void makeSound();
 };
-
-bool bsp( Point const a, Point const b, Point const c, Point const point );
 
 #endif

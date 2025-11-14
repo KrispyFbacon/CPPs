@@ -1,38 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Point.hpp                                          :+:      :+:    :+:   */
+/*   WrongCat.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/07 11:38:42 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/14 14:03:14 by frbranda         ###   ########.fr       */
+/*   Created: 2025/10/27 14:19:34 by frbranda          #+#    #+#             */
+/*   Updated: 2025/11/14 17:20:34 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef POINT_HPP
-# define POINT_HPP
+#ifndef CAT_HPP
+# define CAT_HPP
 
-#include "Fixed.hpp"
+#include "WrongAnimal.hpp"
 
-# define SHOW_INFO false
-
-class	Point
+class	WrongCat : public WrongAnimal
 {
-	private:
-		const Fixed _x;
-		const Fixed _y;
 	public:
-		Point();
-		Point(const float x, const float y); 
-		Point(const Point& other);
-		Point& operator=(const Point& other);
-		~Point();
+		WrongCat();
+		WrongCat(const WrongCat& other);
+		
+		~WrongCat();
+		
+		WrongCat& operator=(const WrongCat& other);
 
-		const Fixed& getX() const;
-		const Fixed& getY() const;
+		void makeSound();
 };
-
-bool bsp( Point const a, Point const b, Point const c, Point const point );
 
 #endif
