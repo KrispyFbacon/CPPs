@@ -6,14 +6,14 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 13:22:56 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/13 13:31:02 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/14 12:58:32 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
 ClapTrap::ClapTrap() 
-			: _name("unknown") , _HP(10), _SP(10), _AD(0), _type("ClapTrap")
+			: _name("unknown") , _HP(10), _SP(10), _AD(0)
 {
 	std::cout << CLASS_COLOR << "ClapTrap " 
 			  << G << "Default Constructor called"
@@ -21,7 +21,7 @@ ClapTrap::ClapTrap()
 }
 
 ClapTrap::ClapTrap(const std::string& name)
-			: _name(name), _HP(10), _SP(10), _AD(0), _type("ClapTrap")
+			: _name(name), _HP(10), _SP(10), _AD(0)
 {
 	std::cout << CLASS_COLOR << "ClapTrap "
 			  << NAME_COLOR << this->_name
@@ -30,8 +30,7 @@ ClapTrap::ClapTrap(const std::string& name)
 }
 
 ClapTrap::ClapTrap(const ClapTrap& other)
-			: _name(other._name), _HP(other._AD), _SP(other._SP), _AD(other._AD),
-				_type(other._type)
+			: _name(other._name), _HP(other._AD), _SP(other._SP), _AD(other._AD)
 {
 	std::cout << CLASS_COLOR << "ClapTrap "
 			  << NAME_COLOR << this->_name
@@ -58,7 +57,6 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& other)
 		this->_HP = other._HP;
 		this->_SP = other._SP;
 		this->_AD = other._AD;
-		this->_type = other._type;
 	}
 	return (*this);
 }
@@ -102,14 +100,14 @@ void ClapTrap::takeDamage(unsigned int amount)
 {
 	if (this->_HP == 0)
 	{
-		std::cout << CLASS_COLOR << this->_type << " "
+		std::cout << CLASS_COLOR << "ClapTrap "
 				  << NAME_COLOR << this->_name
 				  << RST << " STOP! STOP! HE IS ALREADY DEAD! "
 				  << "SWEET JESUS, LORD HAVE MERCY, MY BABY!"
 				  << std::endl;
 		return ;
 	}
-	std::cout << CLASS_COLOR << this->_type << " "
+	std::cout << CLASS_COLOR << "ClapTrap "
 			  << NAME_COLOR << this->_name
 			  << DMG_COLOR << " takes "
 			  << NUM_COLOR << amount
@@ -126,7 +124,7 @@ void ClapTrap::beRepaired(unsigned int amount)
 {
 	if (this->_HP == 0)
 	{
-		std::cout << CLASS_COLOR << this->_type << " "
+		std::cout << CLASS_COLOR << "ClapTrap "
 				  << NAME_COLOR << this->_name
 				  << RST << " cannot "
 				  << HEAL_COLOR << "repair"
@@ -136,7 +134,7 @@ void ClapTrap::beRepaired(unsigned int amount)
 	}
 	else if (this->_SP == 0)
 	{
-		std::cout << CLASS_COLOR << this->_type << " "
+		std::cout << CLASS_COLOR << "ClapTrap "
 				  << NAME_COLOR << this->_name
 				  << RST << " cannot "
 				  << HEAL_COLOR << "repair"
@@ -144,7 +142,7 @@ void ClapTrap::beRepaired(unsigned int amount)
 				  << std::endl;
 		return ;
 	}
-	std::cout << CLASS_COLOR << this->_type << " "
+	std::cout << CLASS_COLOR << "ClapTrap "
 			  << NAME_COLOR << this->_name
 			  << HEAL_COLOR << " repairs itself, recovering "
 			  << NUM_COLOR << amount

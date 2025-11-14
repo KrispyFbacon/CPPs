@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 13:22:56 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/14 11:36:55 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/14 12:55:00 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,5 +100,4 @@ void DiamondTrap::_initDiamondStats()
 	//this->_SP = ScavTrap::_SP;
 	this->_SP = 50;
 	this->_AD = FragTrap::_AD;
-	this->_type = "DiamondTrap";
 }

@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 13:22:56 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/13 17:55:03 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/14 12:54:20 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,5 +126,4 @@ void FragTrap::_initFragStats()
 	this->_HP = 100;
 	this->_SP = 100;
 	this->_AD = 30;
-	this->_type = "FragTrap";
 }

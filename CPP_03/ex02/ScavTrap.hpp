@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 14:19:34 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/12 17:37:10 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/14 12:59:00 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 class	ScavTrap : public ClapTrap
 {
-	private:
+	protected:
 		bool _guardMode;
 		
 		void _initScavStats();

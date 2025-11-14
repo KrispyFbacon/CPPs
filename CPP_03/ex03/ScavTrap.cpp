@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 13:22:56 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/12 18:03:35 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/14 12:54:32 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,6 +138,5 @@ void ScavTrap::_initScavStats()
 	this->_HP = 100;
 	this->_SP = 50;
 	this->_AD = 20;
-	this->_type = "ScavTrap";
 	this->_guardMode = false;
 }

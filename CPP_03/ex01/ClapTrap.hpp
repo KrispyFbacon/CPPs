@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 14:19:34 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/13 13:36:02 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/14 13:00:17 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ class	ClapTrap
 		unsigned int	_HP;
 		unsigned int	_SP;
 		unsigned int	_AD;
-		std::string		_type;
 		
 	public:
 		ClapTrap();
