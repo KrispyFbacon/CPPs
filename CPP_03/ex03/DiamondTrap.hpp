@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 14:19:34 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/13 17:49:04 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/14 11:36:49 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ class	DiamondTrap : public ScavTrap, public FragTrap
 
 		DiamondTrap& operator=(const DiamondTrap& other);
 
-		void attack(const std::string& target);
+		using ScavTrap::attack;
 		void whoAmI();
 };
 

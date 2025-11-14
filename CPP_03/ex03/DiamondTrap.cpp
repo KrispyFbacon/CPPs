@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 13:22:56 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/13 17:50:24 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/14 11:36:55 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ DiamondTrap::DiamondTrap(const std::string& name)
 }
 
 DiamondTrap::DiamondTrap(const DiamondTrap& other)
-	: ClapTrap(other._name), ScavTrap(other._name),
+	: ClapTrap(other._name + "_clap_name"), ScavTrap(other._name),
 		FragTrap(other._name), _name(other._name)
 {
 	std::cout << CLASS_COLOR << "DiamondTrap "
@@ -64,14 +64,14 @@ DiamondTrap& DiamondTrap::operator=(const DiamondTrap& other)
 	return (*this);
 }
 
-void DiamondTrap::attack(const std::string& target)
+void DiamondTrap::whoAmI()
 {
 	if (this->_HP == 0)
 	{
 		std::cout << CLASS_COLOR << "DiamondTrap "
 				  << NAME_COLOR << this->_name
-				  << RST << " cannot "
-				  << DMG_COLOR << "attack"
+				  << RST << " cannot know "
+				  << WHOAMI_COLOR << " Who it is"
 				  << RST << ", because it's dead!"
 				  << std::endl;
 		return ;
@@ -80,31 +80,18 @@ void DiamondTrap::attack(const std::string& target)
 	{
 		std::cout << CLASS_COLOR << "DiamondTrap "
 				  << NAME_COLOR << this->_name
-				  << RST << " cannot "
-				  << DMG_COLOR << "attack"
-				  << RST << ", because it doesn't have energy!"
+				  << RST << " is too tired to think "
+				  << "or maybe it has alzheimer and doesn't know"
+				  << HIGHFIVE_COLOR << "Who it is 💀"
 				  << std::endl;
 		return ;
 	}
-	std::cout << CLASS_COLOR << "DiamondTrap "
-			  << NAME_COLOR << this->_name
-			  << DMG_COLOR << " attacks "
-			  << NAME_COLOR << target
-			  << DMG_COLOR << ", causing "
-			  << NUM_COLOR << this->_AD
-			  << DMG_COLOR << " points of damage!"
-			  << RST << std::endl;
-	
-	this->_SP--;
-}
-
-void DiamondTrap::whoAmI()
-{
 	std::cout << WHOAMI_COLOR << "DiamondTrap name: "
 			  << NAME_COLOR << this->_name
 			  << WHOAMI_COLOR << ", ClapTrap name: " 
 			  << NAME_COLOR << ClapTrap::_name 
 			  << RST << std::endl;
+	this->_SP--;
 }
 
 void DiamondTrap::_initDiamondStats()

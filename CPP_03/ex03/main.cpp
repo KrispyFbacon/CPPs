@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 14:28:27 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/13 17:53:55 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/14 11:49:24 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,86 +58,135 @@ int main()
 	}
 		
 	std::cout << BOLD_C << "\n╔════════════════════════════════╗" << RST << std::endl;
-	std::cout << BOLD_C << "║  Test 4: Compare All Types     ║" << RST << std::endl;
+	std::cout << BOLD_C << "║  Test 4: Basic DiamondTrap     ║" << RST << std::endl;
+	std::cout << BOLD_C << "╚════════════════════════════════╝" << RST << std::endl;
+	{
+		DiamondTrap diamond("Diamondy");
+		DiamondTrap target("Target");
+		
+		std::cout << "\n" << BOLD_M << "Actions:" << RST << std::endl;
+		diamond.attack("Target");
+		target.takeDamage(diamond.getAD());
+		target.beRepaired(20);
+		
+		std::cout << "\n" << BOLD_M << "Special Abilities:" << RST << std::endl;
+		diamond.whoAmI();
+		diamond.guardGate();
+		diamond.highFivesGuys();
+		
+		std::cout << std::endl;
+	}
+		
+	std::cout << BOLD_C << "\n╔════════════════════════════════╗" << RST << std::endl;
+	std::cout << BOLD_C << "║  Test 5: Compare All Types     ║" << RST << std::endl;
 	std::cout << BOLD_C << "╚════════════════════════════════╝" << RST << std::endl;
 	{
 		ClapTrap clap("Clappy");
 		ScavTrap scav("Scavy");
 		FragTrap frag("Fraggy");
+		DiamondTrap diamond("Diamondy");
 		
 		std::cout << "\n" << BOLD_M << "Stats Comparison:" << RST << std::endl;
-		displayStats("ClapTrap", clap);
-		displayStats("ScavTrap", scav);
-		displayStats("FragTrap", frag);
-
+		displayStats("ClapTrap   ", clap);
+		displayStats("ScavTrap   ", scav);
+		displayStats("FragTrap   ", frag);
+		displayStats("DiamondTrap", diamond);
+		
 		std::cout << "\n" << BOLD_M << "Attack Comparison:" << RST << std::endl;
 		clap.attack("Enemy");
 		scav.attack("Enemy");
 		frag.attack("Enemy");
-
+		diamond.attack("Enemy");  // Uses ScavTrap's attack
+		
 		std::cout << "\n" << BOLD_M << "Special Abilities:" << RST << std::endl;
 		scav.guardGate();
 		frag.highFivesGuys();
+		diamond.guardGate();
+		diamond.highFivesGuys();
+		diamond.whoAmI();
+
+		std::cout << std::endl;
 	}
 		
 	std::cout << BOLD_C << "\n╔════════════════════════════════╗" << RST << std::endl;
-	std::cout << BOLD_C << "║  Test 5: Energy Depletion      ║" << RST << std::endl;
+	std::cout << BOLD_C << "║  Test 6: DiamondTrap whoAmI    ║" << RST << std::endl;
 	std::cout << BOLD_C << "╚════════════════════════════════╝" << RST << std::endl;
 	{
-		FragTrap frag("Tired");
+		DiamondTrap d1("Alice");
+		DiamondTrap d2("Bob");
+		DiamondTrap d3("Charlie");
+		
+		std::cout << std::endl;
+		
+		d1.whoAmI();
+		d2.whoAmI();
+		d3.whoAmI();
+		
+		std::cout << std::endl;
+	}
+		
+	std::cout << BOLD_C << "\n╔════════════════════════════════╗" << RST << std::endl;
+	std::cout << BOLD_C << "║  Test 7: Energy Depletion      ║" << RST << std::endl;
+	std::cout << BOLD_C << "╚════════════════════════════════╝" << RST << std::endl;
+	{
+		DiamondTrap diamond("Tired");
 		
 		std::cout << "\n" << BOLD_M << "Depleting energy..." << RST << std::endl;
-		frag.setSP(3);
-		while (frag.getSP() > 0)
-			frag.attack("Enemy");
+		diamond.setSP(3);
+		while (diamond.getSP() > 0)
+			diamond.attack("Enemy");
 		
 		std::cout << "\n" << BOLD_M << "Trying actions with no energy:" << RST << std::endl;
-		frag.attack("Enemy");
-		frag.beRepaired(5);
-		frag.highFivesGuys();
+		diamond.attack("Enemy");
+		diamond.beRepaired(5);
+		diamond.guardGate();
+		diamond.highFivesGuys();
+		diamond.whoAmI();
+
+		std::cout << std::endl;
 	}
 		
 	std::cout << BOLD_C << "\n╔════════════════════════════════╗" << RST << std::endl;
-	std::cout << BOLD_C << "║  Test 6: Death Scenarios       ║" << RST << std::endl;
+	std::cout << BOLD_C << "║  Test 8: Death Scenarios       ║" << RST << std::endl;
 	std::cout << BOLD_C << "╚════════════════════════════════╝" << RST << std::endl;
 	{
-		FragTrap frag("Doomed");
+		DiamondTrap diamond("Doomed");
 		
 		std::cout << "\n" << BOLD_M << "Taking lethal damage..." << RST << std::endl;
-		frag.takeDamage(200);
+		diamond.takeDamage(200);
 		
 		std::cout << "\n" << BOLD_M << "Trying actions while dead:" << RST << std::endl;
-		frag.attack("Enemy");
-		frag.beRepaired(5);
-		frag.takeDamage(5);
-		frag.highFivesGuys();
+		diamond.attack("Enemy");
+		diamond.beRepaired(5);
+		diamond.takeDamage(5);
+		diamond.guardGate();
+		diamond.highFivesGuys();
+		diamond.whoAmI();
+
+		std::cout << std::endl;
 	}
 		
 	std::cout << BOLD_C << "\n╔════════════════════════════════╗" << RST << std::endl;
-	std::cout << BOLD_C << "║  Test 7: Copy Operations       ║" << RST << std::endl;
+	std::cout << BOLD_C << "║  Test 9: Copy Operations       ║" << RST << std::endl;
 	std::cout << BOLD_C << "╚════════════════════════════════╝" << RST << std::endl;
 	{
-		std::cout << BOLD_M << "Creating original FragTrap:" << RST << std::endl;
-		FragTrap original("Original");
+		std::cout << BOLD_M << "Creating original DiamondTrap:" << RST << std::endl;
+		DiamondTrap original("Original");
+		original.whoAmI();
 		original.attack("Enemy");
 		
 		std::cout << "\n" << BOLD_M << "Copy constructor:" << RST << std::endl;
-		FragTrap copy(original);
+		DiamondTrap copy(original);
+		copy.whoAmI();
 		copy.attack("Enemy");
 		
 		std::cout << "\n" << BOLD_M << "Copy assignment:" << RST << std::endl;
-		FragTrap assigned("Assigned");
+		DiamondTrap assigned("Assigned");
 		assigned = original;
+		assigned.whoAmI();
 		assigned.attack("Enemy");
-	}
 
-	std::cout << BOLD_C << "\n╔════════════════════════════════╗" << RST << std::endl;
-	std::cout << BOLD_C << "║  Test 8: Copy Operations       ║" << RST << std::endl;
-	std::cout << BOLD_C << "╚════════════════════════════════╝" << RST << std::endl;
-	{
-		DiamondTrap D("ola");
-
-		D.whoAmI();
+		std::cout << std::endl;
 	}
 
 	return (0);
