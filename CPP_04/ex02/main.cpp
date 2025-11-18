@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 14:28:27 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/18 17:52:22 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/18 18:15:52 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ int main()
 
 		std::cout << "\n" << BOLD_M << "Modifying copy's brain..." << RST << std::endl;
 		copy->getBrain()->setIdea(0, "I am copy");
+		//copy->getBrain().setIdea(0, "I am copy");
 		
 		std::cout << "Original idea[" << NUM_COLOR << "0" << RST << "]: " << NAME_COLOR << original->getBrain()->getIdea(0) << RST << std::endl;
 		std::cout << "Copy idea[" << NUM_COLOR << "0" << RST << "]:     " << NAME_COLOR << copy->getBrain()->getIdea(0) << RST << std::endl;
