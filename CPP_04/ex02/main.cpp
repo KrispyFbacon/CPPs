@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 14:28:27 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/18 17:22:00 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/18 17:52:22 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int main()
 	std::cout << BOLD_C << "╚════════════════════════════════╝" << RST << std::endl;
 	{
 		const Animal* animal[ARRAY_SIZE];
+		//const Animal test;
 
 		for (int i = 0; i < ARRAY_SIZE; ++i)
 		{

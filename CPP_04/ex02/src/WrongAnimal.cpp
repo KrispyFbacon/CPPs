@@ -1,61 +1,58 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.cpp                                            :+:      :+:    :+:   */
+/*   WrongAnimal.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 13:22:56 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/18 17:26:17 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/18 14:31:23 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.hpp"
+#include "WrongAnimal.hpp"
 
-Dog::Dog() : Animal(), _brain(new Brain())
+WrongAnimal::WrongAnimal() : _type("Unknown WrongAnimal")
 {
-	std::cout << CLASS_COLOR << "Dog "
+	std::cout << CLASS_COLOR << "WrongAnimal "
 			  << G << "Default Constructor called"
 			  << RST << std::endl;
-	this->_type = "Dog";
 }
 
-Dog::Dog(const Dog& other) : Animal(other), _brain(new Brain(*(other._brain)))
+WrongAnimal::WrongAnimal(const WrongAnimal& other) : _type(other._type)
 {
-	std::cout << CLASS_COLOR << "Dog "
+	std::cout << CLASS_COLOR << "WrongAnimal "
 			  << G << "Copy Constructor called"
 			  << RST << std::endl;
 }
 
-Dog::~Dog()
+WrongAnimal::~WrongAnimal()
 {
-	std::cout << CLASS_COLOR << "Dog "
+	std::cout << CLASS_COLOR << "WrongAnimal "
 			  << R << "Destructor called"
 			  << RST << std::endl;
-	delete _brain;
 }
 
-Dog& Dog::operator=(const Dog& other)
+WrongAnimal& WrongAnimal::operator=(const WrongAnimal& other)
 {
-	std::cout << CLASS_COLOR << "Dog "
+	std::cout << CLASS_COLOR << "WrongAnimal "
 			  << G << "Copy assignment operator called"
 			  << RST << std::endl;
 	if (this != &other)
 	{
-		Animal::operator=(other);
-		*(this->_brain) = *(other._brain);
+		this->_type = other._type;
 	}
 	return (*this);
 }
 
-void Dog::makeSound() const
+void WrongAnimal::makeSound() const
 {
-	std::cout << CLASS_COLOR << "Dog "
-			  << RST << "Woof Woof!"
+	std::cout << CLASS_COLOR << "WrongAnimal "
+			  << RST << "an appropriate sound (cats don't bark)."
 			  << std::endl;
 }
 
-Brain* Dog::getBrain() const
+const std::string& WrongAnimal::getType() const
 {
-	return this->_brain;
+	return this->_type;
 }
