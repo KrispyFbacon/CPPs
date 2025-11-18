@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 13:22:56 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/14 17:20:08 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/18 11:35:28 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,9 @@ WrongCat& WrongCat::operator=(const WrongCat& other)
 	return (*this);
 }
 
-void WrongCat::makeSound()
+void WrongCat::makeSound() const
 {
 	std::cout << CLASS_COLOR << "WrongCat "
-			  << RST << "says: Meow Meow!"
+			  << RST << "Meow Meow!"
 			  << std::endl;
 }

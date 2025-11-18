@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 13:22:56 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/14 17:17:47 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/18 11:35:25 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ WrongAnimal& WrongAnimal::operator=(const WrongAnimal& other)
 	return (*this);
 }
 
-void WrongAnimal::makeSound()
+void WrongAnimal::makeSound() const
 {
 	std::cout << CLASS_COLOR << "WrongAnimal "
 			  << RST << "an appropriate sound (cats don't bark)."

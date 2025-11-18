@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 14:19:34 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/14 17:06:56 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/18 11:35:51 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ class	Dog : public Animal
 		
 		Dog& operator=(const Dog& other);
 
-		void makeSound();
+		void makeSound() const;
 };
 
 #endif

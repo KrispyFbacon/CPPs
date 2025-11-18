@@ -6,12 +6,12 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 14:19:34 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/14 17:20:34 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/18 11:35:47 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-# define CAT_HPP
+#ifndef WRONGCAT_HPP
+# define WRONGCAT_HPP
 
 #include "WrongAnimal.hpp"
 
@@ -25,7 +25,7 @@ class	WrongCat : public WrongAnimal
 		
 		WrongCat& operator=(const WrongCat& other);
 
-		void makeSound();
+		void makeSound() const;
 };
 
 #endif

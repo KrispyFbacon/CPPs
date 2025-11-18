@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 13:22:56 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/14 17:05:02 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/18 11:35:07 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,9 @@ Cat& Cat::operator=(const Cat& other)
 	return (*this);
 }
 
-void Cat::makeSound()
+void Cat::makeSound() const
 {
 	std::cout << CLASS_COLOR << "Cat "
-			  << RST << "says: Meow Meow!"
+			  << RST << "Meow Meow!"
 			  << std::endl;
 }

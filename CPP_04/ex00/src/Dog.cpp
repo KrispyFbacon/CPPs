@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 13:22:56 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/14 17:12:55 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/18 11:35:55 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,9 @@ Dog& Dog::operator=(const Dog& other)
 	return (*this);
 }
 
-void Dog::makeSound()
+void Dog::makeSound() const
 {
 	std::cout << CLASS_COLOR << "Dog "
-			  << RST << "says: Woof Woof!"
+			  << RST << "Woof Woof!"
 			  << std::endl;
 }

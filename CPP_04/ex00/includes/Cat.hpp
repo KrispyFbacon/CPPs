@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 14:19:34 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/14 16:23:24 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/18 11:36:29 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ class	Cat : public Animal
 		
 		Cat& operator=(const Cat& other);
 
-		void makeSound();
+		void makeSound() const ;
 };
 
 #endif
