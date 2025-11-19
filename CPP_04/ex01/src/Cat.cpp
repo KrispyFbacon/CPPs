@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 13:22:56 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/18 17:18:44 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/19 15:47:33 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ Cat& Cat::operator=(const Cat& other)
 	if (this != &other)
 	{
 		Animal::operator=(other);
-		*(this->_brain) = *(other._brain);
+		this->getBrain() = other.getBrain();
 	}
 	return (*this);
 }
@@ -55,7 +55,7 @@ void Cat::makeSound() const
 			  << std::endl;
 }
 
-Brain* Cat::getBrain() const
+Brain& Cat::getBrain() const
 {
-	return this->_brain;
+	return *this->_brain;
 }

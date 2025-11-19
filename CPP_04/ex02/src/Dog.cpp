@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 13:22:56 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/18 18:14:54 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/19 15:47:59 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ Dog& Dog::operator=(const Dog& other)
 	if (this != &other)
 	{
 		Animal::operator=(other);
-		*(this->_brain) = *(other._brain);
+		this->getBrain() = other.getBrain();
 	}
 	return (*this);
 }
@@ -55,12 +55,7 @@ void Dog::makeSound() const
 			  << std::endl;
 }
 
-Brain* Dog::getBrain() const
+Brain& Dog::getBrain() const
 {
-	return this->_brain;
+	return *this->_brain;
 }
-
-// Brain& Dog::getBrain() const
-// {
-// 	return *this->_brain;
-// }
