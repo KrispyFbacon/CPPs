@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 13:22:56 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/19 17:26:39 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/20 18:22:02 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,14 @@ AMateria* Cure::clone() const
 	AMateria* clone = new Cure(*this);
 
 	return (clone);
+}
+
+void Cure::tempUse(const std::string& target) const
+{
+	std::cout << CLASS_COLOR << "Cure "
+			  << NAME_COLOR << this->_type
+			  << HEAL_COLOR << " ✨ heals "
+			  << NAME_COLOR << target
+			  << HEAL_COLOR  << " wounds! ✨"
+			  << RST << std::endl;
 }

@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 14:19:34 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/19 18:12:28 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/20 17:39:57 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ class	AMateria
 	public:
 		AMateria(std::string const& type);
 		AMateria(const AMateria& other);
-		
 		virtual ~AMateria();
 		
 		AMateria& operator=(const AMateria& other);
@@ -34,7 +33,8 @@ class	AMateria
 		std::string const& getType() const; //Returns the materia type
 		
 		virtual AMateria* clone() const = 0;
-		virtual void use(ICharacter& target);
+		virtual void tempUse(const std::string& target) const;
+		//virtual void use(ICharacter& target);
 		
 };
 #endif

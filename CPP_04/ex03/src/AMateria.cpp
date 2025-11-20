@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 13:22:56 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/19 18:20:41 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/20 18:26:45 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,25 @@ AMateria* AMateria::clone() const
 	std::cout << CLASS_COLOR << "AMateria "
 			  << RST << "Cannot clone Mateira dummy"
 			  << RST << std::endl;
+	return (NULL);
 }
 
-void AMateria::use(ICharacter& target)
+void AMateria::tempUse(const std::string& target) const
 {
 	std::cout << CLASS_COLOR << "AMateria "
-			  << RST << "Tried to use "
-			  << BOLD_BLACK << "VOID"
+			  << NAME_COLOR << this->_type
+			  << RST << " used "
+			  << BOLD_BLACK << "VOID "
+			  << NAME_COLOR << target
 			  << RST << " ... nothing happen"
 			  << RST << std::endl;
 }
+
+// void AMateria::use(ICharacter& target)
+// {
+// 	std::cout << CLASS_COLOR << "AMateria "
+// 			  << RST << "Tried to use "
+// 			  << BOLD_BLACK << "VOID"
+// 			  << RST << " ... nothing happen"
+// 			  << RST << std::endl;
+// }

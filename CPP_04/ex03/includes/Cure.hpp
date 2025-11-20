@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 14:19:34 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/19 17:24:13 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/20 17:40:07 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,7 @@ class	Cure : public AMateria
 		Cure& operator=(const Cure& other);
 
 		AMateria* clone() const;
+		void tempUse(const std::string& target) const;
+		//void use(ICharacter& target);
 };
 #endif
