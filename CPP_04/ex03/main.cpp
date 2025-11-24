@@ -6,13 +6,15 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 14:28:27 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/20 18:26:01 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/24 17:52:14 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Utils.hpp"
 #include "Ice.hpp"
 #include "Cure.hpp"
+
+#include "Character.hpp"
 
 #define ARRAY_SIZE 8
 
@@ -64,7 +66,16 @@ int main()
 		// 			  << RST << std::endl;
 		
 	}
-	
+	std::cout << BOLD_C << "\n╔════════════════════════════════╗" << RST << std::endl;
+	std::cout << BOLD_C << "║  Test 2: Character             ║" << RST << std::endl;
+	std::cout << BOLD_C << "╚════════════════════════════════╝" << RST << std::endl;
+	{
+		Character* player = new Character();
+		
+		player->checkInventory();
+		
+	}
+
 	// IMateriaSource* src = new MateriaSource();
 	// src->learnMateria(new Ice());
 	// src->learnMateria(new Cure());

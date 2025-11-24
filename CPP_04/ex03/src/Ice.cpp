@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 13:22:56 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/20 18:22:04 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/24 17:10:04 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 Ice::Ice() : AMateria("ice")
 {
 	std::cout << CLASS_COLOR << "Ice "
-			  << G << "Constructor called"
+			  << G << "Default Constructor called"
 			  << RST << std::endl;
 }
 

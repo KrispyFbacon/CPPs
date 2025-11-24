@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 14:19:34 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/20 17:39:57 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/24 17:25:26 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ class	AMateria
 		std::string _type;
 		
 	public:
+		AMateria();
 		AMateria(std::string const& type);
 		AMateria(const AMateria& other);
 		virtual ~AMateria();

@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 14:19:34 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/20 18:15:29 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/24 16:52:11 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <iostream>
 #include "Color.hpp"
 #include "AMateria.hpp"
-//#include "ICharacter.hpp"
+#include "ICharacter.hpp"
 
 /* Class and identifier colors */
 #define CLASS_COLOR	BOLD_Y

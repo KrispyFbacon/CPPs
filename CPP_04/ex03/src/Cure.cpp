@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 13:22:56 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/20 18:22:02 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/24 17:10:11 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 Cure::Cure() : AMateria("cure")
 {
 	std::cout << CLASS_COLOR << "Cure "
-			  << G << "Constructor called"
+			  << G << "Default Constructor called"
 			  << RST << std::endl;
 }
 

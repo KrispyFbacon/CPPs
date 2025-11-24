@@ -6,16 +6,24 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 13:22:56 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/20 18:26:45 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/24 17:27:05 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AMateria.hpp"
 
-AMateria::AMateria(std::string const& type) : _type(type)
+// TODO might need to start as "empty" and not NULL
+AMateria::AMateria() : _type(NULL)
 {
 	std::cout << CLASS_COLOR << "AMateria "
 			  << G << "Default Constructor called"
+			  << RST << std::endl;
+}
+
+AMateria::AMateria(std::string const& type) : _type(type)
+{
+	std::cout << CLASS_COLOR << "AMateria "
+			  << G << "Constructor called"
 			  << RST << std::endl;
 }
 
