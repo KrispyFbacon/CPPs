@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 14:28:27 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/25 12:54:26 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/25 18:56:59 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ int main()
 		AMateria* iceClone = ice->clone();
 		AMateria* cureClone = cure->clone();
 
-		std::cout << NAME_COLOR << "\nIce:        " << RST << ice->getType() << std::endl;
-		std::cout << NAME_COLOR << "Ice Clone:  " << RST << iceClone->getType() << std::endl;
-		std::cout << NAME_COLOR << "Cure:       " << RST << cure->getType() << std::endl;
-		std::cout << NAME_COLOR << "Cure Clone: " << RST << cureClone->getType() << "\n" << std::endl;
+		std::cout << NAME_COLOR << "\nice:       " << RST << ice->getType() << std::endl;
+		std::cout << NAME_COLOR << "iceClone:  " << RST << iceClone->getColoredType() << std::endl;
+		std::cout << NAME_COLOR << "cure:      " << RST << cure->getType() << std::endl;
+		std::cout << NAME_COLOR << "cureClone: " << RST << cureClone->getColoredType() << "\n" << std::endl;
 
 		ice->use(*target);
 		iceClone->use(*target);
@@ -45,23 +45,20 @@ int main()
 
 		ice->AMateria::use(*target);
 		AMateria* mate = ice->AMateria::clone();
-		mate->use(*target);
-		
+		if (mate)
+			mate->use(*target);
+
 		std::cout << std::endl;
 		
-	//	target->checkInventory();
+		//target->checkInventory();
 		target->equip(ice);
 		target->equip(cure);
 		target->equip(iceClone);
 		target->equip(cureClone);
-	//	target->checkInventory();
+		//target->checkInventory();
 
 		std::cout << std::endl;
 
-		delete ice;
-		delete iceClone;
-		delete cure;
-		delete cureClone;
 		delete mate;
 		delete target;
 		

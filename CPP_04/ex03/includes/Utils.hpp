@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 14:19:34 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/25 12:55:23 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/25 15:37:11 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@
 #define NAME_COLOR	RGB_BOLD(100, 150, 250)
 #define NUM_COLOR	RGB_BOLD(255, 165, 0)
 
-/* Action colors */
+/* Materia colors */
+#define MATE_COLOR  RGB_BOLD(170, 120, 255)
 #define ICE_COLOR	RGB_BOLD(150, 200, 255)
 //RGB_BOLD(120, 180, 255)
 //RGB_BOLD(180, 220, 255)

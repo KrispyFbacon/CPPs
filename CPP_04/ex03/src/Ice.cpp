@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 13:22:56 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/25 12:07:14 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/25 16:54:07 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ AMateria* Ice::clone() const
 
 void Ice::use(ICharacter& target)
 {
-	std::cout << CLASS_COLOR << "Cure "
+	std::cout << CLASS_COLOR << "Ice "
 			  << NAME_COLOR << this->_type
 			  << ICE_COLOR << " ❄️  shoots an ice bolt at "
 			  << NAME_COLOR << target.getName() << " ❄️"

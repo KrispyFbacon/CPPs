@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 14:19:34 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/25 12:59:45 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/25 18:34:19 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,17 @@
 #include "AMateria.hpp"
 #include "ICharacter.hpp"
 
-#define MAX_INVENTORY 4
+#define INVENTORY_SIZE 4
 
 class	Character : public ICharacter
 {
 	private:
 		std::string _name;
-		AMateria* _inventory[MAX_INVENTORY];
+		AMateria* _inventory[INVENTORY_SIZE];
 
-		static int	_inventorySpace;
+		static const int	_inventorySize = INVENTORY_SIZE;
 
-		//void	init_inventory();
+		void	_initInventory();
 		
 	public:
 		Character();
@@ -38,7 +38,6 @@ class	Character : public ICharacter
 
 		Character& operator=(const Character& other);
 		
-		// getters
 		std::string const& getName() const;
 		
 		// Inventory

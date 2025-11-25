@@ -6,14 +6,13 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 13:22:56 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/25 13:12:28 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/25 18:46:19 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AMateria.hpp"
 
-// TODO might need to start as "empty" and not NULL
-AMateria::AMateria() : _type(NULL)
+AMateria::AMateria() : _type("")
 {
 	std::cout << CLASS_COLOR << "AMateria "
 			  << G << "Default Constructor called"
@@ -53,10 +52,27 @@ AMateria& AMateria::operator=(const AMateria& other)
 	return (*this);
 }
 
+
+/* -------------------------------- Getters -------------------------------- */
+
 const std::string& AMateria::getType() const
 {
 	return this->_type;
 }
+
+std::string AMateria::getColoredType() const
+{
+	if (_type == "ice")
+		return ICE_COLOR + this->_type + RST;
+		
+	else if (_type == "cure")
+		return HEAL_COLOR + this->_type + RST;
+
+	return MATE_COLOR + this->_type + RST;
+}
+
+
+/* -------------------------------- Actions -------------------------------- */
 
 AMateria* AMateria::clone() const
 {
@@ -68,10 +84,11 @@ AMateria* AMateria::clone() const
 
 void AMateria::use(ICharacter& target)
 {
+	(void) target;
 	std::cout << CLASS_COLOR << "AMateria "
 				<< RST << "Tried to use "
 				<< BOLD_BLACK << "VOID "
-				<< NAME_COLOR << target.getName()
+				//<< NAME_COLOR << target.getName()
 				<< RST << " ... nothing happen"
 				<< RST << std::endl;
 }

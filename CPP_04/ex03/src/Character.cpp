@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 13:22:56 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/25 12:06:24 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/25 18:42:34 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ Character::Character() : _name("Default"), _inventory()
 	std::cout << CLASS_COLOR << "Character "
 			  << G << "Default Constructor called"
 			  << RST << std::endl;
+	_initInventory();
 }
 
 Character::Character(std::string const& name) : _name(name), _inventory()
@@ -24,6 +25,7 @@ Character::Character(std::string const& name) : _name(name), _inventory()
 	std::cout << CLASS_COLOR << "Character "
 			  << G << "Constructor called"
 			  << RST << std::endl;
+	_initInventory();
 }
 
 Character::Character(const Character& other) : _name(other._name), _inventory()
@@ -31,6 +33,13 @@ Character::Character(const Character& other) : _name(other._name), _inventory()
 	std::cout << CLASS_COLOR << "Character "
 			  << G << "Copy Constructor called"
 			  << RST << std::endl;
+	for (int i = 0; i < _inventorySize; ++i)
+	{
+		if (other._inventory[i])
+			this->_inventory[i] = other._inventory[i]->clone();
+		else
+			this->_inventory[i] = NULL;
+	}
 }
 
 Character::~Character()
@@ -38,6 +47,14 @@ Character::~Character()
 	std::cout << CLASS_COLOR << "Character "
 			  << R << "Destructor called"
 			  << RST << std::endl;
+	for (int i = 0; i < _inventorySize; ++i)
+	{
+		if (this->_inventory[i])
+		{
+			delete this->_inventory[i];
+			this->_inventory[i] = NULL;
+		}
+	}
 }
 
 Character& Character::operator=(const Character& other)
@@ -48,6 +65,14 @@ Character& Character::operator=(const Character& other)
 	if (this != &other)
 	{
 		this->_name = other._name;
+		for (int i = 0; i < _inventorySize; ++i)
+		{
+			delete this->_inventory[i];
+			if (other._inventory[i])
+				this->_inventory[i] = other._inventory[i]->clone();
+			else
+				this->_inventory[i] = NULL;
+		}
 	}
 	return (*this);
 }
@@ -58,48 +83,75 @@ std::string const & Character::getName() const
 	return this->_name;
 }
 
+/* ------------------------------- Inventory ------------------------------- */
+
 void Character::equip(AMateria* m)
 {
-	if (!m || m->getType().empty())
+	if (!m)
 	{
 		std::cout << "Nothing to equip!" << std::endl;
 		return ;
 	}
-	for (int i = 0; i < MAX_INVENTORY; ++i)
+	for (int i = 0; i < _inventorySize; ++i)
 	{
-		if (this->_inventory[i]->getType().empty())
+		if (!this->_inventory[i])
 		{
+			//TODO  check if i equip the same Materia more than once
 			this->_inventory[i] = m;
-			std::cout << "Equiped an Matria!" << std::endl;
+			std::cout << "Equiped " << m->getColoredType() 
+					  << RST << " in "
+					  << NAME_COLOR << this->_name 
+					  << RST << "'s inventory number "
+					  << NUM_COLOR << i << RST << std::endl;
 			return ;
 		}
 	}
-	std::cout << "Inventory full" << std::endl;
+	std::cout << NAME_COLOR << this->_name
+			  << RST << "'s inventory is full cannot equip "
+			  << m->getColoredType() << RST << std::endl;
 }
 
 void Character::unequip(int idx)
 {
-	if (idx < 0 || idx >= MAX_INVENTORY)
+	if (idx < 0 || idx >= _inventorySize)
 	{
-		std::cout << BOLD_R << "Index outside of scope!" << RST << std::endl;
+		std::cout << "Index outside of "
+				  << NAME_COLOR << this->_name
+				  << "'s scope!" << std::endl;
 		return ;
 	}
-	if (this->_inventory[idx]->getType().empty())
-		std::cout << "Nothing to unequip!" << std::endl;
+	if (!this->_inventory[idx])
+	{
+		std::cout << " Cannot unequip "
+				  << NAME_COLOR << this->_name
+				  << RST << "'s inventory number "
+				  << NUM_COLOR << idx
+				  << RST << " because it's already empty!" << std::endl;
+	}
 	else
-		std::cout << "Unequiped an Materia!" << std::endl;
+	{
+		std::cout << " Materia " << this->_inventory[idx]->getColoredType()
+				  << RST << " was unequiped from "
+				  << NAME_COLOR << this->_name
+				  << RST << "'s inventory number "
+				  << NUM_COLOR << idx
+				  << RST << std::endl;
+		this->_inventory[idx] = NULL;
+	}
 }
 
 void Character::use(int idx, ICharacter& target)
 {
-	if (idx < 0 || idx >= MAX_INVENTORY)
+	if (idx < 0 || idx >= _inventorySize)
 	{
 		std::cout << BOLD_R << "Index outside of scope!" << RST << std::endl;
 		return ;
 	}
-	if (this->_inventory[idx]->getType().empty())
+	if (!this->_inventory[idx])
 	{
-		std::cout << "No Materia equiped on that inventory space!" << std::endl;
+		std::cout << NAME_COLOR << this->_name
+				  << RST << "has no Materia equiped on inventory space "
+				  << NUM_COLOR << idx << RST << " so it cannot be used!" << std::endl;
 		return ;
 	}
 	this->_inventory[idx]->use(target);
@@ -107,16 +159,22 @@ void Character::use(int idx, ICharacter& target)
 
 void Character::checkInventory()
 {
-	for (int i = 0; i < MAX_INVENTORY; ++i)
+	for (int i = 0; i < _inventorySize; ++i)
 	{
-		if (this->_inventory[i]->getType().empty())
+		if(!this->_inventory[i])
 		{
 			std::cout << "Inventory[" << NUM_COLOR << i
 				  << RST << "]: " << std::endl;
 			continue ;
 		}
 		std::cout << "Inventory[" << NUM_COLOR << i << RST << "]: "
-				  << NAME_COLOR << this->_inventory[i]->getType()
+				  << this->_inventory[i]->getColoredType()
 				  << RST << std::endl;
 	}
+}
+
+void	Character::_initInventory()
+{
+	for (int i = 0; i < _inventorySize; ++i)
+		this->_inventory[i] = NULL;
 }
