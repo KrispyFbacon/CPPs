@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 13:22:56 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/24 17:27:05 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/25 13:12:28 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,22 +66,12 @@ AMateria* AMateria::clone() const
 	return (NULL);
 }
 
-void AMateria::tempUse(const std::string& target) const
+void AMateria::use(ICharacter& target)
 {
 	std::cout << CLASS_COLOR << "AMateria "
-			  << NAME_COLOR << this->_type
-			  << RST << " used "
-			  << BOLD_BLACK << "VOID "
-			  << NAME_COLOR << target
-			  << RST << " ... nothing happen"
-			  << RST << std::endl;
+				<< RST << "Tried to use "
+				<< BOLD_BLACK << "VOID "
+				<< NAME_COLOR << target.getName()
+				<< RST << " ... nothing happen"
+				<< RST << std::endl;
 }
-
-// void AMateria::use(ICharacter& target)
-// {
-// 	std::cout << CLASS_COLOR << "AMateria "
-// 			  << RST << "Tried to use "
-// 			  << BOLD_BLACK << "VOID"
-// 			  << RST << " ... nothing happen"
-// 			  << RST << std::endl;
-// }

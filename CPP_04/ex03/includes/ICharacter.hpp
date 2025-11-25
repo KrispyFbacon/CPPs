@@ -6,15 +6,17 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 14:19:34 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/19 18:12:21 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/25 13:11:20 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ICHARACTER_HPP
 # define ICHARACTER_HPP
 
-//#include "AMateria.hpp"
 #include "Utils.hpp"
+#include "AMateria.hpp"
+
+class AMateria;
 
 class	ICharacter
 {

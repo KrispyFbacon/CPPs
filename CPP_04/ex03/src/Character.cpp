@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 13:22:56 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/24 18:17:47 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/25 12:06:24 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,8 +102,7 @@ void Character::use(int idx, ICharacter& target)
 		std::cout << "No Materia equiped on that inventory space!" << std::endl;
 		return ;
 	}
-	//TODO change later
-	this->_inventory[idx]->tempUse(target);
+	this->_inventory[idx]->use(target);
 }
 
 void Character::checkInventory()

@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 14:28:27 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/24 17:52:14 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/25 12:54:26 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,10 @@
 int main()
 {
 	std::cout << BOLD_C << "╔════════════════════════════════╗" << RST << std::endl;
-	std::cout << BOLD_C << "║  Test 1: Materia Ice/Cure      ║" << RST << std::endl;
+	std::cout << BOLD_C << "║  Test 1: Character Ice/Cure    ║" << RST << std::endl;
 	std::cout << BOLD_C << "╚════════════════════════════════╝" << RST << std::endl;
 	{
+		ICharacter* target = new Character("target");
 		AMateria* ice = new Ice();
 		AMateria* cure = new Cure();
 		
@@ -35,17 +36,25 @@ int main()
 		std::cout << NAME_COLOR << "Cure:       " << RST << cure->getType() << std::endl;
 		std::cout << NAME_COLOR << "Cure Clone: " << RST << cureClone->getType() << "\n" << std::endl;
 
-		ice->tempUse("target");
-		iceClone->tempUse("target");
-		cure->tempUse("target");
-		cureClone->tempUse("target");
+		ice->use(*target);
+		iceClone->use(*target);
+		cure->use(*target);
+		cureClone->use(*target);
 
 		std::cout << std::endl;
 
-		ice->AMateria::tempUse("target");
+		ice->AMateria::use(*target);
 		AMateria* mate = ice->AMateria::clone();
-		mate->tempUse("target");
+		mate->use(*target);
 		
+		std::cout << std::endl;
+		
+	//	target->checkInventory();
+		target->equip(ice);
+		target->equip(cure);
+		target->equip(iceClone);
+		target->equip(cureClone);
+	//	target->checkInventory();
 
 		std::cout << std::endl;
 
@@ -53,6 +62,8 @@ int main()
 		delete iceClone;
 		delete cure;
 		delete cureClone;
+		delete mate;
+		delete target;
 		
 		// TODO invetory
 		
@@ -64,15 +75,6 @@ int main()
 		// std::cout << "Animal[" << NUM_COLOR << i << RST << "]: " 
 		// 			  << NAME_COLOR << animal[i]->getType() 
 		// 			  << RST << std::endl;
-		
-	}
-	std::cout << BOLD_C << "\n╔════════════════════════════════╗" << RST << std::endl;
-	std::cout << BOLD_C << "║  Test 2: Character             ║" << RST << std::endl;
-	std::cout << BOLD_C << "╚════════════════════════════════╝" << RST << std::endl;
-	{
-		Character* player = new Character();
-		
-		player->checkInventory();
 		
 	}
 

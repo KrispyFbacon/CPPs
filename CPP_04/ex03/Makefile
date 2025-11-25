@@ -6,7 +6,7 @@
 #    By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/15 14:29:42 by frbranda          #+#    #+#              #
-#    Updated: 2025/11/20 18:16:22 by frbranda         ###   ########.fr        #
+#    Updated: 2025/11/25 12:35:49 by frbranda         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,6 +43,7 @@ VPATH = src
 
 SRC =  main.cpp \
 		AMateria.cpp \
+		Character.cpp \
 		Cure.cpp \
 		Ice.cpp
 

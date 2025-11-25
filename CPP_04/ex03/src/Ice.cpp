@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 13:22:56 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/24 17:10:04 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/25 12:07:14 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,11 @@ AMateria* Ice::clone() const
 	return (clone);
 }
 
-void Ice::tempUse(const std::string& target) const
+void Ice::use(ICharacter& target)
 {
 	std::cout << CLASS_COLOR << "Cure "
 			  << NAME_COLOR << this->_type
 			  << ICE_COLOR << " ❄️  shoots an ice bolt at "
-			  << NAME_COLOR << target << " ❄️"
+			  << NAME_COLOR << target.getName() << " ❄️"
 			  << RST << std::endl;
 }
