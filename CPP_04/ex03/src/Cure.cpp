@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 13:22:56 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/25 18:21:30 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/26 17:25:22 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,6 @@ void Cure::use(ICharacter& target)
 	<< NAME_COLOR << this->_type
 	<< HEAL_COLOR << " ✨ heals "
 	<< NAME_COLOR << target.getName()
-	<< HEAL_COLOR  << " wounds! ✨"
+	<< HEAL_COLOR  << "' wounds! ✨"
 	<< RST << std::endl;
 }

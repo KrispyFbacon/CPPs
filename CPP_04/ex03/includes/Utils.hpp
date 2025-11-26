@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 14:19:34 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/26 13:46:29 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/26 16:31:50 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@
 #define INVENTORY_SIZE 4
 
 void printError(const std::string& msg);
+std::string printType(const std::string& type);
 
 
 #endif

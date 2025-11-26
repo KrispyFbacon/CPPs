@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 14:19:34 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/26 13:44:13 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/26 16:12:21 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,12 @@
 class	MateriaSource : public IMateriaSource
 {
 	private:
-		std::string _type;
+		AMateria* _materias[INVENTORY_SIZE];
+
+		static const int	_materiaSize = INVENTORY_SIZE;
 		
 	public:
 		MateriaSource();
-		MateriaSource(std::string const& type);
 		MateriaSource(const MateriaSource& other);
 		virtual ~MateriaSource();
 		

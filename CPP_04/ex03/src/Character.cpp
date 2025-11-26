@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 13:22:56 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/26 12:57:35 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/26 17:13:15 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void Character::equip(AMateria* m)
 {
 	if (!m)
 	{
-		std::cout << "Nothing to equip!" << std::endl;
+		printError("Nothing to equip!");
 		return ;
 	}
 	for (int i = 0; i < _inventorySize; ++i)
@@ -150,7 +150,9 @@ void Character::use(int idx, ICharacter& target)
 	if (!this->_inventory[idx])
 	{
 		std::cout << NAME_COLOR << this->_name
-				  << RST << "has no Materia equiped on inventory space "
+				  << RST << " has no "
+				  << MATE_COLOR << "Materia"
+				  << RST " equiped on inventory space "
 				  << NUM_COLOR << idx << RST << " so it cannot be used!" << std::endl;
 		return ;
 	}

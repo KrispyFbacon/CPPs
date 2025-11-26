@@ -6,7 +6,7 @@
 #    By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/15 14:29:42 by frbranda          #+#    #+#              #
-#    Updated: 2025/11/26 13:00:17 by frbranda         ###   ########.fr        #
+#    Updated: 2025/11/26 17:02:27 by frbranda         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,6 +46,7 @@ SRC =  main.cpp \
 		Character.cpp \
 		Cure.cpp \
 		Ice.cpp \
+		MateriaSource.cpp \
 		Utils.cpp
 
 OBJ_DIR = obj

@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 12:54:28 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/26 13:02:58 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/26 16:31:56 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,17 @@
 
 void	printError(const std::string& msg)
 {
-	std::cout << BOLD_R << "Error: "
+	std::cerr << BOLD_R << "Error: "
 			  << RST << msg << std::endl;
+}
+
+std::string printType(const std::string& type)
+{
+	if (type == "ice")
+		return ICE_COLOR + type + RST;
+		
+	else if (type == "cure")
+		return HEAL_COLOR + type + RST;
+
+	return MATE_COLOR + type + RST;
 }

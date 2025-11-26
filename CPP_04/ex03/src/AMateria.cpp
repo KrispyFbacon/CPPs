@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 13:22:56 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/26 13:02:21 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/26 16:33:20 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,26 @@ const std::string& AMateria::getType() const
 
 std::string AMateria::getColoredType() const
 {
-	if (_type == "ice")
+	if (this->_type == "ice")
 		return ICE_COLOR + this->_type + RST;
 		
-	else if (_type == "cure")
+	else if (this->_type == "cure")
 		return HEAL_COLOR + this->_type + RST;
 
 	return MATE_COLOR + this->_type + RST;
+}
+
+
+// TODO CHECK if its not weird
+std::string AMateria::getColoredType(const std::string& type) const
+{
+	if (type == "ice")
+		return ICE_COLOR + type + RST;
+		
+	else if (type == "cure")
+		return HEAL_COLOR + type + RST;
+
+	return MATE_COLOR + type + RST;
 }
 
 
