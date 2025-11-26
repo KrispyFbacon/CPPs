@@ -1,33 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ICharacter.hpp                                     :+:      :+:    :+:   */
+/*   Utils.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/27 14:19:34 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/26 12:00:23 by frbranda         ###   ########.fr       */
+/*   Created: 2025/11/26 12:54:28 by frbranda          #+#    #+#             */
+/*   Updated: 2025/11/26 13:02:58 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ICHARACTER_HPP
-# define ICHARACTER_HPP
-
 #include "Utils.hpp"
-#include "AMateria.hpp"
 
-class AMateria;
-
-class	ICharacter
+void	printError(const std::string& msg)
 {
-	public:
-		virtual ~ICharacter() {}
-		
-		virtual std::string const & getName() const = 0;
-		
-		virtual void equip(AMateria* m) = 0;
-		virtual void unequip(int idx) = 0;
-		virtual void use(int idx, ICharacter& target) = 0;
-		virtual void checkInventory() = 0;
-};
-#endif
+	std::cout << BOLD_R << "Error: "
+			  << RST << msg << std::endl;
+}

@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 14:28:27 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/25 18:56:59 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/26 13:50:06 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int main()
 	std::cout << BOLD_C << "║  Test 1: Character Ice/Cure    ║" << RST << std::endl;
 	std::cout << BOLD_C << "╚════════════════════════════════╝" << RST << std::endl;
 	{
+		ICharacter* me = new Character("me");
 		ICharacter* target = new Character("target");
 		AMateria* ice = new Ice();
 		AMateria* cure = new Cure();
@@ -50,31 +51,37 @@ int main()
 
 		std::cout << std::endl;
 		
-		//target->checkInventory();
-		target->equip(ice);
-		target->equip(cure);
-		target->equip(iceClone);
-		target->equip(cureClone);
-		//target->checkInventory();
+		me->checkInventory();
+
+		std::cout << std::endl;
+		
+		me->equip(ice);
+		me->equip(cure);
+		me->equip(iceClone);
+		me->equip(cureClone);
+
+		std::cout << std::endl;
+		
+		me->checkInventory();
 
 		std::cout << std::endl;
 
+		me->use(4, *target);
+
 		delete mate;
 		delete target;
-		
-		// TODO invetory
-		
-		// AMateria* allMateria[] = {
-		// 	new Ice(),
-		// 	new Cure()
-		// } ;
-		
-		// std::cout << "Animal[" << NUM_COLOR << i << RST << "]: " 
-		// 			  << NAME_COLOR << animal[i]->getType() 
-		// 			  << RST << std::endl;
-		
+	}
+	std::cout << BOLD_C << "\n╔════════════════════════════════╗" << RST << std::endl;
+	std::cout << BOLD_C << "║  Test 2: MateriaSource         ║" << RST << std::endl;
+	std::cout << BOLD_C << "╚════════════════════════════════╝" << RST << std::endl;
+	{
+
 	}
 
+	// std::cout << BOLD_C << "\n╔════════════════════════════════╗" << RST << std::endl;
+	// std::cout << BOLD_C << "║  Test 3: Given main            ║" << RST << std::endl;
+	// std::cout << BOLD_C << "╚════════════════════════════════╝" << RST << std::endl;
+	// {
 	// IMateriaSource* src = new MateriaSource();
 	// src->learnMateria(new Ice());
 	// src->learnMateria(new Cure());

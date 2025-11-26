@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 13:22:56 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/25 18:42:34 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/26 12:57:35 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,7 +144,7 @@ void Character::use(int idx, ICharacter& target)
 {
 	if (idx < 0 || idx >= _inventorySize)
 	{
-		std::cout << BOLD_R << "Index outside of scope!" << RST << std::endl;
+		printError("Index outside of scope!");
 		return ;
 	}
 	if (!this->_inventory[idx])
@@ -159,18 +159,28 @@ void Character::use(int idx, ICharacter& target)
 
 void Character::checkInventory()
 {
+	std::cout << "\n┌─────────────────────────────────────────┐\n";
+	std::cout << "│ " << NAME_COLOR << this->_name
+			  << RST << BOLD_M << " Inventory " << RST << std::endl;
+	std::cout << "├──────┬──────────────────────────────────┤\n";
+	std::cout << "│ " << BOLD_M << "Slot" << RST " │ " 
+			  << BOLD_M << "Item " << RST << std::endl;
+	std::cout << "├──────┼──────────────────────────────────┤" << RST << std::endl;
 	for (int i = 0; i < _inventorySize; ++i)
 	{
 		if(!this->_inventory[i])
 		{
-			std::cout << "Inventory[" << NUM_COLOR << i
-				  << RST << "]: " << std::endl;
+			std::cout << "│ " 
+				  << NUM_COLOR << std::setw(4) << std::left << i
+				  << RST << " │ " << std::endl;
 			continue ;
 		}
-		std::cout << "Inventory[" << NUM_COLOR << i << RST << "]: "
-				  << this->_inventory[i]->getColoredType()
+		std::cout << "│ " 
+				  << NUM_COLOR << std::setw(4) << std::left << i
+				  << RST << " │ " << this->_inventory[i]->getColoredType()
 				  << RST << std::endl;
 	}
+	std::cout << "└──────┴──────────────────────────────────┘\n" << std::endl;
 }
 
 void	Character::_initInventory()

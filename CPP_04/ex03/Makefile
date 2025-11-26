@@ -6,7 +6,7 @@
 #    By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/15 14:29:42 by frbranda          #+#    #+#              #
-#    Updated: 2025/11/25 12:35:49 by frbranda         ###   ########.fr        #
+#    Updated: 2025/11/26 13:00:17 by frbranda         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,8 @@ SRC =  main.cpp \
 		AMateria.cpp \
 		Character.cpp \
 		Cure.cpp \
-		Ice.cpp
+		Ice.cpp \
+		Utils.cpp
 
 OBJ_DIR = obj
 OBJS = $(SRC:%.cpp=$(OBJ_DIR)/%.o)

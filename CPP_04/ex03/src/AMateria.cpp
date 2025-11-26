@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 13:22:56 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/25 18:46:19 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/26 13:02:21 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,11 +84,10 @@ AMateria* AMateria::clone() const
 
 void AMateria::use(ICharacter& target)
 {
-	(void) target;
 	std::cout << CLASS_COLOR << "AMateria "
 				<< RST << "Tried to use "
-				<< BOLD_BLACK << "VOID "
-				//<< NAME_COLOR << target.getName()
+				<< BOLD_BLACK << "VOID"
+				<< RST << " on " << NAME_COLOR << target.getName()
 				<< RST << " ... nothing happen"
 				<< RST << std::endl;
 }

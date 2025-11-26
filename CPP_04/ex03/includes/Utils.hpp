@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 14:19:34 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/25 15:37:11 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/26 13:46:29 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define UTILS_HPP
 
 #include <iostream>
+#include <iomanip>
 #include <string>
 #include "Color.hpp"
 
@@ -26,13 +27,12 @@
 /* Materia colors */
 #define MATE_COLOR  RGB_BOLD(170, 120, 255)
 #define ICE_COLOR	RGB_BOLD(150, 200, 255)
-//RGB_BOLD(120, 180, 255)
-//RGB_BOLD(180, 220, 255)
 #define HEAL_COLOR	RGB(152, 251, 152)
 
-class	Utils
-{
-	public:
-		virtual void f()const = 0;
-};
+/* Game Options*/
+#define INVENTORY_SIZE 4
+
+void printError(const std::string& msg);
+
+
 #endif
