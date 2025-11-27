@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 14:19:34 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/27 14:05:32 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/27 17:13:03 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,20 @@ class	Character : public ICharacter
 		std::string _name;
 		AMateria* _inventory[INVENTORY_SIZE];
 
+		static int 			_characterCount;
 		static const int	_inventorySize = INVENTORY_SIZE;
-		static const int	_maxFloor = MAX_FLOOR;
+		static const int	_maxFloorItem = MAX_FLOOR;
 		static AMateria*	_floor[MAX_FLOOR];
 
+		// Inventory
 		void	_initInventory();
 		bool	_isValidIdx(int idx);
 		bool	_isMateriaEquipable(AMateria* m);
-		bool	_dropItem(AMateria& item)
+
+		// Floor
+		void	_updateFlooredItem(AMateria* item);
+		bool	_dropItem(AMateria* item);
+		void	_cleanFloor();
 		
 	public:
 		Character();
@@ -46,6 +52,7 @@ class	Character : public ICharacter
 		void equip(AMateria* m);
 		void unequip(int idx);
 		void use(int idx, ICharacter& target);
+		void discard(int idx);
 		void checkInventory();
 };
 #endif

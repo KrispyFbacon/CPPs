@@ -6,12 +6,13 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 13:22:56 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/27 14:05:29 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/27 17:14:04 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Character.hpp"
 
+int	Character::_characterCount = 0;
 AMateria*	Character::_floor[MAX_FLOOR] = {NULL};
 
 Character::Character() : _name("Default"), _inventory()
@@ -20,6 +21,7 @@ Character::Character() : _name("Default"), _inventory()
 			  << G << "Default Constructor called"
 			  << RST << std::endl;
 	_initInventory();
+	_characterCount++;
 }
 
 Character::Character(std::string const& name) : _name(name), _inventory()
@@ -28,6 +30,7 @@ Character::Character(std::string const& name) : _name(name), _inventory()
 			  << G << "Constructor called"
 			  << RST << std::endl;
 	_initInventory();
+	_characterCount++;
 }
 
 Character::Character(const Character& other) : _name(other._name), _inventory()
@@ -57,11 +60,8 @@ Character::~Character()
 			this->_inventory[i] = NULL;
 		}
 	}
-
-	for (int i = 0; i < _maxFloor; ++i)
-	{
-		delete this->_floor[i];
-	}
+	_characterCount--;
+	_cleanFloor();
 }
 
 Character& Character::operator=(const Character& other)
@@ -102,8 +102,10 @@ void Character::equip(AMateria* m)
 	{
 		if (this->_inventory[i] == NULL)
 		{
+			_updateFlooredItem(m);
 			this->_inventory[i] = m;
 			m->setHolder(this);
+			
 			std::cout << "Equiped " << m->getColoredType() << RST
 					  << " in " << NAME_COLOR << this->_name << RST
 					  << "'s inventory number " << NUM_COLOR << i
@@ -113,27 +115,13 @@ void Character::equip(AMateria* m)
 	}
 }
 
-bool	Character::_dropItem(AMateria& item)
-{
-	for (int i = 0; i < _maxFloor; ++i)
-	{
-		if (this->_floor[i] == NULL)
-		{
-			
-			return true;
-		}
-	}
-	printError("Cannot unequip item, because floor is full!");
-	return false;
-}
-
 void Character::unequip(int idx)
 {
 	if(!_isValidIdx(idx))
 		return ;
 	if (!this->_inventory[idx])
 	{
-		std::cout << " Cannot unequip "
+		std::cout << "Cannot unequip "
 				  << NAME_COLOR << this->_name
 				  << RST << "'s inventory number "
 				  << NUM_COLOR << idx
@@ -141,21 +129,19 @@ void Character::unequip(int idx)
 		return ;
 	}
 	
-	if (_dropItem(*this->_inventory[idx]))
+	if (_dropItem(this->_inventory[idx]))
 	{
-		printError("Cannot unequip item, because floor is full!");
-		return ;
-	}
-		
-	std::cout << MATE_COLOR << " Materia "
+		std::cout << MATE_COLOR << "Materia "
 				<< this->_inventory[idx]->getColoredType()
 				<< RST << " was unequiped from "
 				<< NAME_COLOR << this->_name
 				<< RST << "'s inventory number "
 				<< NUM_COLOR << idx
 				<< RST << std::endl;
-	this->_inventory[idx]->getHolder() == NULL;
-	this->_inventory[idx] = NULL;
+
+		this->_inventory[idx] = NULL;
+		return ;
+	}
 }
 
 void Character::use(int idx, ICharacter& target)
@@ -174,6 +160,29 @@ void Character::use(int idx, ICharacter& target)
 	this->_inventory[idx]->use(target);
 }
 
+void Character::discard(int idx)
+{
+	if(!_isValidIdx(idx))
+		return ;
+	if (!this->_inventory[idx])
+	{
+		std::cout << " Cannot unequip "
+				  << NAME_COLOR << this->_name
+				  << RST << "'s inventory number "
+				  << NUM_COLOR << idx
+				  << RST << " because it's already empty!" << std::endl;
+		return ;
+	}
+	
+	std::cout << "Discarding " << this->_inventory[idx]->getColoredType() 
+			  << " from " << NAME_COLOR << this->_name
+			  << RST << "'s inventory number " 
+			  << NUM_COLOR << idx << RST << std::endl;
+	
+	delete this->_inventory[idx];
+	this->_inventory[idx] = NULL;
+}
+
 void Character::checkInventory()
 {
 	std::cout << "\n┌─────────────────────────────────────────┐\n";
@@ -183,6 +192,7 @@ void Character::checkInventory()
 	std::cout << "│ " << BOLD_M << "Slot" << RST " │ " 
 			  << BOLD_M << "Item " << RST << std::endl;
 	std::cout << "├──────┼──────────────────────────────────┤" << RST << std::endl;
+	
 	for (int i = 0; i < _inventorySize; ++i)
 	{
 		if(!this->_inventory[i])
@@ -197,11 +207,12 @@ void Character::checkInventory()
 				  << RST << " │ " << this->_inventory[i]->getColoredType()
 				  << RST << std::endl;
 	}
+	
 	std::cout << "└──────┴──────────────────────────────────┘\n" << std::endl;
 }
 
 
-/* ---------------------------- private fuctions ---------------------------- */
+/* ---------------------- Private Inventory Fuctions ----------------------- */
 
 void	Character::_initInventory()
 {
@@ -214,7 +225,7 @@ bool	Character::_isValidIdx(int idx)
 	if (idx < 0 || idx >= _inventorySize)
 	{
 		std::cerr << "Index outside of "
-				  << NAME_COLOR << this->_name
+				  << NAME_COLOR << this->_name << RST
 				  << "'s scope!" << std::endl;
 		return false;
 	}
@@ -251,4 +262,45 @@ bool	Character::_isMateriaEquipable(AMateria* m)
 			  << RST << "'s inventory is full cannot equip "
 			  << m->getColoredType() << RST << std::endl;
 	return false;
+}
+
+/* ------------------------ Private Floor Fuctions ------------------------- */
+
+void	Character::_updateFlooredItem(AMateria* item)
+{
+	for (int i = 0; i < _maxFloorItem; ++i)
+	{
+		if (this->_floor[i] == item)
+		{
+			this->_floor[i] = NULL;
+			return ;
+		}
+	}
+}
+
+bool	Character::_dropItem(AMateria* item)
+{
+	for (int i = 0; i < _maxFloorItem; ++i)
+	{
+		if (this->_floor[i] == NULL)
+		{
+			item->setHolder(NULL);
+			this->_floor[i] = item;
+			return true;
+		}
+	}
+	printError("Cannot unequip item, because floor is full!");
+	return false;
+}
+
+void	Character::_cleanFloor()
+{
+	if (_characterCount == 0)
+	{
+		for (int i = 0; i < _maxFloorItem; ++i)
+		{
+			delete this->_floor[i];
+			_floor[i] = NULL;
+		}
+	}
 }
