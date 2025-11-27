@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 17:05:40 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/27 17:05:42 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/27 17:35:34 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -481,9 +481,9 @@ int main()
 	{
 		test10_CrossCharacterEquipPrevention();
 	}
-	// {
-	// 	test11_FloorFullScenario();
-	// }
+	{
+		test11_FloorFullScenario();
+	}
 	{
 		test12_MateriaSourceCopyOperations();
 	}
