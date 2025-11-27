@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 14:28:27 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/26 18:14:11 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/27 10:53:13 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ int main()
 	// 	delete src;
 	//}
 	
-	// Test 1: Basic Functionality (Your existing test - keep it)
+	// Test 1: Basic Functionality
 	std::cout << BOLD_C << "╔════════════════════════════════╗" << RST << std::endl;
 	std::cout << BOLD_C << "║  Test 1: Character Ice/Cure    ║" << RST << std::endl;
 	std::cout << BOLD_C << "╚════════════════════════════════╝" << RST << std::endl;
@@ -116,20 +116,23 @@ int main()
 		cure->use(*target);
 		cureClone->use(*target);
 		
+		me->checkInventory();
 		me->equip(ice);
 		me->equip(cure);
 		me->equip(iceClone);
 		me->equip(cureClone);
 		me->checkInventory();
 		
+		me->equip(cure);
+
 		me->use(0, *target);
-		me->use(4, *target); // Out of bounds
+		me->use(INVENTORY_SIZE, *target);
 		
 		delete target;
 		delete me; // Should delete all equipped materias
 	}
 
-	// Test 2: MateriaSource (Your existing test - keep it)
+	// Test 2: MateriaSource
 	std::cout << BOLD_C << "\n╔════════════════════════════════╗" << RST << std::endl;
 	std::cout << BOLD_C << "║  Test 2: MateriaSource         ║" << RST << std::endl;
 	std::cout << BOLD_C << "╚════════════════════════════════╝" << RST << std::endl;
@@ -144,6 +147,7 @@ int main()
 		tmp = src->createMateria("ice");
 		me->equip(tmp);
 		tmp = src->createMateria("cure");
+		me->equip(tmp);
 		me->equip(tmp);
 		
 		me->checkInventory();

@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 14:19:34 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/26 13:45:51 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/27 14:05:32 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,13 @@ class	Character : public ICharacter
 		AMateria* _inventory[INVENTORY_SIZE];
 
 		static const int	_inventorySize = INVENTORY_SIZE;
+		static const int	_maxFloor = MAX_FLOOR;
+		static AMateria*	_floor[MAX_FLOOR];
 
 		void	_initInventory();
+		bool	_isValidIdx(int idx);
+		bool	_isMateriaEquipable(AMateria* m);
+		bool	_dropItem(AMateria& item)
 		
 	public:
 		Character();

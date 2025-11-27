@@ -6,27 +6,27 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 13:22:56 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/26 16:33:20 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/27 12:58:34 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AMateria.hpp"
 
-AMateria::AMateria() : _type("")
+AMateria::AMateria() : _type(""), _holder(NULL)
 {
 	std::cout << CLASS_COLOR << "AMateria "
 			  << G << "Default Constructor called"
 			  << RST << std::endl;
 }
 
-AMateria::AMateria(std::string const& type) : _type(type)
+AMateria::AMateria(std::string const& type) : _type(type), _holder(NULL)
 {
 	std::cout << CLASS_COLOR << "AMateria "
 			  << G << "Constructor called"
 			  << RST << std::endl;
 }
 
-AMateria::AMateria(const AMateria& other) : _type(other._type)
+AMateria::AMateria(const AMateria& other) : _type(other._type), _holder(NULL)
 {
 	std::cout << CLASS_COLOR << "AMateria "
 			  << G << "Copy Constructor called"
@@ -71,17 +71,16 @@ std::string AMateria::getColoredType() const
 	return MATE_COLOR + this->_type + RST;
 }
 
-
-// TODO CHECK if its not weird
-std::string AMateria::getColoredType(const std::string& type) const
+ICharacter* AMateria::getHolder() const
 {
-	if (type == "ice")
-		return ICE_COLOR + type + RST;
-		
-	else if (type == "cure")
-		return HEAL_COLOR + type + RST;
+	return this->_holder;
+}
 
-	return MATE_COLOR + type + RST;
+/* -------------------------------- Setters -------------------------------- */
+
+void AMateria::setHolder(ICharacter* src)
+{
+	this->_holder = src;
 }
 
 

@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 13:22:56 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/26 17:55:44 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/27 12:51:30 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ MateriaSource::~MateriaSource()
 }
 
 MateriaSource& MateriaSource::operator=(const MateriaSource& other)
-{
+{ 
 	std::cout << CLASS_COLOR << "MateriaSource "
 			  << G << "Copy assignment operator called"
 			  << RST << std::endl;
@@ -96,7 +96,7 @@ void MateriaSource::learnMateria(AMateria* src)
 
 AMateria* MateriaSource::createMateria(std::string const & type)
 {
-	for (int i = 0; i < _materiaSize; ++i)
+	for (int i = 0; (i < _materiaSize && _materias[i]); ++i)
 	{
 		if (this->_materias[i] && this->_materias[i]->getType() == type)
 		{
