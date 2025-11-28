@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 17:05:40 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/27 17:35:34 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/28 11:16:24 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,7 +181,8 @@ void test6_InventoryOverflow()
 	std::cout << BOLD_C << "\n Trying to equip 5th materia..." << RST << std::endl;
 	me->equip(extra);
 	
-	delete extra; // Must clean it up ourselves!
+	if (extra->getHolder() == NULL)
+		delete extra; // Must clean it up ourselves!
 	
 	me->checkInventory();
 	delete me;
@@ -205,7 +206,9 @@ void test7_MateriaSourceEdgeCases()
 	AMateria* extra = new Ice();
 	std::cout << BOLD_C << "\n Trying to learn 5th materia..." << RST << std::endl;
 	src->learnMateria(extra);
-	delete extra; // Must clean up if learn failed
+	
+	if (extra->getHolder() == NULL)
+		delete extra; // Must clean up if learn failed
 	
 	// Try to create unknown type
 	std::cout << BOLD_C << "\n Trying to create 'fire' (not learned)..." << RST << std::endl;

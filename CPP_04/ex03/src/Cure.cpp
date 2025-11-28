@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 13:22:56 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/26 17:25:22 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/28 10:50:32 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ Cure& Cure::operator=(const Cure& other)
 			  << RST << std::endl;
 	if (this != &other)
 	{
-		AMateria::operator=(*this);
+		AMateria::operator=(other);
 	}
 	return (*this);
 }

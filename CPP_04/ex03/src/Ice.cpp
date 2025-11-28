@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 13:22:56 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/25 16:54:07 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/28 10:50:23 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ Ice& Ice::operator=(const Ice& other)
 			  << RST << std::endl;
 	if (this != &other)
 	{
-		AMateria::operator=(*this);
+		AMateria::operator=(other);
 	}
 	return (*this);
 }

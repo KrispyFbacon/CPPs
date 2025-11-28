@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 13:22:56 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/27 17:18:25 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/28 11:18:48 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -269,6 +269,9 @@ bool	Character::_isMateriaEquipable(AMateria* m)
 
 void	Character::_updateFlooredItem(AMateria* item)
 {
+	if (!item)
+		return ;
+	
 	for (int i = 0; i < _maxFloorItem; ++i)
 	{
 		if (this->_floor[i] == item)
