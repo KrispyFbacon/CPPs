@@ -1,41 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
+/*   MateriaSource.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 14:19:34 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/18 14:31:30 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/26 16:12:21 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WRONGANIMAL_HPP
-# define WRONGANIMAL_HPP
+#ifndef MATERIASOURCE_HPP
+# define MATERIASOURCE_HPP
 
-#include <iostream>
-#include "Color.hpp"
+#include "Utils.hpp"
+#include "IMateriaSource.hpp"
 
-/* Class and identifier colors */
-#define CLASS_COLOR	BOLD_Y
-#define NAME_COLOR	RGB_BOLD(100, 150, 250)
-
-class	WrongAnimal
+class	MateriaSource : public IMateriaSource
 {
-	protected:
-		std::string _type;
+	private:
+		AMateria* _materias[INVENTORY_SIZE];
+
+		static const int	_materiaSize = INVENTORY_SIZE;
 		
 	public:
-		WrongAnimal();
-		WrongAnimal(const WrongAnimal& other);
+		MateriaSource();
+		MateriaSource(const MateriaSource& other);
+		virtual ~MateriaSource();
 		
-		~WrongAnimal();
-		
-		WrongAnimal& operator=(const WrongAnimal& other);
+		MateriaSource& operator=(const MateriaSource& other);
 
-		void makeSound() const;
-
-		const std::string& getType() const;
-		
+		void learnMateria(AMateria*);
+		AMateria* createMateria(std::string const & type);
 };
 #endif

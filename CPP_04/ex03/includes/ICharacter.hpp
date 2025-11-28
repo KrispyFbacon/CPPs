@@ -1,41 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
+/*   ICharacter.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 14:19:34 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/18 14:31:30 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/27 15:24:53 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WRONGANIMAL_HPP
-# define WRONGANIMAL_HPP
+#ifndef ICHARACTER_HPP
+# define ICHARACTER_HPP
 
-#include <iostream>
-#include "Color.hpp"
+#include "Utils.hpp"
+#include "AMateria.hpp"
 
-/* Class and identifier colors */
-#define CLASS_COLOR	BOLD_Y
-#define NAME_COLOR	RGB_BOLD(100, 150, 250)
+class AMateria;
 
-class	WrongAnimal
+class	ICharacter
 {
-	protected:
-		std::string _type;
-		
 	public:
-		WrongAnimal();
-		WrongAnimal(const WrongAnimal& other);
+		virtual ~ICharacter() {}
 		
-		~WrongAnimal();
+		virtual std::string const & getName() const = 0;
 		
-		WrongAnimal& operator=(const WrongAnimal& other);
-
-		void makeSound() const;
-
-		const std::string& getType() const;
-		
+		virtual void equip(AMateria* m) = 0;
+		virtual void unequip(int idx) = 0;
+		virtual void use(int idx, ICharacter& target) = 0;
+		virtual void discard(int idx) = 0;
+		virtual void checkInventory() = 0;
 };
 #endif

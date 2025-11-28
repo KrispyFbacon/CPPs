@@ -1,58 +1,63 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   Ice.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 13:22:56 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/18 14:33:56 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/28 10:50:23 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "Ice.hpp"
 
-Animal::Animal() : _type("Unknown Animal")
+Ice::Ice() : AMateria("ice")
 {
-	std::cout << CLASS_COLOR << "Animal "
+	std::cout << CLASS_COLOR << "Ice "
 			  << G << "Default Constructor called"
 			  << RST << std::endl;
 }
 
-Animal::Animal(const Animal& other) : _type(other._type)
+Ice::Ice(const Ice& other) : AMateria(other)
 {
-	std::cout << CLASS_COLOR << "Animal "
+	std::cout << CLASS_COLOR << "Ice "
 			  << G << "Copy Constructor called"
 			  << RST << std::endl;
+	this->_type = "ice";
 }
 
-Animal::~Animal()
+Ice::~Ice()
 {
-	std::cout << CLASS_COLOR << "Animal "
+	std::cout << CLASS_COLOR << "Ice "
 			  << R << "Destructor called"
 			  << RST << std::endl;
 }
 
-Animal& Animal::operator=(const Animal& other)
+Ice& Ice::operator=(const Ice& other)
 {
-	std::cout << CLASS_COLOR << "Animal "
+	std::cout << CLASS_COLOR << "Ice "
 			  << G << "Copy assignment operator called"
 			  << RST << std::endl;
 	if (this != &other)
 	{
-		this->_type = other._type;
+		AMateria::operator=(other);
 	}
 	return (*this);
 }
 
-void Animal::makeSound() const
+AMateria* Ice::clone() const
 {
-	std::cout << CLASS_COLOR << "Animal "
-			  << RST << "an appropriate sound (cats don't bark)."
-			  << std::endl;
+	AMateria* clone = new Ice(*this);
+
+	return (clone);
 }
 
-const std::string& Animal::getType() const
+void Ice::use(ICharacter& target)
 {
-	return this->_type;
+	std::cout << CLASS_COLOR << "Ice "
+			  << NAME_COLOR << this->_type
+			  << ICE_COLOR << " ❄️  shoots an ice bolt at "
+			  << NAME_COLOR << target.getName() << " ❄️"
+			  << RST << std::endl;
 }

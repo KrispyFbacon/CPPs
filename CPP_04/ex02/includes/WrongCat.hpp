@@ -1,41 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
+/*   WrongCat.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 14:19:34 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/18 14:31:30 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/18 11:35:47 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WRONGANIMAL_HPP
-# define WRONGANIMAL_HPP
+#ifndef WRONGCAT_HPP
+# define WRONGCAT_HPP
 
-#include <iostream>
-#include "Color.hpp"
+#include "WrongAnimal.hpp"
 
-/* Class and identifier colors */
-#define CLASS_COLOR	BOLD_Y
-#define NAME_COLOR	RGB_BOLD(100, 150, 250)
-
-class	WrongAnimal
+class	WrongCat : public WrongAnimal
 {
-	protected:
-		std::string _type;
-		
 	public:
-		WrongAnimal();
-		WrongAnimal(const WrongAnimal& other);
+		WrongCat();
+		WrongCat(const WrongCat& other);
 		
-		~WrongAnimal();
+		~WrongCat();
 		
-		WrongAnimal& operator=(const WrongAnimal& other);
+		WrongCat& operator=(const WrongCat& other);
 
 		void makeSound() const;
-
-		const std::string& getType() const;
-		
 };
+
 #endif

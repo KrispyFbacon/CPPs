@@ -1,41 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 14:19:34 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/18 14:31:30 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/19 15:46:23 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WRONGANIMAL_HPP
-# define WRONGANIMAL_HPP
+#ifndef CAT_HPP
+# define CAT_HPP
 
-#include <iostream>
-#include "Color.hpp"
+#include "Animal.hpp"
+#include "Brain.hpp"
 
-/* Class and identifier colors */
-#define CLASS_COLOR	BOLD_Y
-#define NAME_COLOR	RGB_BOLD(100, 150, 250)
-
-class	WrongAnimal
+class	Cat : public Animal
 {
-	protected:
-		std::string _type;
-		
+	private:
+		Brain* _brain;
 	public:
-		WrongAnimal();
-		WrongAnimal(const WrongAnimal& other);
+		Cat();
+		Cat(const Cat& other);
 		
-		~WrongAnimal();
+		~Cat();
 		
-		WrongAnimal& operator=(const WrongAnimal& other);
+		Cat& operator=(const Cat& other);
 
-		void makeSound() const;
+		void makeSound() const ;
 
-		const std::string& getType() const;
-		
+		Brain& getBrain() const;
 };
+
 #endif

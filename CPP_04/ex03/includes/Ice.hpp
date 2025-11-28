@@ -1,41 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
+/*   Ice.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 14:19:34 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/18 14:31:30 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/25 12:07:10 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WRONGANIMAL_HPP
-# define WRONGANIMAL_HPP
+#ifndef ICE_HPP
+# define ICE_HPP
 
-#include <iostream>
-#include "Color.hpp"
+#include "AMateria.hpp"
 
-/* Class and identifier colors */
-#define CLASS_COLOR	BOLD_Y
-#define NAME_COLOR	RGB_BOLD(100, 150, 250)
-
-class	WrongAnimal
+class	Ice : public AMateria
 {
-	protected:
-		std::string _type;
-		
 	public:
-		WrongAnimal();
-		WrongAnimal(const WrongAnimal& other);
+		Ice();
+		Ice(const Ice& other);
 		
-		~WrongAnimal();
+		virtual ~Ice();
 		
-		WrongAnimal& operator=(const WrongAnimal& other);
+		Ice& operator=(const Ice& other);
 
-		void makeSound() const;
-
-		const std::string& getType() const;
-		
+		AMateria* clone() const;
+		void use(ICharacter& target);
 };
 #endif

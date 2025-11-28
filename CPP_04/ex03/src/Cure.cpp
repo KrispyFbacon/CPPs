@@ -1,58 +1,64 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   Cure.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 13:22:56 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/18 14:33:56 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/11/28 10:50:32 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "Cure.hpp"
 
-Animal::Animal() : _type("Unknown Animal")
+Cure::Cure() : AMateria("cure")
 {
-	std::cout << CLASS_COLOR << "Animal "
+	std::cout << CLASS_COLOR << "Cure "
 			  << G << "Default Constructor called"
 			  << RST << std::endl;
 }
 
-Animal::Animal(const Animal& other) : _type(other._type)
+Cure::Cure(const Cure& other) : AMateria(other)
 {
-	std::cout << CLASS_COLOR << "Animal "
+	std::cout << CLASS_COLOR << "Cure "
 			  << G << "Copy Constructor called"
 			  << RST << std::endl;
+	this->_type = "cure";
 }
 
-Animal::~Animal()
+Cure::~Cure()
 {
-	std::cout << CLASS_COLOR << "Animal "
+	std::cout << CLASS_COLOR << "Cure "
 			  << R << "Destructor called"
 			  << RST << std::endl;
 }
 
-Animal& Animal::operator=(const Animal& other)
+Cure& Cure::operator=(const Cure& other)
 {
-	std::cout << CLASS_COLOR << "Animal "
+	std::cout << CLASS_COLOR << "Cure "
 			  << G << "Copy assignment operator called"
 			  << RST << std::endl;
 	if (this != &other)
 	{
-		this->_type = other._type;
+		AMateria::operator=(other);
 	}
 	return (*this);
 }
 
-void Animal::makeSound() const
+AMateria* Cure::clone() const
 {
-	std::cout << CLASS_COLOR << "Animal "
-			  << RST << "an appropriate sound (cats don't bark)."
-			  << std::endl;
+	AMateria* clone = new Cure(*this);
+
+	return (clone);
 }
 
-const std::string& Animal::getType() const
+void Cure::use(ICharacter& target)
 {
-	return this->_type;
+	std::cout << CLASS_COLOR << "Cure "
+	<< NAME_COLOR << this->_type
+	<< HEAL_COLOR << " ✨ heals "
+	<< NAME_COLOR << target.getName()
+	<< HEAL_COLOR  << "' wounds! ✨"
+	<< RST << std::endl;
 }
