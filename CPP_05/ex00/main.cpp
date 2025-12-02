@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 17:05:40 by frbranda          #+#    #+#             */
-/*   Updated: 2025/11/28 18:59:40 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/12/02 11:36:46 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,48 @@ void	test6_invalidSpecialCatch()
 	std::cout << std::endl;
 }
 
+void    test7_copyConstructorAndAssignment()
+{
+	std::cout << "=== Test 7: Copy Constructor and Assignment ===" << std::endl;
+	
+	try
+	{
+		Bureaucrat original("Alice", 42);
+		std::cout << "Original: " << original << std::endl;
+
+		Bureaucrat copyConstructed(original);
+		std::cout << "Copy constructed: " << copyConstructed << std::endl;
+		
+		original.incrementGrade();
+		std::cout << "\nAfter incrementing original:" << std::endl;
+		std::cout << "Original: " << original << std::endl;
+		std::cout << "Copy constructed: " << copyConstructed << std::endl;
+		
+		
+		std::cout << "\n--- Testing Copy Assignment ---" << std::endl;
+		
+		Bureaucrat bob("Bob", 100);
+		std::cout << "Bob before assignment: " << bob << std::endl;
+		
+		bob = original;
+		std::cout << "Bob after assignment: " << bob << std::endl;
+		
+		
+		bob = bob;
+		std::cout << "Bob after self-assignment: " << bob << std::endl;
+		
+		original.decrementGrade();
+		std::cout << "\nAfter decrementing original:" << std::endl;
+		std::cout << "Original: " << original << std::endl;
+		std::cout << "Bob: " << bob << std::endl;
+	}
+	catch (std::exception& e)
+	{
+		std::cout << R << e.what() << RST << std::endl;
+	}
+	std::cout << std::endl;
+}
+
 int main ()
 {
 	{
@@ -138,7 +180,9 @@ int main ()
 	{
 		test6_invalidSpecialCatch();
 	}
-	
+	{
+		test7_copyConstructorAndAssignment();
+	}
 	return 0;
 }
 

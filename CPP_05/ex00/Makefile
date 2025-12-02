@@ -6,7 +6,7 @@
 #    By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/15 14:29:42 by frbranda          #+#    #+#              #
-#    Updated: 2025/11/28 17:45:18 by frbranda         ###   ########.fr        #
+#    Updated: 2025/12/02 11:37:50 by frbranda         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 #                                   SETTINGS                                   #
 #==============================================================================#
 
-NAME = diamondTrap
+NAME = bureaucrat
 
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
