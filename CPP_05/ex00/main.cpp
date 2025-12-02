@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 17:05:40 by frbranda          #+#    #+#             */
-/*   Updated: 2025/12/02 11:36:46 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/12/02 11:40:11 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ void	test6_invalidSpecialCatch()
 	std::cout << std::endl;
 }
 
-void    test7_copyConstructorAndAssignment()
+void	test7_copyConstructorAndAssignment()
 {
 	std::cout << "=== Test 7: Copy Constructor and Assignment ===" << std::endl;
 	
@@ -143,10 +143,6 @@ void    test7_copyConstructorAndAssignment()
 		
 		bob = original;
 		std::cout << "Bob after assignment: " << bob << std::endl;
-		
-		
-		bob = bob;
-		std::cout << "Bob after self-assignment: " << bob << std::endl;
 		
 		original.decrementGrade();
 		std::cout << "\nAfter decrementing original:" << std::endl;
