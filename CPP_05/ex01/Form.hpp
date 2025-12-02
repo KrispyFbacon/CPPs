@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 14:19:34 by frbranda          #+#    #+#             */
-/*   Updated: 2025/12/02 16:08:19 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/12/02 18:55:18 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "Utils.hpp"
 #include "Bureaucrat.hpp"
 
-class Bereaucrat;
+class Bureaucrat;
 
 class Form
 {
@@ -42,8 +42,8 @@ class Form
 
 		// getters
 		const std::string& getName() const;
-		const int& getSignGrade() const;
-		const int& getExecGrade() const;
+		int getSignGrade() const;
+		int getExecGrade() const;
 		bool getSignedStatus() const;
 		
 		// exceptions

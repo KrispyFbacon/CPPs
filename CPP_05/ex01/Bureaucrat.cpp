@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 13:22:56 by frbranda          #+#    #+#             */
-/*   Updated: 2025/12/02 16:08:42 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/12/02 18:59:03 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,9 @@ void Bureaucrat::signForm(Form& form)
 	}
 	catch (const std::exception& e)
 	{
-		std::cout << NAME_COLOR << this->_name << RST << " couldn't sign "
-				  << FORM_COLOR << form.getName() << RST " because " 
-				  << e.what() << std::endl;
+		std::cout << NAME_COLOR << this->_name << O << " couldn't sign "
+				  << FORM_COLOR << form.getName() << O << " because "
+				  << e.what() << RST << std::endl;
 	}
 }
 

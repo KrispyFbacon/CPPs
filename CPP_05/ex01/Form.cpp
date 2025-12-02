@@ -6,22 +6,22 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 12:13:54 by frbranda          #+#    #+#             */
-/*   Updated: 2025/12/02 16:08:00 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/12/02 18:55:34 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
 
 Form::Form()
-	: _name("unknow"), _signGrade(150), _execGrade(150), _isSigned(false) {}
+	: _name("unknow"), _signGrade(_lowestGrade), _execGrade(_lowestGrade), _isSigned(false) {}
 
 Form::Form(const std::string& name, int signGrade, int execGrade)
 	: _name(name), _signGrade(signGrade), _execGrade(execGrade),
 		_isSigned(false)
 {
-	if (this->_signGrade < 1 || this->_execGrade < 1)
+	if (this->_signGrade < _highestGrade || this->_execGrade < _highestGrade)
 		throw (GradeTooHighException());
-	else if (this->_signGrade > 150 || this->_execGrade > 150)
+	else if (this->_signGrade > _lowestGrade || this->_execGrade > _lowestGrade)
 		throw (GradeTooLowException());
 }
 
@@ -45,8 +45,6 @@ void Form::beSigned(const Bureaucrat& bureaucrat)
 		throw (FormAlreadySigned());
 	else if (bureaucrat.getGrade() > this->_signGrade)
 		throw (GradeTooLowException());
-	else if (bureaucrat.getGrade() > this->_execGrade)
-		throw (GradeTooLowException());
 	_isSigned = true;
 }
 
@@ -58,12 +56,12 @@ const std::string& Form::getName() const
 	return this->_name;
 }
 
-const int& Form::getSignGrade() const
+int Form::getSignGrade() const
 {
 	return this->_signGrade;
 }
 
-const int& Form::getExecGrade() const
+int Form::getExecGrade() const
 {
 	return this->_execGrade;
 }
