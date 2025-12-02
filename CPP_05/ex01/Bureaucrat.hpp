@@ -6,30 +6,24 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 14:19:34 by frbranda          #+#    #+#             */
-/*   Updated: 2025/12/02 14:46:09 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/12/02 16:04:16 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BUREAUCRAT_HPP
 # define BUREAUCRAT_HPP
 
-#include <iostream>
-#include <iomanip>
-#include <string>
-#include <exception>
-#include "Color.hpp"
+#include "Utils.hpp"
+#include "Form.hpp"
 
-/* Class and identifier colors */
-#define CLASS_COLOR	BOLD_Y
-#define NAME_COLOR	RGB_BOLD(100, 150, 250)
-#define NUM_COLOR	RGB_BOLD(255, 165, 0)
+class Form;
 
 class Bureaucrat
 {
 	private:
 		const std::string _name;
 		int _grade;
-		
+	
 		const static int _highestGrade = 1;
 		const static int _lowestGrade = 150;
 		
@@ -41,34 +35,29 @@ class Bureaucrat
 		
 		Bureaucrat& operator=(const Bureaucrat& other);
 
-		//getters
 		const std::string& getName() const;
 		int getGrade() const;
 
 		void incrementGrade();
 		void decrementGrade();
 
+		void signForm(Form& form);
+
+		//exceptions
 		class GradeTooHighException : public std::exception
 		{
 			public:
-				const char* what() const throw()
-				{ 
-					return "Grade too high!";
-				}
+				const char* what() const throw();
 		};
 
 		class GradeTooLowException : public std::exception
 		{
 			public:
-				const char* what() const throw()
-				{ 
-					return "Grade too low!";
-				}
+				const char* what() const throw();
 		};
 };
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& b);
-
 
 
 #endif

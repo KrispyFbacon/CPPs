@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 13:22:56 by frbranda          #+#    #+#             */
-/*   Updated: 2025/12/02 14:45:16 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/12/02 16:08:42 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ Bureaucrat::Bureaucrat() : _name("unknown"), _grade(_lowestGrade) {}
 Bureaucrat::Bureaucrat(const std::string& name, int grade)
 		: _name(name), _grade(grade)
 {
-	if (this->_grade < _lowestGrade)
+	if (this->_grade < _highestGrade)
 		throw (GradeTooHighException());
-	else if (this->_grade > _highestGrade)
+	else if (this->_grade > _lowestGrade)
 		throw (GradeTooLowException());
 	
 }
@@ -37,7 +37,6 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other)
 	}
 	return (*this);
 }
-
 
 const std::string& Bureaucrat::getName() const
 {
@@ -63,6 +62,38 @@ void Bureaucrat::decrementGrade()
 		throw GradeTooLowException();
 	this->_grade++;
 }
+
+void Bureaucrat::signForm(Form& form)
+{
+	try
+	{
+		form.beSigned(*this);
+		std::cout << NAME_COLOR << this->_name << RST << ", signed "
+				  << FORM_COLOR << form.getName() << RST << std::endl;
+	}
+	catch (const std::exception& e)
+	{
+		std::cout << NAME_COLOR << this->_name << RST << " couldn't sign "
+				  << FORM_COLOR << form.getName() << RST " because " 
+				  << e.what() << std::endl;
+	}
+}
+
+
+/* ------------------------------ Exceptions ------------------------------- */
+
+const char* Bureaucrat::GradeTooHighException::what() const throw()
+{
+	return "Grade is too high!";
+}
+
+const char* Bureaucrat::GradeTooLowException::what() const throw()
+{
+	return "Grade is too low!";
+}
+
+
+/* -------------------------------- ostream -------------------------------- */
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& b)
 {
