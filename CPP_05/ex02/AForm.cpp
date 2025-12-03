@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 11:49:16 by frbranda          #+#    #+#             */
-/*   Updated: 2025/12/03 12:19:57 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/12/03 18:37:57 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,20 @@ AForm& AForm::operator=(const AForm& other)
 void AForm::beSigned(const Bureaucrat& bureaucrat)
 {
 	if (_isSigned == true)
-		throw (AFormAlreadySigned());
+		throw (FormAlreadySignedException());
 	else if (bureaucrat.getGrade() > this->_signGrade)
 		throw (GradeTooLowException());
 	_isSigned = true;
+}
+
+void AForm::executeForm(Bureaucrat const & executor)
+{
+	if (_isSigned == false)
+		throw (FormNotSignedException());
+	else if (executor.getGrade() > this->_signGrade)
+		throw (GradeTooLowException());
+	std::cout << NAME_COLOR << executor.getName() << RST << " ";
+	this->_execute();
 }
 
 /* ================================ Getters ================================ */
@@ -89,9 +99,14 @@ const char* AForm::GradeTooLowException::what() const throw()
 	return "Grade is too low!";
 }
 
-const char* AForm::AFormAlreadySigned::what() const throw()
+const char* AForm::FormAlreadySignedException::what() const throw()
 {
-	return "AForm already signed!";
+	return "Form already signed!";
+}
+
+const char* AForm::FormNotSignedException::what() const throw()
+{
+	return ("Form not signed!");
 }
 
 
@@ -100,7 +115,7 @@ const char* AForm::AFormAlreadySigned::what() const throw()
 std::ostream& operator<<(std::ostream& os, const AForm& f)
 {
 	os << "┌─────────────────────────────────────────┐\n"
-	<< "│ " << CLASS_COLOR << "AForm" << RST << "\n"
+	<< "│ " << CLASS_COLOR << "Form" << RST << "\n"
 	<< "├─────────────────────────────────────────┤\n"
 	<< "│ " << BOLD_M << "Name:       " 
 	<< NAME_COLOR << f.getName() << RST << "\n"

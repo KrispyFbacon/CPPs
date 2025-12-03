@@ -1,38 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
+/*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 12:23:17 by frbranda          #+#    #+#             */
-/*   Updated: 2025/12/03 14:56:31 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/12/03 18:11:42 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SHRUBBERYCREATIONFORM_HPP
-# define SHRUBBERYCREATIONFORM_HPP
+#ifndef PRESIDENTIALPARDONFORM_HPP
+# define PRESIDENTIALPARDONFORM_HPP
 
 #include "Utils.hpp"
 #include "AForm.hpp"
 
-class ShrubberyCreationForm : public AForm
+class PresidentialPardonForm : public AForm
 {
 	private:
 		std::string _target;
 	
-		const static int _signGrade = 145;
-		const static int _execGrade = 137;
+		const static int _signGrade = 25;
+		const static int _execGrade = 5;
 
 		void _execute() const;
 		
 	public:
-		ShrubberyCreationForm();
-		ShrubberyCreationForm(const std::string& target);
-		ShrubberyCreationForm(const ShrubberyCreationForm& other);
-		virtual ~ShrubberyCreationForm();
+		PresidentialPardonForm();
+		PresidentialPardonForm(const std::string& target);
+		PresidentialPardonForm(const PresidentialPardonForm& other);
+		virtual ~PresidentialPardonForm();
 
-		ShrubberyCreationForm& operator=(const ShrubberyCreationForm& other);
+		PresidentialPardonForm& operator=(const PresidentialPardonForm& other);
 
 		const std::string& getTarget() const;
 };

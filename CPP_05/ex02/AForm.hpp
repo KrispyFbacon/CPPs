@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 12:23:06 by frbranda          #+#    #+#             */
-/*   Updated: 2025/12/03 12:23:09 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/12/03 18:24:57 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ class AForm
 		const static int _highestGrade = 1;
 		const static int _lowestGrade = 150;
 
+		virtual void _execute() const = 0;
+
 	public:
 		AForm();
 		AForm(const std::string& name, int signGrade, int execGrade);
@@ -40,7 +42,7 @@ class AForm
 
 		// Sign/Exec Handler
 		void beSigned(const Bureaucrat& bureaucrat);
-		virtual void execute(Bureaucrat const & executor) const = 0;
+		void executeForm(Bureaucrat const & executor);
 
 		// Getters
 		const std::string& getName() const;
@@ -61,10 +63,16 @@ class AForm
 				const char* what() const throw();
 		};
 
-		class AFormAlreadySigned : public std::exception
+		class FormAlreadySignedException : public std::exception
 		{
 			public:
 				const char* what() const throw();
+		};
+
+		class FormNotSignedException : public std::exception
+		{
+			public:
+				virtual const char* what() const throw();
 		};
 };
 

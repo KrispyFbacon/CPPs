@@ -1,38 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
+/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 12:23:17 by frbranda          #+#    #+#             */
-/*   Updated: 2025/12/03 14:56:31 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/12/03 17:50:36 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SHRUBBERYCREATIONFORM_HPP
-# define SHRUBBERYCREATIONFORM_HPP
+#ifndef ROBOTOMYREQUESTFORM_HPP
+# define ROBOTOMYREQUESTFORM_HPP
 
 #include "Utils.hpp"
 #include "AForm.hpp"
 
-class ShrubberyCreationForm : public AForm
+class RobotomyRequestForm : public AForm
 {
 	private:
 		std::string _target;
+		static bool _randomSeed;
 	
-		const static int _signGrade = 145;
-		const static int _execGrade = 137;
+		const static int _signGrade = 72;
+		const static int _execGrade = 45;
 
 		void _execute() const;
 		
 	public:
-		ShrubberyCreationForm();
-		ShrubberyCreationForm(const std::string& target);
-		ShrubberyCreationForm(const ShrubberyCreationForm& other);
-		virtual ~ShrubberyCreationForm();
+		RobotomyRequestForm();
+		RobotomyRequestForm(const std::string& target);
+		RobotomyRequestForm(const RobotomyRequestForm& other);
+		virtual ~RobotomyRequestForm();
 
-		ShrubberyCreationForm& operator=(const ShrubberyCreationForm& other);
+		RobotomyRequestForm& operator=(const RobotomyRequestForm& other);
 
 		const std::string& getTarget() const;
 };

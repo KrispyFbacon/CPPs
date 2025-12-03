@@ -1,122 +1,74 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AForm.cpp                                          :+:      :+:    :+:   */
+/*   ShrubberyCreationForm.cpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 11:49:16 by frbranda          #+#    #+#             */
-/*   Updated: 2025/12/03 11:49:45 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/12/03 18:46:37 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "AForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 
-AForm::AForm()
-	: _name("unknow"), _signGrade(_lowestGrade), _execGrade(_lowestGrade), _isSigned(false) {}
+ShrubberyCreationForm::ShrubberyCreationForm() 
+	: AForm("Unkown_ShrubberyCreationForm", _signGrade, _execGrade),
+		_target("Unknown") {}
 
-AForm::AForm(const std::string& name, int signGrade, int execGrade)
-	: _name(name), _signGrade(signGrade), _execGrade(execGrade),
-		_isSigned(false)
-{
-	if (this->_signGrade < _highestGrade || this->_execGrade < _highestGrade)
-		throw (GradeTooHighException());
-	else if (this->_signGrade > _lowestGrade || this->_execGrade > _lowestGrade)
-		throw (GradeTooLowException());
-}
+ShrubberyCreationForm::ShrubberyCreationForm(const std::string& target) 
+	: AForm("ShrubberyCreationForm", _signGrade, _execGrade), _target(target) {}
 
-AForm::AForm(const AForm& other)
-	: _name(other._name), _signGrade(other._signGrade),
-		_execGrade(other._execGrade), _isSigned(other._isSigned)
-{}
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& other)
+	: AForm(other), _target(other._target) {}
 
-AForm::~AForm() {}
+ShrubberyCreationForm::~ShrubberyCreationForm() {}
 
 
 /* ========================== Overload Operators =========================== */
 
-AForm& AForm::operator=(const AForm& other)
+ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm& other)
 {
-	if (this != &other){}
+	if (this != &other)
+	{
+		AForm::operator=(other);
+		this->_target = other._target;
+	}
 	
 	return (*this);
 }
 
 
-/* =========================== Sign/Exec Handler =========================== */
-
-void AForm::beSigned(const Bureaucrat& bureaucrat)
-{
-	if (_isSigned == true)
-		throw (AFormAlreadySigned());
-	else if (bureaucrat.getGrade() > this->_signGrade)
-		throw (GradeTooLowException());
-	_isSigned = true;
-}
-
-void AForm::executeForm(AForm const & form) const
-{
-	//TODO
-}
-
 /* ================================ Getters ================================ */
 
-const std::string& AForm::getName() const
+const std::string& ShrubberyCreationForm::getTarget() const
 {
-	return this->_name;
-}
-
-int AForm::getSignGrade() const
-{
-	return this->_signGrade;
-}
-
-int AForm::getExecGrade() const
-{
-	return this->_execGrade;
-}
-
-bool AForm::getSignedStatus() const
-{
-	return this->_isSigned;
+	return (this->_target);
 }
 
 
-/* ============================== Exceptions =============================== */
+/* ================================ Execute ================================ */
 
-const char* AForm::GradeTooHighException::what() const throw()
+void ShrubberyCreationForm::_execute() const
 {
-	return "Grade is too high!";
+	std::string filename = this->getTarget() + "_shrubbery";
+	std::ofstream outFile(filename.c_str());
+
+	if (!outFile.is_open())
+		throw std::runtime_error("Failed to create file");
+
+	outFile << "       ###\n";
+	outFile << "      #o###\n";
+	outFile << "    #####o###\n";
+	outFile << "   #o#\\#|#/###\n";
+	outFile << "    ###\\|/#o#\n";
+	outFile << "     # }|{  #\n";
+	outFile << "       }|{\n";
+	outFile << "       }|{\n";
+
+	outFile.close();
+
+	std::cout << "Created " << TARGET_COLOR << filename 
+			  << RST << " with ASCII trees" << std::endl;
 }
 
-const char* AForm::GradeTooLowException::what() const throw()
-{
-	return "Grade is too low!";
-}
-
-const char* AForm::AFormAlreadySigned::what() const throw()
-{
-	return "AForm already signed!";
-}
-
-
-/* ================================ Ostream ================================ */
-
-std::ostream& operator<<(std::ostream& os, const AForm& f)
-{
-	os << "┌─────────────────────────────────────────┐\n"
-	<< "│ " << CLASS_COLOR << "AForm" << RST << "\n"
-	<< "├─────────────────────────────────────────┤\n"
-	<< "│ " << BOLD_M << "Name:       " 
-	<< NAME_COLOR << f.getName() << RST << "\n"
-	<< "│ " << BOLD_M << "Sign Grade: " 
-	<< NUM_COLOR << f.getSignGrade() << RST << "\n"
-	<< "│ " << BOLD_M << "Exec Grade: " 
-	<< NUM_COLOR << f.getExecGrade() << RST << "\n"
-	<< "│ " << BOLD_M << "Signed:     " 
-	<< (f.getSignedStatus() ? G "Yes" : R "No") 
-	<< RST << "\n"
-	<< "└─────────────────────────────────────────┘";
-	
-	return (os);
-}
