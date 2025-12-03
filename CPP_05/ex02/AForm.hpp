@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
+/*   AForm.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/27 14:19:34 by frbranda          #+#    #+#             */
-/*   Updated: 2025/12/03 11:26:29 by frbranda         ###   ########.fr       */
+/*   Created: 2025/12/03 12:23:06 by frbranda          #+#    #+#             */
+/*   Updated: 2025/12/03 12:23:09 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FORM_HPP
-# define FORM_HPP
+#ifndef AFORM_HPP
+# define AFORM_HPP
 
 #include "Utils.hpp"
 #include "Bureaucrat.hpp"
 
 class Bureaucrat;
 
-class Form
+class AForm
 {
 	private:
 		const std::string _name;
@@ -28,18 +28,19 @@ class Form
 	
 		const static int _highestGrade = 1;
 		const static int _lowestGrade = 150;
-		
+
 	public:
-		Form();
-		Form(const std::string& name, int signGrade, int execGrade);
-		Form(const Form& other);
-		~Form();
+		AForm();
+		AForm(const std::string& name, int signGrade, int execGrade);
+		AForm(const AForm& other);
+		virtual ~AForm();
 
 		// Overload Operators
-		Form& operator=(const Form& other);
+		AForm& operator=(const AForm& other);
 
-		// Sign Handler
+		// Sign/Exec Handler
 		void beSigned(const Bureaucrat& bureaucrat);
+		virtual void execute(Bureaucrat const & executor) const = 0;
 
 		// Getters
 		const std::string& getName() const;
@@ -60,13 +61,13 @@ class Form
 				const char* what() const throw();
 		};
 
-		class FormAlreadySigned : public std::exception
+		class AFormAlreadySigned : public std::exception
 		{
 			public:
 				const char* what() const throw();
 		};
 };
 
-std::ostream& operator<<(std::ostream& os, const Form& f);
+std::ostream& operator<<(std::ostream& os, const AForm& f);
 
 #endif

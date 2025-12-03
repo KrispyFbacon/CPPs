@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 14:19:34 by frbranda          #+#    #+#             */
-/*   Updated: 2025/12/02 18:19:11 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/12/03 11:38:46 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,18 @@ class Bureaucrat
 		
 		Bureaucrat& operator=(const Bureaucrat& other);
 
+		// Getters
 		const std::string& getName() const;
 		int getGrade() const;
 
+		// Increment/Decrement
 		void incrementGrade();
 		void decrementGrade();
 
+		// Form Handler
 		void signForm(Form& form);
 
-		//exceptions
+		// Exceptions
 		class GradeTooHighException : public std::exception
 		{
 			public:

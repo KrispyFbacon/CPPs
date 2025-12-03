@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.cpp                                           :+:      :+:    :+:   */
+/*   AForm.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/02 12:13:54 by frbranda          #+#    #+#             */
-/*   Updated: 2025/12/03 11:29:23 by frbranda         ###   ########.fr       */
+/*   Created: 2025/12/03 11:49:16 by frbranda          #+#    #+#             */
+/*   Updated: 2025/12/03 12:19:57 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Form.hpp"
+#include "AForm.hpp"
 
-Form::Form()
+AForm::AForm()
 	: _name("unknow"), _signGrade(_lowestGrade), _execGrade(_lowestGrade), _isSigned(false) {}
 
-Form::Form(const std::string& name, int signGrade, int execGrade)
+AForm::AForm(const std::string& name, int signGrade, int execGrade)
 	: _name(name), _signGrade(signGrade), _execGrade(execGrade),
 		_isSigned(false)
 {
@@ -25,17 +25,17 @@ Form::Form(const std::string& name, int signGrade, int execGrade)
 		throw (GradeTooLowException());
 }
 
-Form::Form(const Form& other)
+AForm::AForm(const AForm& other)
 	: _name(other._name), _signGrade(other._signGrade),
 		_execGrade(other._execGrade), _isSigned(other._isSigned)
 {}
 
-Form::~Form() {}
+AForm::~AForm() {}
 
 
 /* ========================== Overload Operators =========================== */
 
-Form& Form::operator=(const Form& other)
+AForm& AForm::operator=(const AForm& other)
 {
 	if (this != &other){}
 	
@@ -43,36 +43,35 @@ Form& Form::operator=(const Form& other)
 }
 
 
-/* ============================= Sign Handler ============================== */
+/* =========================== Sign Handler =========================== */
 
-void Form::beSigned(const Bureaucrat& bureaucrat)
+void AForm::beSigned(const Bureaucrat& bureaucrat)
 {
 	if (_isSigned == true)
-		throw (FormAlreadySigned());
+		throw (AFormAlreadySigned());
 	else if (bureaucrat.getGrade() > this->_signGrade)
 		throw (GradeTooLowException());
 	_isSigned = true;
 }
 
-
 /* ================================ Getters ================================ */
 
-const std::string& Form::getName() const
+const std::string& AForm::getName() const
 {
 	return this->_name;
 }
 
-int Form::getSignGrade() const
+int AForm::getSignGrade() const
 {
 	return this->_signGrade;
 }
 
-int Form::getExecGrade() const
+int AForm::getExecGrade() const
 {
 	return this->_execGrade;
 }
 
-bool Form::getSignedStatus() const
+bool AForm::getSignedStatus() const
 {
 	return this->_isSigned;
 }
@@ -80,28 +79,28 @@ bool Form::getSignedStatus() const
 
 /* ============================== Exceptions =============================== */
 
-const char* Form::GradeTooHighException::what() const throw()
+const char* AForm::GradeTooHighException::what() const throw()
 {
 	return "Grade is too high!";
 }
 
-const char* Form::GradeTooLowException::what() const throw()
+const char* AForm::GradeTooLowException::what() const throw()
 {
 	return "Grade is too low!";
 }
 
-const char* Form::FormAlreadySigned::what() const throw()
+const char* AForm::AFormAlreadySigned::what() const throw()
 {
-	return "Form already signed!";
+	return "AForm already signed!";
 }
 
 
 /* ================================ Ostream ================================ */
 
-std::ostream& operator<<(std::ostream& os, const Form& f)
+std::ostream& operator<<(std::ostream& os, const AForm& f)
 {
 	os << "┌─────────────────────────────────────────┐\n"
-	<< "│ " << CLASS_COLOR << "Form" << RST << "\n"
+	<< "│ " << CLASS_COLOR << "AForm" << RST << "\n"
 	<< "├─────────────────────────────────────────┤\n"
 	<< "│ " << BOLD_M << "Name:       " 
 	<< NAME_COLOR << f.getName() << RST << "\n"

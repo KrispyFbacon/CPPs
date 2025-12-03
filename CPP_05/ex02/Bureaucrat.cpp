@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 10:58:30 by frbranda          #+#    #+#             */
-/*   Updated: 2025/12/03 12:11:12 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/12/03 12:10:13 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void Bureaucrat::decrementGrade()
 
 /* ============================= Form Handler ============================== */
 
-void Bureaucrat::signForm(Form& form)
+void Bureaucrat::signForm(AForm& form)
 {
 	try
 	{
@@ -85,6 +85,22 @@ void Bureaucrat::signForm(Form& form)
 	catch (const std::exception& e)
 	{
 		std::cerr << NAME_COLOR << this->_name << O << " couldn't sign "
+				  << FORM_COLOR << form.getName() << O << " because "
+				  << e.what() << RST << std::endl;
+	}
+}
+
+void Bureaucrat::executeForm(AForm& form) const
+{
+	try
+	{
+		form.execute(*this);
+		std::cout << NAME_COLOR << this->_name << RST << " executed "
+				  << FORM_COLOR << form.getName() << RST << std::endl;
+	}
+	catch (const std::exception& e)
+	{
+		std::cerr << NAME_COLOR << this->_name << O << " couldn't execute "
 				  << FORM_COLOR << form.getName() << O << " because "
 				  << e.what() << RST << std::endl;
 	}
