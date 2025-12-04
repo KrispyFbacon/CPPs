@@ -6,17 +6,11 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 10:58:30 by frbranda          #+#    #+#             */
-/*   Updated: 2025/12/04 17:34:01 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/12/04 17:31:19 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Intern.hpp"
-
-const Intern::FormInfo Intern::_forms[] = {
-	{"presidential pardon", &Intern::_makePresidentialForm},
-	{"robotomy request", &Intern::_makeRobotomyForm},
-	{"shrubbery creation", &Intern::_makeShrubberyForm}
-};
 
 const int Intern::_numForms = sizeof(_forms) / sizeof(_forms[0]);
 
@@ -62,16 +56,29 @@ AForm* Intern::_makeShrubberyForm(const std::string& target) const
 
 AForm* Intern::makeForm(const std::string& formName, const std::string& target) const
 {
-	for (int i = 0; i < _numForms; ++i)
+	std::string names[3] = {
+		"presidential pardon",
+		"robotomy request",
+		"shrubbery creation"
+		};
+	
+	//FormCreator creator[3] = {};
+	AForm* (Intern::*creators[3])(const std::string&) const = {
+		&Intern::_makePresidentialForm,
+		&Intern::_makeRobotomyForm,
+		&Intern::_makeShrubberyForm
+		};
+
+	for (int i = 0; i < 3; ++i)
 	{
-		if (_forms[i].name == formName)
+		if (names[i] == formName)
 		{
-			std::cout << G << "Intern creates " << FORM_COLOR << formName
+			std::cout << G << "Intern creates " << FORM_COLOR << names[i]
 					  << RST << std::endl;
-			return ((this->*_forms[i].creator)(target));
+			return ((this->*creators[i])(target)); // creator[i]
 		}
 	}
-
+	
 	throw (FormNotFoundException());
 }
 

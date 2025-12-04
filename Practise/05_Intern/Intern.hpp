@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 14:19:34 by frbranda          #+#    #+#             */
-/*   Updated: 2025/12/04 17:14:42 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/12/04 17:29:14 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,6 @@ class Intern
 {
 	private:
 		typedef AForm* (Intern::*FormCreator)(const std::string&) const;
-
-		struct FormInfo
-		{
-			std::string	name;
-			FormCreator	creator;
-		};
-
-		static const FormInfo _forms[];
-		static const int _numForms;
 
 		AForm* _makePresidentialForm(const std::string& target) const;
 		AForm* _makeRobotomyForm(const std::string& target) const;
