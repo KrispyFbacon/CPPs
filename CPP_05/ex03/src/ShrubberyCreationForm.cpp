@@ -6,14 +6,14 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 11:49:16 by frbranda          #+#    #+#             */
-/*   Updated: 2025/12/03 18:46:37 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/12/04 13:22:29 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
 
 ShrubberyCreationForm::ShrubberyCreationForm() 
-	: AForm("Unkown_ShrubberyCreationForm", _signGrade, _execGrade),
+	: AForm("ShrubberyCreationForm", _signGrade, _execGrade),
 		_target("Unknown") {}
 
 ShrubberyCreationForm::ShrubberyCreationForm(const std::string& target) 

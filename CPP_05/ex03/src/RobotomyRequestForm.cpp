@@ -6,14 +6,14 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 11:49:16 by frbranda          #+#    #+#             */
-/*   Updated: 2025/12/04 12:41:15 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/12/04 13:22:25 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RobotomyRequestForm.hpp"
 
 RobotomyRequestForm::RobotomyRequestForm() 
-	: AForm("Unkown_RobotomyRequestForm", _signGrade, _execGrade),
+	: AForm("RobotomyRequestForm", _signGrade, _execGrade),
 		_target("Unknown") {}
 
 RobotomyRequestForm::RobotomyRequestForm(const std::string& target) 
