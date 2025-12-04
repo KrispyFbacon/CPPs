@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 14:19:34 by frbranda          #+#    #+#             */
-/*   Updated: 2025/12/03 18:34:03 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/12/04 12:29:06 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include <fstream>
 #include <ctime>
 #include <cstdlib>
+#include <sstream>
 #include "Color.hpp"
 
 /* Class and identifier colors */
@@ -30,6 +31,5 @@
 
 #define O RGB(220, 69, 0)
 
-void printError(const std::string& msg);
 
 #endif

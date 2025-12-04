@@ -6,7 +6,7 @@
 #    By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/15 14:29:42 by frbranda          #+#    #+#              #
-#    Updated: 2025/12/03 18:29:29 by frbranda         ###   ########.fr        #
+#    Updated: 2025/12/04 12:17:33 by frbranda         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,20 +17,11 @@
 NAME = form
 
 CC = c++
-FLAGS = -Wall -Wextra -Werror -std=c++98
+FLAGS = -Wall -Wextra -Werror -std=c++98 -Iincludes
 
 RM = rm -rf
+
 VAL = valgrind --leak-check=full --show-leak-kinds=all
-
-SRC = main.cpp \
-		AForm.cpp \
-		Bureaucrat.cpp \
-		PresidentialPardonForm.cpp \
-		RobotomyRequestForm.cpp \
-		ShrubberyCreationForm.cpp \
-
-OBJ_DIR = obj
-OBJS = $(SRC:%.cpp=$(OBJ_DIR)/%.o)
 
 #==============================================================================#
 #                                    EXTRA                                     #
@@ -43,6 +34,22 @@ CYAN = \033[0;36m
 MAGENTA = \033[0;35m
 YELLOW  = \033[1;33m
 RESET = \033[0m
+
+#==============================================================================#
+#                                    PATHS                                     #
+#==============================================================================#
+
+VPATH = src
+
+SRC = main.cpp \
+		AForm.cpp \
+		Bureaucrat.cpp \
+		PresidentialPardonForm.cpp \
+		RobotomyRequestForm.cpp \
+		ShrubberyCreationForm.cpp \
+
+OBJ_DIR = obj
+OBJS = $(SRC:%.cpp=$(OBJ_DIR)/%.o)
 
 #==============================================================================#
 #                                    RULES                                     #

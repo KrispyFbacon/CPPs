@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 11:49:16 by frbranda          #+#    #+#             */
-/*   Updated: 2025/12/03 18:37:57 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/12/04 12:46:10 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,8 @@ void AForm::executeForm(Bureaucrat const & executor)
 {
 	if (_isSigned == false)
 		throw (FormNotSignedException());
-	else if (executor.getGrade() > this->_signGrade)
+	else if (executor.getGrade() > this->_execGrade)
 		throw (GradeTooLowException());
-	std::cout << NAME_COLOR << executor.getName() << RST << " ";
 	this->_execute();
 }
 

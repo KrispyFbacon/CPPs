@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 10:58:30 by frbranda          #+#    #+#             */
-/*   Updated: 2025/12/03 14:53:51 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/12/04 12:39:37 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void Bureaucrat::signForm(AForm& form)
 	try
 	{
 		form.beSigned(*this);
-		std::cout << NAME_COLOR << this->_name << RST << " signed "
+		std::cout << NAME_COLOR << this->_name << G << " signed "
 				  << FORM_COLOR << form.getName() << RST << std::endl;
 	}
 	catch (const std::exception& e)
@@ -95,7 +95,7 @@ void Bureaucrat::executeForm(AForm& form) const
 	try
 	{
 		form.executeForm(*this);
-		std::cout << NAME_COLOR << this->_name << RST << " executed "
+		std::cout << NAME_COLOR << this->_name << G << " executed "
 				  << FORM_COLOR << form.getName() << RST << std::endl;
 	}
 	catch (const std::exception& e)

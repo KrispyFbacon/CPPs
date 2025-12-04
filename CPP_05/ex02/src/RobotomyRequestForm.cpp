@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 11:49:16 by frbranda          #+#    #+#             */
-/*   Updated: 2025/12/03 18:48:25 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/12/04 12:41:15 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ const std::string& RobotomyRequestForm::getTarget() const
 
 void RobotomyRequestForm::_execute() const
 {
-	std::cout << "* BRRRRRRRRRRRRRRRRRRRR *" << std::endl;
+	std::cout << BOLD_W << "* BRRRRRRRRRRRRRRRRRRRR *" << RST << std::endl;
 	
 	if (std::rand() % 2 == 0)
 	{
@@ -60,6 +60,7 @@ void RobotomyRequestForm::_execute() const
 				  << RST << std::endl;
 	}
 	else 
-		std::cout << R << "Robotomy failed! :c" << RST << std::endl;
+		std::cout << TARGET_COLOR << this->getTarget()
+				  << R << " Robotomy failed! :c" << RST << std::endl;
 }
 
