@@ -328,9 +328,5 @@ int main()
 	test8_copyAndAssignment();
 	test9_polymorphismWithPointers();
 	
-	std::cout << BOLD_C << "\n╔════════════════════════════════════════╗" << RST << std::endl;
-	std::cout << BOLD_C << "║         All Tests Completed            ║" << RST << std::endl;
-	std::cout << BOLD_C << "╚════════════════════════════════════════╝" << RST << std::endl;
-	
 	return 0;
 }
