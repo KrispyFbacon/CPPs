@@ -6,14 +6,15 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 11:49:16 by frbranda          #+#    #+#             */
-/*   Updated: 2025/12/04 12:46:10 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/12/04 12:49:49 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AForm.hpp"
 
 AForm::AForm()
-	: _name("unknow"), _signGrade(_lowestGrade), _execGrade(_lowestGrade), _isSigned(false) {}
+	: _name("unknow"), _signGrade(_lowestGrade),
+		_execGrade(_lowestGrade), _isSigned(false) {}
 
 AForm::AForm(const std::string& name, int signGrade, int execGrade)
 	: _name(name), _signGrade(signGrade), _execGrade(execGrade),
@@ -43,7 +44,7 @@ AForm& AForm::operator=(const AForm& other)
 }
 
 
-/* =========================== Sign Handler =========================== */
+/* ============================= Sign Handler ============================== */
 
 void AForm::beSigned(const Bureaucrat& bureaucrat)
 {
