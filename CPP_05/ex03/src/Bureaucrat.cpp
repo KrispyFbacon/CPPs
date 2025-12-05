@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 10:58:30 by frbranda          #+#    #+#             */
-/*   Updated: 2025/12/04 12:39:37 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/12/05 11:39:56 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,14 +59,14 @@ int Bureaucrat::getGrade() const
 
 void Bureaucrat::incrementGrade()
 {
-	if (this->_grade <= 1)
+	if (this->_grade <= _highestGrade)
 		throw GradeTooHighException();
 	this->_grade--;
 }
 
 void Bureaucrat::decrementGrade()
 {
-	if (this->_grade >= 150)
+	if (this->_grade >= _lowestGrade)
 		throw GradeTooLowException();
 	this->_grade++;
 }

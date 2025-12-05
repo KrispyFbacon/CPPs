@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 17:05:40 by frbranda          #+#    #+#             */
-/*   Updated: 2025/12/02 11:40:11 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/12/05 11:35:31 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,8 +120,6 @@ void	test6_invalidSpecialCatch()
 
 void	test7_copyConstructorAndAssignment()
 {
-	std::cout << "=== Test 7: Copy Constructor and Assignment ===" << std::endl;
-	
 	try
 	{
 		Bureaucrat original("Alice", 42);
