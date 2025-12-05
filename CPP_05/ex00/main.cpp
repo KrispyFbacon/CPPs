@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 17:05:40 by frbranda          #+#    #+#             */
-/*   Updated: 2025/12/05 11:35:31 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/12/05 11:55:59 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	test4_invalidIncrematation()
 	}
 	catch(std::exception& e )
 	{
-		std::cout << "incrementGrade failed: " << R << e.what() << RST << std::endl;
+		std::cout << "IncrementGrade failed: " << R << e.what() << RST << std::endl;
 	}
 	std::cout << std::endl;
 }
@@ -88,7 +88,7 @@ void	test5_invalidDecrematation()
 	}
 	catch (std::exception& e )
 	{
-		std::cout << "decrementGrade failed: " << R << e.what() << RST << std::endl;
+		std::cout << "DecrementGrade failed: " << R << e.what() << RST << std::endl;
 	}
 	std::cout << std::endl;
 }
@@ -129,12 +129,12 @@ void	test7_copyConstructorAndAssignment()
 		std::cout << "Copy constructed: " << copyConstructed << std::endl;
 		
 		original.incrementGrade();
-		std::cout << "\nAfter incrementing original:" << std::endl;
+		std::cout << BOLD_M << "\nAfter incrementing original:" << RST << std::endl;
 		std::cout << "Original: " << original << std::endl;
 		std::cout << "Copy constructed: " << copyConstructed << std::endl;
 		
 		
-		std::cout << "\n--- Testing Copy Assignment ---" << std::endl;
+		std::cout << BOLD_M << "\n--- Testing Copy Assignment ---" << RST << std::endl;
 		
 		Bureaucrat bob("Bob", 100);
 		std::cout << "Bob before assignment: " << bob << std::endl;
@@ -143,7 +143,7 @@ void	test7_copyConstructorAndAssignment()
 		std::cout << "Bob after assignment: " << bob << std::endl;
 		
 		original.decrementGrade();
-		std::cout << "\nAfter decrementing original:" << std::endl;
+		std::cout << BOLD_M << "\nAfter decrementing original:" << RST << std::endl;
 		std::cout << "Original: " << original << std::endl;
 		std::cout << "Bob: " << bob << std::endl;
 	}
