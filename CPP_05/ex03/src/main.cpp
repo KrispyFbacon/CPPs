@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 12:55:41 by frbranda          #+#    #+#             */
-/*   Updated: 2025/12/05 12:39:02 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/12/05 15:46:59 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void test1_ValidFormCreation()
 	{
 		std::cerr << R << "Exception: " << O << e.what() << RST << std::endl;
 	}
+	std::cout << std::endl;
 }
 
 void test2_AllThreeForms()
@@ -74,6 +75,7 @@ void test2_AllThreeForms()
 	{
 		std::cerr << R << "Exception: " << O << e.what() << RST << "\n";
 	}
+	std::cout << std::endl;
 }
 
 void test3_InvalidFormName()
@@ -92,6 +94,7 @@ void test3_InvalidFormName()
 	{
 		std::cerr << R << "Exception: " << O << e.what() << RST << std::endl;
 	}
+	std::cout << std::endl;
 }
 
 void test4_CaseSensitivityCheck()
@@ -111,6 +114,7 @@ void test4_CaseSensitivityCheck()
 	{
 		std::cerr << R << "Exception: " << O << e.what() << RST << std::endl;
 	}
+	std::cout << std::endl;
 }
 
 void test5_GradeTooLowToSign()
@@ -136,6 +140,7 @@ void test5_GradeTooLowToSign()
 	{
 		std::cerr << R << "Exception: " << O << e.what() << RST << std::endl;
 	}
+	std::cout << std::endl;
 }
 
 void test6_GradeTooLowToExecute()
@@ -146,7 +151,7 @@ void test6_GradeTooLowToExecute()
 	try 
 	{
 		Intern intern;
-		Bureaucrat bacon("Manager", 25);      // Can sign (grade 25)
+		Bureaucrat bacon("Manager", 25); // Can sign (grade 25)
 		
 		AForm* form = intern.makeForm("presidential pardon", "Target");
 		std::cout << *form << std::endl;
@@ -163,6 +168,7 @@ void test6_GradeTooLowToExecute()
 	{
 		std::cerr << R << "Exception: " << O << e.what() << RST << std::endl;
 	}
+	std::cout << std::endl;
 }
 
 void test6_ExecuteUnsignedForm()
@@ -187,6 +193,7 @@ void test6_ExecuteUnsignedForm()
 	{
 		std::cerr << R << "Exception: " << O << e.what() << RST << std::endl;
 	}
+	std::cout << std::endl;
 }
 
 void test7_RobotomyRandomness()
@@ -201,8 +208,12 @@ void test7_RobotomyRandomness()
 		
 		for (int i = 1; i <= 5; i++)
 		{
+			std::stringstream ss;
+			ss << "Target" << i;
+			std::string target = ss.str();
+			
 			std::cout << "\n--- Attempt " << i << " ---" << std::endl;
-			AForm* form = intern.makeForm("robotomy request", "Target" + std::to_string(i));
+			AForm* form = intern.makeForm("robotomy request", target);
 			
 			boss.signForm(*form);
 			boss.executeForm(*form);
@@ -214,6 +225,7 @@ void test7_RobotomyRandomness()
 	{
 		std::cerr << R << "Exception: " << O << e.what() << RST << std::endl;
 	}
+	std::cout << std::endl;
 }
 
 void test8_BorderlineGrades()
@@ -244,6 +256,7 @@ void test8_BorderlineGrades()
 	{
 		std::cerr << R << "Exception: " << O << e.what() << RST << std::endl;
 	}
+	std::cout << std::endl;
 }
 
 int main()

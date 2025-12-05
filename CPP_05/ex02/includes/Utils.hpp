@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 14:19:34 by frbranda          #+#    #+#             */
-/*   Updated: 2025/12/04 12:29:06 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/12/05 15:37:20 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@
 #define TARGET_COLOR	RGB_BOLD(255, 80, 80) //RGB_BOLD(255, 150, 200)
 #define NUM_COLOR		RGB_BOLD(255, 165, 0)
 
-#define O RGB(220, 69, 0)
+#define O RGB_BOLD(220, 69, 0)
 
+std::string intToString(int num);
 
 #endif

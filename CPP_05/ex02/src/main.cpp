@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 12:55:53 by frbranda          #+#    #+#             */
-/*   Updated: 2025/12/05 12:34:30 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/12/05 15:31:29 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,6 @@
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
-
-std::string intToString(int num)
-{
-	std::stringstream ss;
-	ss << num;
-	return ss.str();
-}
 
 void test1_validFormCreation()
 {
