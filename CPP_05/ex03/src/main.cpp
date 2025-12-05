@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 12:55:41 by frbranda          #+#    #+#             */
-/*   Updated: 2025/12/04 17:24:20 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/12/05 12:05:37 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,8 @@ void test5_MultipleInterns()
 
 int main()
 {
+	std::srand(std::time(NULL)); 
+	
 	test1_ValidFormCreation();
 	test2_AllThreeForms();
 	test3_InvalidFormName();
