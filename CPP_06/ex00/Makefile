@@ -6,7 +6,7 @@
 #    By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/15 14:29:42 by frbranda          #+#    #+#              #
-#    Updated: 2025/12/05 16:19:57 by frbranda         ###   ########.fr        #
+#    Updated: 2025/12/16 16:45:21 by frbranda         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 #                                   SETTINGS                                   #
 #==============================================================================#
 
-NAME = conversion
+NAME = convert
 
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98

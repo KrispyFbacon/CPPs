@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 14:19:34 by frbranda          #+#    #+#             */
-/*   Updated: 2025/12/05 16:36:10 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/12/16 18:29:25 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,23 +18,44 @@
 class ScalarConverter
 {
 	private:
-		/* data */
-	public:
-		virtual ~ScalarConverter();
+		enum scalarType
+		{
+			CHAR,
+			INT,
+			FLOAT,
+			DOUBLE,
+			INVALID
+		};
+		
+		typedef bool (*isType)(const std::string&);
+		
+		ScalarConverter();
+		ScalarConverter(const ScalarConverter& other);
+		~ScalarConverter();
+		ScalarConverter operator=(const ScalarConverter& other);
+		
+		static bool isChar(const std::string& str);
+		static bool isInt(const std::string& str);
+		static bool isFloat(const std::string& str);
+		static bool isDouble(const std::string& str);
+		
+		static int checkType(const std::string& str);
+		
+		static void printChar(char c);
+		static void printInt(int i);
+		static void printFloat(float f);
+		static void printDouble(double d);
+		static void printImpossible(scalarType type);
+		static void printInvalid();
 
-		virtual void f() = 0 ;
+		static void handleChar(char c);
+		static void handleInt(int n);
+		static void handleFloat(float f);
+		static void handleDouble(double d);
+		
+	public:
 		static void convert(const std::string& str);
 };
-
-ScalarConverter::ScalarConverter()
-{
-	
-}
-
-ScalarConverter::~ScalarConverter()
-{
-	
-}
 
 
 
