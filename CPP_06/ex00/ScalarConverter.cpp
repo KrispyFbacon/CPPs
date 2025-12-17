@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/05 16:20:42 by frbranda          #+#    #+#             */
-/*   Updated: 2025/12/16 19:02:54 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/12/17 16:58:46 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,14 @@ bool ScalarConverter::isInt(const std::string& str)
 			return false;
 		++i;
 	}
+
+	char* end;
+	errno = 0;
 	
-	return true;
+	long l = std::strtol(str.c_str(), &end, 10);
+	
+	return (*end == '\0' && errno != ERANGE && l >= INT_MIN && l <= INT_MAX);
+
 }
 
 bool ScalarConverter::isFloat(const std::string& str)
@@ -58,56 +64,22 @@ bool ScalarConverter::isFloat(const std::string& str)
 	if (str[str.length() - 1] != 'f')
 		return false;
 
-	size_t	i = 0;
-	int		dot = 0;
-	bool	hasDigit = false;
-
-	if ((str[i] == '+' || str[i] == '-'))
-		i++;
+	char* end;
+	errno = 0;
 	
-	while (i < str.length() - 1)
-	{
-		if (str[i] == '.')
-		{
-			dot++;
-			if (dot > 1)
-				return (false);
-		}
-		else if (std::isdigit(str[i]))
-			hasDigit = true;
-		else
-			return false;
-		++i;
-	}
-
-	return (dot == 1 && hasDigit);
+	std::strtof(str.c_str(), &end);
+	
+	return (*end == 'f' && *(end + 1) == '\0' && errno != ERANGE);
 }
 
 bool ScalarConverter::isDouble(const std::string& str)
 {
-	size_t	i = 0;
-	int		dot = 0;
-	bool	hasDigit = false;
-
-	if ((str[i] == '+' || str[i] == '-'))
-		i++;
+	char* end;
+	errno = 0;
 	
-	while (i < str.length())
-	{
-		if (str[i] == '.')
-		{
-			dot++;
-			if (dot > 1)
-				return (false);
-		}
-		else if (std::isdigit(str[i]))
-			hasDigit = true;
-		else
-			return false;
-		++i;
-	}
-
-	return (dot == 1 && hasDigit);
+	std::strtod(str.c_str(), &end);
+	
+	return (*end == '\0' && errno != ERANGE);
 }
 
 int ScalarConverter::checkType(const std::string& str)
@@ -154,12 +126,26 @@ void ScalarConverter::printInt(int i)
 
 void ScalarConverter::printFloat(float f)
 {
-	std::cout << "Float:  " << std::showpoint << f << std::endl;
+	if (f == static_cast<int>(f) && std::abs(f) < 1e6f
+				&& !std::isinf(f) && !std::isnan(f))
+	{
+		std::cout << "Float:  " << std::fixed << std::setprecision(1)
+			  << f << "f" << std::endl;
+	}
+	else
+		std::cout << "Float:  " << f << "f" << std::endl;
 }
 
 void ScalarConverter::printDouble(double d)
 {
-	std::cout << "Double: " << std::fixed << std::setprecision(1) << d << std::endl;
+	if (d == static_cast<int>(d) && std::abs(d) < 1e15
+				&& !std::isinf(d) && !std::isnan(d))
+	{
+		std::cout << "Double: " << std::fixed << std::setprecision(1)
+			<< d << std::endl;
+	}
+	else
+		std::cout << "Double: " << d << std::endl;
 }
 
 void ScalarConverter::printImpossible(scalarType type)
@@ -209,14 +195,65 @@ void ScalarConverter::handleInt(int i)
 		printImpossible(CHAR);
 	else
 		printChar(static_cast<char>(i));
-	
+
 	printInt(i);
 	printFloat(static_cast<float>(i));
 	printDouble(static_cast<double>(i));
 }
 
-// void handleFloat(float f);
-// void handleDouble(double d);
+void ScalarConverter::handleFloat(float f)
+{
+	if ( std::isnan(f) || std::isinf(f))
+	{
+		printImpossible(CHAR);
+		printImpossible(INT);
+		printFloat(f);
+		printDouble(static_cast<double>(f));
+		return ;
+	}
+	
+	if (f < 0 || f > 127)
+		printImpossible(CHAR);
+	else
+		printChar(static_cast<char>(f));
+	
+	if (f < INT_MIN || static_cast<int>(f) > INT_MAX)
+		printImpossible(INT);
+	else
+		printInt(static_cast<int>(f));
+	
+	printFloat(f);
+	printDouble(static_cast<double>(f));
+}
+
+void ScalarConverter::handleDouble(double d)
+{
+	if ( std::isnan(d) || std::isinf(d))
+	{
+		printImpossible(CHAR);
+		printImpossible(INT);
+		printFloat(static_cast<float>(d));
+		printDouble(d);
+		return;
+	}
+
+	if (d < 0 || d > 127)
+		printImpossible(CHAR);
+	else
+		printChar(static_cast<char>(d));
+	
+	if (d < INT_MIN || d > INT_MAX)
+		printImpossible(INT);
+	else
+		printInt(static_cast<int>(d));
+	
+	if (d < -FLT_MAX || d > FLT_MAX)
+		printImpossible(FLOAT);
+	else
+		printFloat(static_cast<float>(d));
+	
+	printDouble(d);
+}
 
 void ScalarConverter::convert(const std::string& str)
 {
@@ -226,17 +263,16 @@ void ScalarConverter::convert(const std::string& str)
 			handleChar(str[1]);
 			break;
 		case INT:
-			std::cout << "IS INT" << std::endl;
 			handleInt(static_cast<int>(std::strtol(str.c_str(), NULL, 10)));
 			break;
 		case FLOAT:
-			std::cout << "IS FLOAT" << std::endl;
+			handleFloat((std::strtof(str.c_str(), NULL)));
 			break;
 		case DOUBLE:
-			std::cout << "IS DOUBLE" << std::endl;
+			handleDouble((std::strtod(str.c_str(), NULL)));
 			break;
 		default:
-			printInvalid();
 			std::cerr << BOLD_R <<"Error: Invalid type" << RST << std::endl;
+			printInvalid();
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 14:19:34 by frbranda          #+#    #+#             */
-/*   Updated: 2025/12/16 18:29:25 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/12/17 17:03:35 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ class ScalarConverter
 		ScalarConverter(const ScalarConverter& other);
 		~ScalarConverter();
 		ScalarConverter operator=(const ScalarConverter& other);
+		
 		
 		static bool isChar(const std::string& str);
 		static bool isInt(const std::string& str);
