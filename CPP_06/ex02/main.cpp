@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 17:05:40 by frbranda          #+#    #+#             */
-/*   Updated: 2025/12/18 16:42:10 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/12/19 14:48:25 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int main ()
 	identify(*ptr);
 
 	delete ptr;
-
+	
 	return 0;
 }
 
