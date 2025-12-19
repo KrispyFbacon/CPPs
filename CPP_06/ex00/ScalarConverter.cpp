@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/05 16:20:42 by frbranda          #+#    #+#             */
-/*   Updated: 2025/12/18 14:07:08 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/12/19 12:38:07 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,16 +136,43 @@ void ScalarConverter::printFloat(float f)
 		std::cout << "Float:  " << f << "f" << std::endl;
 }
 
+// void ScalarConverter::printDouble(double d)
+// {
+// 	if (d == static_cast<int>(d) && std::abs(d) < 1e15
+// 				&& !std::isinf(d) && !std::isnan(d))
+// 	{
+// 		std::cout << "Double: " << std::fixed << std::setprecision(1)
+// 			<< d << std::endl;
+// 	}
+// 	else
+// 		std::cout << "Double: " << d << std::endl;;
+// 	std::cout << std::endl;
+// }
+
 void ScalarConverter::printDouble(double d)
 {
-	if (d == static_cast<int>(d) && std::abs(d) < 1e15
-				&& !std::isinf(d) && !std::isnan(d))
-	{
-		std::cout << "Double: " << std::fixed << std::setprecision(1)
-			<< d << std::endl;
-	}
-	else
-		std::cout << "Double: " << d << std::endl;
+    // Handle Nan/Inf
+    if (std::isnan(d) || std::isinf(d)) {
+        std::cout << "Double: " << d << std::endl;
+        return;
+    }
+
+    std::cout << "Double: ";
+
+    // 1. Convert to string
+    std::stringstream ss;
+    ss << d;
+    std::string str = ss.str();
+
+    // 2. Print
+    std::cout << str;
+
+    // 3. Check for missing dot
+    if (str.find('.') == std::string::npos && str.find('e') == std::string::npos) {
+        std::cout << ".0";
+    }
+
+    std::cout << std::endl;
 }
 
 void ScalarConverter::printImpossible(scalarType type)
@@ -217,7 +244,7 @@ void ScalarConverter::handleFloat(float f)
 	else
 		printChar(static_cast<char>(f));
 	
-	if (f < INT_MIN || static_cast<int>(f) > INT_MAX)
+	if (f < INT_MIN || f > static_cast<float>(INT_MAX))
 		printImpossible(INT);
 	else
 		printInt(static_cast<int>(f));
@@ -266,9 +293,11 @@ void ScalarConverter::convert(const std::string& str)
 			handleInt(static_cast<int>(std::strtol(str.c_str(), NULL, 10)));
 			break;
 		case FLOAT:
+			std::cout << "FLOAT" << std::endl;
 			handleFloat((std::strtof(str.c_str(), NULL)));
 			break;
 		case DOUBLE:
+			std::cout << "DOUBLE" << std::endl;
 			handleDouble((std::strtod(str.c_str(), NULL)));
 			break;
 		default:

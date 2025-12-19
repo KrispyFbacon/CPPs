@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 14:19:34 by frbranda          #+#    #+#             */
-/*   Updated: 2025/12/17 13:07:40 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/12/19 12:39:09 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 #include <cctype>
 #include <cfloat>
 #include <cerrno>
+#include <sstream>
 #include "Color.hpp"
 
 /* Class and identifier colors */
