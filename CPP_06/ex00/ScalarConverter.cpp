@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/05 16:20:42 by frbranda          #+#    #+#             */
-/*   Updated: 2025/12/19 12:38:07 by frbranda         ###   ########.fr       */
+/*   Updated: 2025/12/19 14:31:19 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,53 +126,52 @@ void ScalarConverter::printInt(int i)
 
 void ScalarConverter::printFloat(float f)
 {
-	if (f == static_cast<int>(f) && std::abs(f) < 1e6f
-				&& !std::isinf(f) && !std::isnan(f))
+	if (std::isnan(f) || std::isinf(f))
 	{
-		std::cout << "Float:  " << std::fixed << std::setprecision(1)
-			  << f << "f" << std::endl;
-	}
-	else
 		std::cout << "Float:  " << f << "f" << std::endl;
-}
+		return;
+	}
 
-// void ScalarConverter::printDouble(double d)
-// {
-// 	if (d == static_cast<int>(d) && std::abs(d) < 1e15
-// 				&& !std::isinf(d) && !std::isnan(d))
-// 	{
-// 		std::cout << "Double: " << std::fixed << std::setprecision(1)
-// 			<< d << std::endl;
-// 	}
-// 	else
-// 		std::cout << "Double: " << d << std::endl;;
-// 	std::cout << std::endl;
-// }
+	std::cout << "Float:  ";
+
+	std::stringstream ss;
+	ss << f;
+	std::string str = ss.str();
+
+	std::cout << str;
+
+	if (str.find('.') == std::string::npos &&
+		str.find('e') == std::string::npos)
+	{
+		std::cout << ".0";
+	}
+
+	std::cout << "f" << std::endl;
+}
 
 void ScalarConverter::printDouble(double d)
 {
-    // Handle Nan/Inf
-    if (std::isnan(d) || std::isinf(d)) {
-        std::cout << "Double: " << d << std::endl;
-        return;
-    }
+	if (std::isnan(d) || std::isinf(d))
+	{
+		std::cout << "Double: " << d << std::endl;
+		return ;
+	}
 
-    std::cout << "Double: ";
+	std::cout << "Double: ";
 
-    // 1. Convert to string
-    std::stringstream ss;
-    ss << d;
-    std::string str = ss.str();
+	std::stringstream ss;
+	ss << d;
+	std::string str = ss.str();
 
-    // 2. Print
-    std::cout << str;
+	std::cout << str;
 
-    // 3. Check for missing dot
-    if (str.find('.') == std::string::npos && str.find('e') == std::string::npos) {
-        std::cout << ".0";
-    }
+	if (str.find('.') == std::string::npos &&
+		str.find('e') == std::string::npos)
+	{
+		std::cout << ".0";
+	}
 
-    std::cout << std::endl;
+	std::cout << std::endl;
 }
 
 void ScalarConverter::printImpossible(scalarType type)
@@ -293,11 +292,9 @@ void ScalarConverter::convert(const std::string& str)
 			handleInt(static_cast<int>(std::strtol(str.c_str(), NULL, 10)));
 			break;
 		case FLOAT:
-			std::cout << "FLOAT" << std::endl;
 			handleFloat((std::strtof(str.c_str(), NULL)));
 			break;
 		case DOUBLE:
-			std::cout << "DOUBLE" << std::endl;
 			handleDouble((std::strtod(str.c_str(), NULL)));
 			break;
 		default:
