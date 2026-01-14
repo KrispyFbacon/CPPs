@@ -6,12 +6,13 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 17:05:40 by frbranda          #+#    #+#             */
-/*   Updated: 2025/12/19 17:20:46 by frbranda         ###   ########.fr       */
+/*   Updated: 2026/01/14 14:09:42 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "whatever.hpp"
 
+// === Non-const ===
 template <typename T>
 void runTest(T& a, T& b)
 {
@@ -23,6 +24,7 @@ void runTest(T& a, T& b)
 	std::cout << std::endl;
 }
 
+// === Const ===
 template <typename T>
 void runTest(const T& a, const T& b)
 {
@@ -31,6 +33,7 @@ void runTest(const T& a, const T& b)
 	std::cout << "max( a, b ) = " << ::max( a, b ) << std::endl;
 	std::cout << std::endl;
 }
+
 
 int main( void )
 {
