@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 17:55:53 by frbranda          #+#    #+#             */
-/*   Updated: 2026/01/15 15:22:26 by frbranda         ###   ########.fr       */
+/*   Updated: 2026/01/15 15:31:48 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,8 @@ void test1_void()
 {
 	std::cout << BOLD_C << "=== TEST 1: Empty Array ===" << RST << std::endl;
 	
-	Array<int> num(5);
 	Array<int> empty;
 	
-	empty = num;
 	std::cout << BOLD_Y << "Empty array size: " << RST << empty.size() << std::endl;
 	try
 	{
@@ -94,25 +92,25 @@ void test2_int()
 void test3_string()
 {
 	std::cout << BOLD_C << "\n=== TEST 3: String Array ===" << RST << std::endl;
-	Array<std::string> strs(3);
+	Array<std::string> strArray(3);
 	
-	std::cout << BOLD_Y << "Number of elements: " << RST << strs.size() << std::endl;
+	std::cout << BOLD_Y << "Number of elements: " << RST << strArray.size() << std::endl;
 	
-	strs[0] = "Hello";
-	strs[1] = "I'm";
-	strs[2] = "Bacon";
+	strArray[0] = "Hello";
+	strArray[1] = "I'm";
+	strArray[2] = "Bacon";
 	
 	std::cout << BOLD_M << "String array contents: " << RST << std::endl;
-	for (unsigned int i = 0; i < strs.size(); ++i)
+	for (unsigned int i = 0; i < strArray.size(); ++i)
 	{
-		std::cout << i << ": " << strs[i] << std::endl;
+		std::cout << i << ": " << strArray[i] << std::endl;
 	}
 	
 	
 	try
 	{
 		std::cout << BOLD_M << "\nTrying to access index 10..." << RST << std::endl;
-		strs[10] = "Out of bounds";
+		strArray[10] = "Out of bounds";
 	}
 	catch (const std::out_of_range& e) 
 	{
