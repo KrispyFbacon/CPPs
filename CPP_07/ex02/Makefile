@@ -6,7 +6,7 @@
 #    By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/15 14:29:42 by frbranda          #+#    #+#              #
-#    Updated: 2026/01/14 17:44:58 by frbranda         ###   ########.fr        #
+#    Updated: 2026/01/15 14:12:32 by frbranda         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ FLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -rf
 VAL = valgrind --leak-check=full --show-leak-kinds=all
 
-SRC = main.cpp #Array.tpp
+SRC = main.cpp
 
 OBJ_DIR = obj
 OBJS = $(SRC:%.cpp=$(OBJ_DIR)/%.o)
