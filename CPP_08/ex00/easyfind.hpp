@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 15:47:22 by frbranda          #+#    #+#             */
-/*   Updated: 2026/01/15 18:02:03 by frbranda         ###   ########.fr       */
+/*   Updated: 2026/01/16 13:06:49 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,13 @@
 #include <iostream>
 #include <algorithm>
 #include <stdexcept>
+
+// Containers
 #include <vector>
+#include <list>
+#include <deque>
+#include <set>
+
 
 template <typename T>
 typename T::iterator	easyfind(T& container, int target);
