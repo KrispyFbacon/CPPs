@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:32:52 by frbranda          #+#    #+#             */
-/*   Updated: 2026/01/16 18:10:14 by frbranda         ###   ########.fr       */
+/*   Updated: 2026/01/21 15:12:47 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,14 @@ class Span
 		Span& operator=(const Span& other);
 
 		void addNumber(int nbr);
-
 		template <typename Iterator>
 		void addRange(Iterator begin, Iterator end);
+		void addRange(int begin, int end);
 
 		int shortestSpan();
 		int longestSpan();
 
+		// exceptions
 		class SpanTooLittleException : public std::exception
 		{
 			const char* what() const throw();

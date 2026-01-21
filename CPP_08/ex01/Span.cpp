@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:33:40 by frbranda          #+#    #+#             */
-/*   Updated: 2026/01/16 17:49:57 by frbranda         ###   ########.fr       */
+/*   Updated: 2026/01/21 15:11:55 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,23 +39,36 @@ void Span::addNumber(int nbr)
 	_numbs.push_back(nbr);
 }
 
+void Span::addRange(int begin, int end)
+{
+	if (begin > end)
+		throw std::invalid_argument("Invalid range");
+	
+	size_t count = static_cast<size_t>(end - begin);
+	if (_numbs.size() + count > _maxSize)
+		throw SpanFullException();
+		
+	for (int i = begin ; i < end; ++i)
+		this->_numbs.push_back(i);
+}
+
 
 int Span::shortestSpan()
 {
-	if (_maxSize <= 1)
+	if (_numbs.size() <= 1)
 		throw SpanTooLittleException();
 
-	std::vector<int> sortNumbs = _numbs;
+	std::vector<int> temp = _numbs;
 	
-	std::sort(sortNumbs.begin(), sortNumbs.end());
-	std::adjacent_difference(sortNumbs.begin(), sortNumbs.end(), sortNumbs.begin());
+	std::sort(temp.begin(), temp.end());
+	std::adjacent_difference(temp.begin(), temp.end(), temp.begin());
 		
-	return (*std::min_element(sortNumbs.begin(), sortNumbs.end()));
+	return (*std::min_element(temp.begin() + 1, temp.end()));
 }
 
 int Span::longestSpan()
 {
-	if (_maxSize <= 1)
+	if (_numbs.size() <= 1)
 		throw SpanTooLittleException();
 
 	int biggest = *std::max_element(_numbs.begin(), _numbs.end());

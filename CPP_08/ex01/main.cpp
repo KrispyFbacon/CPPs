@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 17:05:40 by frbranda          #+#    #+#             */
-/*   Updated: 2026/01/16 18:29:49 by frbranda         ###   ########.fr       */
+/*   Updated: 2026/01/21 15:14:23 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 #define MAX_NUM 10000
 
-int main(void)
+
+// ==== TEST 1 ====
+void test1_Default()
 {
 	std::srand(std::time(NULL));
 
@@ -22,12 +24,12 @@ int main(void)
 	
 	for (unsigned int i = 0; i < MAX_NUM; ++i)
 	{
-		//arr.push_back(std::rand() % 10000);
-		arr.push_back(i);
+		arr.push_back(std::rand() % MAX_NUM);
+		//arr.push_back(i);
 		std::cout << arr[i] << " ";
 	}
-
-	std::cout << std::endl;
+	
+	std::cout << "\n" << std::endl;
 
 	Span sp = Span(MAX_NUM);
 
@@ -43,24 +45,39 @@ int main(void)
 		std::cerr << "Error: " << e.what() << std::endl;
 	}
 
-	// Span sp = Span(MAX_NUM);
+	std::cout << std::endl;
+}
 
-	// try
-	// {
-	// 	sp.addNumber(6);
-	// 	sp.addNumber(3);
-	// 	sp.addNumber(17);
-	// 	sp.addNumber(9);
-	// 	sp.addNumber(11);
 
-	// 	std::cout << sp.shortestSpan() << std::endl;
-	// 	std::cout << sp.longestSpan() << std::endl;
-	// }
-	// catch (const std::exception& e)
-	// {
-	// 	std::cerr << "Error: " << e.what() << std::endl;
-	// }
+// ==== TEST 2 ====
+void test2_ManualInsertion()
+{
+	Span sp(MAX_NUM);
 
+	try
+	{
+		sp.addNumber(6);
+		sp.addNumber(3);
+		sp.addNumber(17);
+		sp.addNumber(9);
+		sp.addNumber(11);
+		sp.addRange(1, 10);
+
+		std::cout << sp.shortestSpan() << std::endl;
+		std::cout << sp.longestSpan() << std::endl;
+	}
+	catch (const std::exception& e)
+	{
+		std::cerr << "Error: " << e.what() << std::endl;
+	}
+	
+}
+
+int main(void)
+{
+	test1_Default();
+	test2_ManualInsertion();
+	
 	return 0;
 }
 

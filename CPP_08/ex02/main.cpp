@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Span.tpp                                           :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/16 15:58:50 by frbranda          #+#    #+#             */
-/*   Updated: 2026/01/21 14:55:53 by frbranda         ###   ########.fr       */
+/*   Created: 2025/11/27 17:05:40 by frbranda          #+#    #+#             */
+/*   Updated: 2026/01/21 17:38:25 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Span.hpp"
+#include "MutantStack.hpp"
 
-template <typename Iterator>
-void Span::addRange(Iterator begin, Iterator end)
+int main(void)
 {
-	size_t range = std::distance(begin, end);
 	
-	if (_numbs.size() + range > _maxSize)
-		throw SpanFullException();
-	
-	for (Iterator it = begin; it != end; ++it)
-		_numbs.push_back(*it);
+	return 0;
 }
+
