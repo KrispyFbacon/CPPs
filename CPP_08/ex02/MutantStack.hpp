@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 15:18:41 by frbranda          #+#    #+#             */
-/*   Updated: 2026/01/22 12:57:31 by frbranda         ###   ########.fr       */
+/*   Updated: 2026/01/22 16:07:00 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,16 @@ class MutantStack : public std::stack<T>
 
 		MutantStack& operator=(const MutantStack& other);
 
-		typedef typename MutantStack<T>::container_type::iterator iterator;
-		typedef typename MutantStack<T>::container_type::const_iterator const_iterator;
-		typedef typename MutantStack<T>::container_type::reverse_iterator reverse_iterator;
-		typedef typename MutantStack<T>::container_type::const_reverse_iterator const_reverse_iterator;
+
+		// typedefs
+		typedef typename MutantStack<T>::container_type			container_type;
 		
+		typedef typename container_type::iterator				iterator;
+		typedef typename container_type::const_iterator			const_iterator;
+		typedef typename container_type::reverse_iterator		reverse_iterator;
+		typedef typename container_type::const_reverse_iterator	const_reverse_iterator;
+
+
 		// std::stack data is stored in a protected member 'c'
 		iterator begin();
 		iterator end();
@@ -49,33 +54,3 @@ class MutantStack : public std::stack<T>
 #include "MutantStack.tpp"
 
 #endif
-// template <typename T, typename Container = std::deque<T> >
-
-// template <typename C>
-// class MutantStack
-// {
-// 	private:
-// 		C*	container;
-		
-// 	public:
-// 		MutantStack();
-// 		MutantStack(const MutantStack& other);
-// 		~MutantStack();
-
-// 		MutantStack& operator=(const MutantStack& other);
-
-// 		typename MutantSack<C>::itterator begin(); // or C::itterator begin();
-// 		typename MutantSack<C>::itterator end();
-		
-// 		typename MutantSack<C>::const_itterator begin() const;
-// 		typename MutantSack<C>::const_itterator end() const;
-
-// 		typename MutantSack<C>::reverse_iterator rbegin();
-// 		typename MutantSack<C>::reverse_iterator rend();
-		
-// 		typename MutantSack<C>::const_reverse_iterator rbegin() const;
-// 		typename MutantSack<C>::const_reverse_iterator rend() const;
-
-// 		typename MutantSack<C>::itterator& operator++();
-// 		typename MutantSack<C>::itterator& operator--();
-// };

@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 15:18:53 by frbranda          #+#    #+#             */
-/*   Updated: 2026/01/22 12:58:22 by frbranda         ###   ########.fr       */
+/*   Updated: 2026/01/22 15:51:31 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ MutantStack<T>& MutantStack<T>::operator=(const MutantStack& other)
 }
 
 
+/* ================================ Iterators ================================= */
+
 template <typename T>
 typename MutantStack<T>::iterator MutantStack<T>::begin()
 {
@@ -44,7 +46,8 @@ typename MutantStack<T>::iterator MutantStack<T>::end()
 }
 
 
-// const
+/* ================================ Const Iterators ================================= */
+
 template <typename T>
 typename MutantStack<T>::const_iterator MutantStack<T>::begin() const
 {
@@ -58,7 +61,8 @@ typename MutantStack<T>::const_iterator MutantStack<T>::end() const
 }
 
 
-// reverse 
+/* ================================ Reverse Iterators ================================= */
+
 template <typename T>
 typename MutantStack<T>::reverse_iterator MutantStack<T>::rbegin()
 {
@@ -72,7 +76,8 @@ typename MutantStack<T>::reverse_iterator MutantStack<T>::rend()
 }
 
 
-//reverse conts
+/* ================================ Const Reverse Iterators ================================= */
+
 template <typename T>
 typename MutantStack<T>::const_reverse_iterator MutantStack<T>::rbegin() const
 {
