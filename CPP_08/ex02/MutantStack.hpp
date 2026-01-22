@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 15:18:41 by frbranda          #+#    #+#             */
-/*   Updated: 2026/01/21 17:43:28 by frbranda         ###   ########.fr       */
+/*   Updated: 2026/01/22 12:57:31 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,9 @@
 #include <iostream>
 #include <stack>
 #include <deque>
-#include <queue>
 
-template <typename C>
-class MutantStack : public std::stack<C>
+template <typename T>
+class MutantStack : public std::stack<T>
 {
 	public:
 		MutantStack();
@@ -28,11 +27,12 @@ class MutantStack : public std::stack<C>
 
 		MutantStack& operator=(const MutantStack& other);
 
-		typedef typename MutantStack<C>::container_type::iterator iterator;
-		typedef typename MutantStack<C>::container_type::const_iterator const_iterator;
-		typedef typename MutantStack<C>::container_type::reverse_iterator reverse_iterator;
-		typedef typename MutantStack<C>::container_type::const_reverse_iterator const_reverse_iterator;
+		typedef typename MutantStack<T>::container_type::iterator iterator;
+		typedef typename MutantStack<T>::container_type::const_iterator const_iterator;
+		typedef typename MutantStack<T>::container_type::reverse_iterator reverse_iterator;
+		typedef typename MutantStack<T>::container_type::const_reverse_iterator const_reverse_iterator;
 		
+		// std::stack data is stored in a protected member 'c'
 		iterator begin();
 		iterator end();
 		
@@ -46,6 +46,9 @@ class MutantStack : public std::stack<C>
 		const_reverse_iterator rend() const;
 };
 
+#include "MutantStack.tpp"
+
+#endif
 // template <typename T, typename Container = std::deque<T> >
 
 // template <typename C>
@@ -76,5 +79,3 @@ class MutantStack : public std::stack<C>
 // 		typename MutantSack<C>::itterator& operator++();
 // 		typename MutantSack<C>::itterator& operator--();
 // };
-
-#endif
