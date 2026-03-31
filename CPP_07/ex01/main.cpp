@@ -18,7 +18,7 @@ void test1_int()
 	std::cout << " === INT === "  << std::endl;
 
 	int nums[] = {1, 2, 3, 4, 5};
-	int sizeNums = sizeof(nums) / sizeof(nums[0]);
+	size_t sizeNums = sizeof(nums) / sizeof(nums[0]);
 
 	iter(nums, sizeNums, print);
 	iter(nums, sizeNums, increment);
@@ -42,7 +42,7 @@ void test2_char()
 	std::cout << "\n === CHAR === "  << std::endl;
 	
 	char chars[] = {'a', 'b', 'c', 48, '1'};
-	int sizeChars = sizeof(chars) / sizeof(chars[0]);
+	size_t sizeChars = sizeof(chars) / sizeof(chars[0]);
 
 	iter(chars, sizeChars, print);
 	iter(chars, sizeChars, increment);
@@ -66,7 +66,7 @@ void test3_string()
 	std::cout << "\n === STRING === "  << std::endl;
 	
 	std::string strs[] = {"Hello", "my", "name", "is", "Bacon"};
-	int sizeStrs = sizeof(strs) / sizeof(strs[0]);
+	size_t sizeStrs = sizeof(strs) / sizeof(strs[0]);
 
 	iter(strs, sizeStrs, print);
 

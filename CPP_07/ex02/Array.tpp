@@ -39,9 +39,12 @@ Array<T>& Array<T>::operator=(const Array& other)
 {
 	if (this != &other)
 	{
-		delete [] this->_arr;
-		_size = other._size;
-		_arr = new T[_size]();
+		T* newArr = new T[other._size]();
+		delete[] this->_arr;
+		
+		this->_arr = newArr;
+		this->_size = other._size;
+
 		for (unsigned int i = 0; i < _size; ++i)
 			this->_arr[i] = other._arr[i];
 	}

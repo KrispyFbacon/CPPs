@@ -25,6 +25,7 @@ class Array
 	private:
 		T* _arr;
 		unsigned int _size;
+		
 	public:
 		Array();
 		Array(unsigned int n);

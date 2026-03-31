@@ -17,30 +17,28 @@
 #include <string>
 
 template <typename T>
-void	iter(T* arr, const int len, void (*const f)(T&))
+void	iter(T* arr, const size_t len, void (*const f)(T&))
 {
 	if (!arr || !f)
 		return;
-	for (int i = 0; i < len; ++i)
+	for (size_t i = 0; i < len; ++i)
 		f(arr[i]);
 }
 
 template <typename T>
-void	iter(const T* arr, const int len, void (*const f)(const T&))
+void	iter(const T* arr, const size_t len, void (*const f)(const T&))
 {
 	if (!arr || !f)
 		return;
-	for (int i = 0; i < len; ++i)
+	for (size_t i = 0; i < len; ++i)
 		f(arr[i]);
 }
 
 template <typename T, typename F>
-void	iter2(T* arr, const int len, F f)
+void	iter2(T* arr, const size_t len, F f)
 {
-	if (!arr || !f)
-		return;
 	std::cout << "Array Length: " << len << std::endl;
-	for (int i = 0; i < len; ++i)
+	for (size_t i = 0; i < len; ++i)
 		f(arr[i]);
 }
 
