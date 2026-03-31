@@ -54,6 +54,7 @@ class Span
 		{
 			const char* what() const throw();
 		};
+
 };
 
 #include "Span.tpp"
