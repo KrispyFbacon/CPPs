@@ -20,6 +20,5 @@ void Span::addRange(Iterator begin, Iterator end)
 	if (_numbs.size() + range > _maxSize)
 		throw SpanFullException();
 	
-	for (Iterator it = begin; it != end; ++it)
-		_numbs.push_back(*it);
+	_numbs.insert(_numbs.end(), begin, end);
 }

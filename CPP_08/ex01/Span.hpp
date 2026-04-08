@@ -41,8 +41,8 @@ class Span
 		void addRange(Iterator begin, Iterator end);
 		void addRange(int begin, int end);
 
-		int shortestSpan();
-		int longestSpan();
+		int shortestSpan() const;
+		int longestSpan() const;
 
 		// exceptions
 		class SpanTooLittleException : public std::exception

@@ -53,7 +53,7 @@ void Span::addRange(int begin, int end)
 }
 
 
-int Span::shortestSpan()
+int Span::shortestSpan() const
 {
 	if (_numbs.size() <= 1)
 		throw SpanTooLittleException();
@@ -66,7 +66,7 @@ int Span::shortestSpan()
 	return (*std::min_element(temp.begin() + 1, temp.end()));
 }
 
-int Span::longestSpan()
+int Span::longestSpan() const
 {
 	if (_numbs.size() <= 1)
 		throw SpanTooLittleException();
