@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/01 13:58:27 by frbranda          #+#    #+#             */
-/*   Updated: 2026/06/02 15:30:23 by frbranda         ###   ########.fr       */
+/*   Updated: 2026/06/02 17:32:12 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@ class BitcoinDatabase
 		static const std::string		_dataFile;
 		std::map<std::string, float>	_data;
 		
+		BitcoinDatabase(const BitcoinDatabase& other);
+		BitcoinDatabase& operator=(const BitcoinDatabase& other);
+		
 	public:
 		BitcoinDatabase();
-		BitcoinDatabase(const BitcoinDatabase& other);
 		~BitcoinDatabase();
-
-		BitcoinDatabase& operator=(const BitcoinDatabase& other);
 
 		std::string	getClosestDate(const std::string& date) const;
 		float	getValue(const std::string& date) const;
