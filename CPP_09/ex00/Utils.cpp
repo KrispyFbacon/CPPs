@@ -6,31 +6,26 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/01 16:10:36 by frbranda          #+#    #+#             */
-/*   Updated: 2026/06/01 18:00:27 by frbranda         ###   ########.fr       */
+/*   Updated: 2026/06/02 16:43:03 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Utils.hpp"
 
-//TODO
-bool	isDateValid(const std::string date)
+bool	isValidDate(const std::string& date)
 {
-	// Check length is exactly 10: "YYYY-MM-DD"
 	if (date.length() != 10)
 		return false;
 		
-	// Check positions 4 and 7 are '-'
 	if (date[4] != '-' || date[7] != '-')
 		return false;
 		
-	// Check the rest are digits
 	for (size_t i = 0; i < 10; i++)
 	{
 		if (i != 4 && i != 7 && !isdigit(date[i]))
 			return (false);
 	}
 	
-	// Check month 1-12, day 1-31
 	int	year = atoi(date.substr(0, 4).c_str());
 	int	month = atoi(date.substr(5, 2).c_str());
 	int	day = atoi(date.substr(8, 2).c_str());
@@ -50,7 +45,6 @@ bool	isDateValid(const std::string date)
 	return true;
 }
 
-//TODO
 std::string	trim(const std::string& str)
 {
 	size_t	first = str.find_first_not_of(" \t\r\n");

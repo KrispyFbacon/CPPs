@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/01 13:58:47 by frbranda          #+#    #+#             */
-/*   Updated: 2026/06/01 16:39:27 by frbranda         ###   ########.fr       */
+/*   Updated: 2026/06/02 17:17:26 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,14 @@ BitcoinDatabase::BitcoinDatabase()
 	std::string	line;
 	line = trim(line);
 	std::getline(file, line);
+	if (line.empty())
+		throw BitcoinException("Empty data.csv empty.");
 	if (line != "date,exchange_rate")
-		throw BitcoinException("data.csv format should be: date,exchange_rate.");
+		throw BitcoinException("Bad data.csv header, expected: date,exchange_rate");
 
 	while (std::getline(file, line))
 	{
-		line = trim(line); 
+		line = trim(line);
 		if (line.empty())
 			throw (BitcoinException("data.csv empty line found!"));
 			
@@ -38,7 +40,7 @@ BitcoinDatabase::BitcoinDatabase()
 			throw BitcoinException("data.csv bad line format: " + line);
 
 		std::string date = line.substr(0, comma);
-		if (!isDateValid(date))
+		if (!isValidDate(date))
 			throw BitcoinException("data.csv invalid date: " + date);
 
 		char*	endPtr;
@@ -64,4 +66,32 @@ BitcoinDatabase& BitcoinDatabase::operator=(const BitcoinDatabase& other)
 	if (this != &other) {}
 
 	return *this;
+}
+
+
+
+/* ================================ Helpers ================================ */
+
+std::string BitcoinDatabase::getClosestDate( const std::string& date) const
+{
+	dataIt it = _data.lower_bound(date);
+
+	// Exact match
+	if (it != _data.end() && it->first == date)
+		return (it->first);
+		
+	// Date before entries
+	if (it == _data.begin())
+		return ("");
+
+	--it;
+	return (it->first);
+}
+
+
+float	BitcoinDatabase::getValue(const std::string& date) const
+{
+	dataIt it = _data.find(date);
+
+	return (it->second);
 }
