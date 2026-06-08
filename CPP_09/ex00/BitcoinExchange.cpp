@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/01 14:53:27 by frbranda          #+#    #+#             */
-/*   Updated: 2026/06/02 17:16:49 by frbranda         ###   ########.fr       */
+/*   Updated: 2026/06/08 14:12:39 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ bool BitcoinExchange::isValidValue(const std::string& valueStr, float& value)
 	}
 	
 	char	*endPtr;
-	value = strtof(valueStr.c_str(), &endPtr);
+	value = std::strtof(valueStr.c_str(), &endPtr);
 	if (endPtr == valueStr.c_str() || *endPtr != '\0')
 	{
 		printInvalid(valueStr);
