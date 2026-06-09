@@ -6,12 +6,12 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/01 14:53:25 by frbranda          #+#    #+#             */
-/*   Updated: 2026/06/02 17:33:04 by frbranda         ###   ########.fr       */
+/*   Updated: 2026/06/09 13:58:49 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BITCOINEXCHANGE_HPP
-#define BITCOINEXCHANGE_HPP
+# define BITCOINEXCHANGE_HPP
 
 #include "Utils.hpp"
 

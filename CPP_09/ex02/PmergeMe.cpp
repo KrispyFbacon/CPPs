@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/05 11:47:36 by frbranda          #+#    #+#             */
-/*   Updated: 2026/06/08 18:43:17 by frbranda         ###   ########.fr       */
+/*   Updated: 2026/06/09 16:07:01 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,6 @@ PmergeMe::PmergeMe() {}
 
 PmergeMe::PmergeMe(int argc,char** argv) 
 {
-	if (argc < 2)
-		throw std::runtime_error("Program needs at least 2 Arguments.");
-
 	for (int i = 1; i < argc; ++i)
 	{
 		char*	endPtr;
@@ -54,47 +51,102 @@ PmergeMe& PmergeMe::operator=(const PmergeMe& other)
 
 void PmergeMe::sort()
 {
-	//TODO
+	double	start;
+
 	std::cout << "Before: ";
 	printContainer(_vector);
 
-	//timeStart
-	sortVector();
-	double vectorTime;
-	//timeEnd
 	
-	//timeStart
+	// Vector sort
+	start = getTime();
+	sortVector();
+	double vectorEnd = getTime() - start;
+	
+	// Deque sort
+	start = getTime();
 	sortDeque();
-	double dequeTime;
-	//timeEnd
+	double dequeEnd = getTime() - start;
 
+	
 	std::cout << "After: ";
 	printContainer(_vector);
 	
 	std::cout << "Time to process a range of " << _vector.size()
-			  << " elements with std::vector : " << vectorTime << " us\n";
+			  << " elements with std::vector : " << vectorEnd << " us\n";
 	std::cout << "Time to process a range of " << _deque.size()
-			  << " elements with std::deque  : " << dequeTime << " us"
+			  << " elements with std::deque  : " << dequeEnd << " us"
 			  << std::endl;
 }
 
-template <typename T>
-void PmergeMe::printContainer(const T& container) const
-{
-	for (size_t i = 0; i < container.size)
-	std::cout << std::endl;
-}
 
 
+/* ================================ PRIVATE ================================ */
 
-/* ================================= PRIVATE =============================== */
+
+/* ========================== Vector Implematation ========================= */
 
 void PmergeMe::sortVector()
 {
-	
+	mergeInsertSort(_vector);
 }
+
+void PmergeMe::mergeInsertSort(std::vector<int>& arr)
+{
+	if (arr.size() <=1 )
+		return ;
+	
+	bool hasLeftover = arr.size() % 2 != 0;
+	int leftover = hasLeftover ? arr.back() : 0;
+	
+	// TODO 1) Pairs
+	std::vector<int> main;
+	std::vector<int> pend;
+	std::vector<std::pair<int, int>> pairs;
+
+	// Reserves memory for vectors for performance and no re-size needed!
+	size_t halfSize = arr.size() / 2;
+	main.reserve(halfSize);
+	pend.reserve(halfSize);
+	pairs.reserve(halfSize);
+
+	for (size_t i = 0; i < halfSize; ++i)
+	{
+		int a = arr[2 * i];
+		int b = arr[2 * i + 1];
+		
+		if (a > b)
+		{
+			main.push_back(a);
+			pend.push_back(b);
+			pairs.push_back(std::make_pair(b, a));
+		}
+		else
+		{
+			main.push_back(b);
+			pend.push_back(a);
+			pairs.push_back(std::make_pair(a, b));
+		}
+	}
+	
+	
+	// TODO 2) Main 
+	// TODO 3) Pend
+	// TODO 4) Binary search 
+	// TODO 5) Jacobsthal order
+
+	
+	if (arr.size() % 2 != 0)
+	{
+		// Insert leftover
+		//arr.back();
+	}
+}
+
+
+/* ========================== Deque Implematation ========================== */
 
 void PmergeMe::sortDeque()
 {
-	
+	if (_deque.size() <=1 )
+		return ;
 }

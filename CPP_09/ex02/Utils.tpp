@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PmergeMe.tpp                                       :+:      :+:    :+:   */
+/*   Utils.tpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/08 18:08:41 by frbranda          #+#    #+#             */
-/*   Updated: 2026/06/08 18:35:57 by frbranda         ###   ########.fr       */
+/*   Updated: 2026/06/09 14:20:44 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PmergeMe.hpp"
+#include "Utils.hpp"
 
 template <typename T>
-void PmergeMe::printContainer(const T& container) const
+void printContainer(const T& container)
 {
 	if (SHORT_PRINT)
 	{

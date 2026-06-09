@@ -6,12 +6,12 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 17:28:30 by frbranda          #+#    #+#             */
-/*   Updated: 2026/06/02 17:59:07 by frbranda         ###   ########.fr       */
+/*   Updated: 2026/06/09 13:58:39 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RPN_HPP
-#define RPN_HPP
+# define RPN_HPP
 
 #include <iomanip>
 #include <stack>

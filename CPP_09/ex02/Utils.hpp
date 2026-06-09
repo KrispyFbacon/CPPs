@@ -5,37 +5,31 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/01 15:55:17 by frbranda          #+#    #+#             */
-/*   Updated: 2026/06/09 13:58:52 by frbranda         ###   ########.fr       */
+/*   Created: 2026/06/09 13:40:29 by frbranda          #+#    #+#             */
+/*   Updated: 2026/06/09 14:20:51 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef UTILS_HPP
-# define UTILS_HPP
+#define UTILS_HPP
 
 #include <iostream>
-#include <string>
-#include <fstream>
 #include <sstream>
-#include <iomanip>
+#include <string>
+#include <climits>
 #include <cstdlib>
-#include <map>
+#include <stdexcept>
+#include <sys/time.h>
 
-#include "Exceptions.hpp"
+// Containers
+#include <vector>
+#include <deque>
 
-// --- Template Functions ---
+double	getTime();
+
 template <typename T>
-std::string toString(T src)
-{
-	std::stringstream ss;
-	ss << src;
-	return ss.str();
-}
+void printContainer(const T& container);
 
-bool	isValidDate(const std::string& date);
-std::string	trim(const std::string& str);
-
-
-
+#include "Utils.tpp"
 
 #endif

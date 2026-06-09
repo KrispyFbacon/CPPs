@@ -6,32 +6,20 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 17:05:40 by frbranda          #+#    #+#             */
-/*   Updated: 2026/06/08 18:14:43 by frbranda         ###   ########.fr       */
+/*   Updated: 2026/06/09 14:59:41 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 
-/** TODO time of day?
- * 1)
- * std::srand(std::time(NULL));
- * numbs[i] = std::rand() % 100;
- * 
- * 1)
- * struct timeval	tv;
- * 	gettimeofday(&tv, NULL);
- * 	return (tv.tv_sec * 1000000.0 + tv.tv_usec);
- * 
- * 3)
- * std::clock?
- *  */
+// Binary search ⌈log₂(N+1)⌉
 
 
 int main(int argc, char* argv[])
 {
-	if (argc != 2)
+	if (argc < 2)
 	{
-		std::cerr << "Error: Program needs 2 parameters\n";
+		std::cerr << "Error: Program needs at least 1 argument\n";
 		std::cerr << "Usage: " << argv[0] 
 				  << " < Set of positive numbers with range of INTMAX >"
 		<< std::endl;
@@ -43,6 +31,9 @@ int main(int argc, char* argv[])
 		PmergeMe	pmerge(argc, argv);
 		pmerge.sort();
 		
+		// std::vector<int> vec = pmerge.getVector();
+		// printContainer(vec);
+		// std::cout << std::is_sorted(vec.begin(), vec.end()) << std::endl;
 	}
 	catch(const std::exception& e)
 	{
