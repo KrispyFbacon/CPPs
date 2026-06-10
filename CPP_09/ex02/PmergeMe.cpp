@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/05 11:47:36 by frbranda          #+#    #+#             */
-/*   Updated: 2026/06/09 16:07:01 by frbranda         ###   ########.fr       */
+/*   Updated: 2026/06/10 18:49:19 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,26 +87,22 @@ void PmergeMe::sort()
 
 void PmergeMe::sortVector()
 {
+	//TODO Make pair fuctions?
+	
 	mergeInsertSort(_vector);
 }
 
 void PmergeMe::mergeInsertSort(std::vector<int>& arr)
 {
-	if (arr.size() <=1 )
+	if (arr.size() <= 1)
 		return ;
 	
-	bool hasLeftover = arr.size() % 2 != 0;
-	int leftover = hasLeftover ? arr.back() : 0;
-	
 	// TODO 1) Pairs
-	std::vector<int> main;
-	std::vector<int> pend;
+	
 	std::vector<std::pair<int, int>> pairs;
 
 	// Reserves memory for vectors for performance and no re-size needed!
 	size_t halfSize = arr.size() / 2;
-	main.reserve(halfSize);
-	pend.reserve(halfSize);
 	pairs.reserve(halfSize);
 
 	for (size_t i = 0; i < halfSize; ++i)
@@ -115,21 +111,21 @@ void PmergeMe::mergeInsertSort(std::vector<int>& arr)
 		int b = arr[2 * i + 1];
 		
 		if (a > b)
-		{
-			main.push_back(a);
-			pend.push_back(b);
-			pairs.push_back(std::make_pair(b, a));
-		}
-		else
-		{
-			main.push_back(b);
-			pend.push_back(a);
 			pairs.push_back(std::make_pair(a, b));
-		}
+		else
+			pairs.push_back(std::make_pair(b, a));
 	}
 	
+	mergeInsertSortPairs(pairs);
 	
 	// TODO 2) Main 
+	std::vector<int> winners;
+	std::vector<int> losers;
+	
+	winners.reserve(arr.size());
+	losers.reserve(halfSize);
+
+	
 	// TODO 3) Pend
 	// TODO 4) Binary search 
 	// TODO 5) Jacobsthal order
@@ -140,6 +136,30 @@ void PmergeMe::mergeInsertSort(std::vector<int>& arr)
 		// Insert leftover
 		//arr.back();
 	}
+}
+
+// TODO - Instead use int pair vector recursion
+void PmergeMe::mergeInsertSortPairs(std::vector<Pair>& pairs)
+{
+	//TODO EVERYTHING WRONG
+	if (pairs.size() <= 1)
+		return ;
+
+	std::vector<std::pair<int, int>> winnerPairs;
+
+	size_t	halfSize = pairs.size() / 2;
+	winnerPairs.reserve(halfSize);
+
+	for (size_t i = 0; i < halfSize; ++i)
+	{
+		int a = pairs[2 * i].first;
+		int b = pairs[2 * i + 1].first;
+
+		if (a > b)
+			winnerPairs()
+	}
+	
+
 }
 
 
