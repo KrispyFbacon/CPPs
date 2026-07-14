@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/05 11:47:36 by frbranda          #+#    #+#             */
-/*   Updated: 2026/07/14 18:48:31 by frbranda         ###   ########.fr       */
+/*   Updated: 2026/07/14 19:30:11 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,6 +180,10 @@ void PmergeMe::_mergePairs(std::vector<Pair>& pairs, size_t left, size_t mid, si
 
 void PmergeMe::_binaryInsert(std::vector<int> &arr,int value, size_t end)
 {
+	// size_t end = findWinner(mainChain, pairs[i].first);
+
+	// binaryInsertVector(mainChain, pairs[i].second, end);
+	
 	size_t pos = _binarySearch(arr, value, end);
 	arr.insert(arr.begin() + pos, value);
 }
