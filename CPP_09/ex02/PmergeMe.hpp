@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/05 11:47:28 by frbranda          #+#    #+#             */
-/*   Updated: 2026/07/14 18:48:29 by frbranda         ###   ########.fr       */
+/*   Updated: 2026/07/15 13:31:29 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ const int MAX_PRINT = 10;
 class PmergeMe
 {
 	private:
+		typedef std::vector<int>::iterator itVec;
 		typedef std::pair<int,int>	Pair;
 		typedef std::vector<Pair>::const_iterator	pairVectorIt;
 		typedef std::deque<Pair>::const_iterator	pairDequeIt;

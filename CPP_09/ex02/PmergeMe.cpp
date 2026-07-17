@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/05 11:47:36 by frbranda          #+#    #+#             */
-/*   Updated: 2026/07/14 19:30:11 by frbranda         ###   ########.fr       */
+/*   Updated: 2026/07/17 16:34:30 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void PmergeMe::sort()
 	
 	// Vector sort
 	start = getTime();
-	sortVector();
+	_sortVector();
 	double vectorEnd = getTime() - start;
 	
 	// Deque sort
@@ -108,37 +108,39 @@ void PmergeMe::_sortVector()
 			pairs.push_back(std::make_pair(b, a));
 	}
 	
-	// TODO 2) Winner sort
+	// Order Winners
 	_mergeSortPairs(pairs, 0, pairs.size());
 	
-	// TODO 3) Binary search 
 	std::vector<int> mainChain;
 
 	for (size_t i = 0; i < halfSize; ++i)
 		mainChain.push_back(pairs[i].first);
 
-
- 	// TODO 4) Jacobsthal order
+	
+	// Jacobsthal binary insert
 	std::vector<size_t> jacob = generateJacobsthal(halfSize);
 	
 	size_t lastIdx = 1;
-	for (size_t i; i < jacob.size(); ++i)
+	for (size_t i = 0; i < jacob.size(); ++i)
 	{
-		size_t current = std::min(jacob[i], halfSize);
+		size_t currentIdx = std::min(jacob[i], halfSize);
 		
-		for (size_t j = current; j >= lastIdx; --j)
+		for (size_t j = currentIdx; j >= lastIdx; --j)
 		{
-			_binaryInsert();
+			size_t idx = j - 1; // 0-based pend index
+			size_t bound = idx + (lastIdx - 1);
+			
+			_binaryInsert(mainChain, pairs[idx].second, bound);
 		}
 
-		lastIdx = current;
+		lastIdx = currentIdx + 1;
 	}
 
-	//if (arr.size() % 2 != 0)
-	// 	{
-	// 		// Insert leftover
-	// 		//arr.back();
-	// 	}
+	// Leftover insert
+	if (_vector.size() % 2 != 0)
+		_binaryInsert(mainChain, _vector.back(), mainChain.size());
+
+	_vector = mainChain;
 }
 
 void PmergeMe::_mergeSortPairs(std::vector<Pair>& pairs, size_t left, size_t right)
@@ -156,7 +158,7 @@ void PmergeMe::_mergeSortPairs(std::vector<Pair>& pairs, size_t left, size_t rig
 void PmergeMe::_mergePairs(std::vector<Pair>& pairs, size_t left, size_t mid, size_t right)
 {
 	std::vector<Pair> temp;
-	pairs.reserve(right - left);
+	temp.reserve(right - left);
 
 	size_t i = left;
 	size_t j = mid;
@@ -174,23 +176,31 @@ void PmergeMe::_mergePairs(std::vector<Pair>& pairs, size_t left, size_t mid, si
 	while (j < right)
 		temp.push_back(pairs[j++]);
 
-	for (size_t k = 0; k < temp.size(); ++i)
+	for (size_t k = 0; k < temp.size(); ++k)
 		pairs[left + k] = temp[k];
 }
 
-void PmergeMe::_binaryInsert(std::vector<int> &arr,int value, size_t end)
+// Basiccally std::lower_bound
+size_t PmergeMe::_binarySearch(const std::vector<int>& arr, int value, size_t end)
 {
-	// size_t end = findWinner(mainChain, pairs[i].first);
+	size_t low = 0;
+	size_t high = end;
 
-	// binaryInsertVector(mainChain, pairs[i].second, end);
-	
-	size_t pos = _binarySearch(arr, value, end);
-	arr.insert(arr.begin() + pos, value);
+	while (low < high)
+	{
+		size_t mid = low + (high - low) / 2;
+		if (arr[mid] < value)
+			low = mid + 1;
+		else
+			high = mid;
+	}
+	return low;
 }
 
-size_t PmergeMe::_binarySearch(const std::vector<int> &arr, int value, size_t end)
+void PmergeMe::_binaryInsert(std::vector<int>& arr, int value, size_t end)
 {
-	
+	size_t pos = _binarySearch(arr, value, end);
+	arr.insert(arr.begin() + pos, value);
 }
 
 /* ========================== Deque Implematation ========================== */
