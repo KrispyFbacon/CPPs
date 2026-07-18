@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 13:40:29 by frbranda          #+#    #+#             */
-/*   Updated: 2026/06/09 14:20:51 by frbranda         ###   ########.fr       */
+/*   Updated: 2026/07/18 17:44:39 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,18 @@
 #include <sstream>
 #include <string>
 #include <climits>
+#include <algorithm>
 #include <cstdlib>
 #include <stdexcept>
+#include <iomanip>
 #include <sys/time.h>
 
 // Containers
 #include <vector>
 #include <deque>
+
+const bool SHORT_PRINT = false;
+const int MAX_PRINT = 10;
 
 double	getTime();
 

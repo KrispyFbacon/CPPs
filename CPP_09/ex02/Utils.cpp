@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 13:59:22 by frbranda          #+#    #+#             */
-/*   Updated: 2026/06/09 13:59:49 by frbranda         ###   ########.fr       */
+/*   Updated: 2026/07/18 17:46:23 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 double	getTime()
 {
 	struct timeval tv;
-	
+
 	gettimeofday(&tv, NULL);
-	return (tv.tv_sec * 1000000.0 + tv.tv_usec); // returns absolute microseconds
+	return tv.tv_sec + tv.tv_usec / 1000000.0;
+	
+	//return (tv.tv_sec * 1000000.0 + tv.tv_usec); // returns absolute microseconds
 }
