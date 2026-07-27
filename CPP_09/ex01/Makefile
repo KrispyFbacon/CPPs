@@ -6,7 +6,7 @@
 #    By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/15 14:29:42 by frbranda          #+#    #+#              #
-#    Updated: 2026/06/02 16:37:18 by frbranda         ###   ########.fr        #
+#    Updated: 2026/07/18 20:42:13 by frbranda         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,9 +23,7 @@ RM = rm -rf
 VAL = valgrind --leak-check=full --show-leak-kinds=all
 
 SRC = main.cpp \
-		BitcoinDatabase.cpp \
-		BitcoinExchange.cpp \
-		Utils.cpp
+		RPN.cpp \
 
 OBJ_DIR = obj
 OBJS = $(SRC:%.cpp=$(OBJ_DIR)/%.o)

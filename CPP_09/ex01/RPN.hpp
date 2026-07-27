@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 17:28:30 by frbranda          #+#    #+#             */
-/*   Updated: 2026/06/09 13:58:39 by frbranda         ###   ########.fr       */
+/*   Updated: 2026/07/27 18:39:43 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,29 +15,29 @@
 
 #include <iomanip>
 #include <stack>
+#include <list>
 #include <iostream>
 #include <fstream>
 #include <sstream>
-#include <iomanip>
 #include <cstdlib>
+#include <stdexcept>
 
 class RPN
 {
 	private:
-		std::stack<int>	_stack;
-
-		bool	isValidToken( const std::string& token ) const;
-		bool	isOperation( const char c ) const;
-
-		void	RPN::solve(const char c);
+		bool isOperator(const std::string& token) const;
+		bool isNumber(const std::string& token) const;
+		int  applyOperator(int a, int b, const std::string& op) const;
 		
-		RPN();
+		
 		RPN(const RPN& other);
 		RPN& operator=(const RPN& other);
-		
+
 	public:
-		RPN(const std::string& str);
+		RPN();
 		~RPN();
+
+		int calculate(const std::string& expression) const;
 };
 
 
