@@ -6,7 +6,7 @@
 #    By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/15 14:29:42 by frbranda          #+#    #+#              #
-#    Updated: 2026/07/27 20:20:07 by frbranda         ###   ########.fr        #
+#    Updated: 2026/07/27 20:41:22 by frbranda         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ RM = rm -rf
 VAL = valgrind --leak-check=full --show-leak-kinds=all
 
 SRC = main.cpp \
-		RPN.cpp \
+		RPN.cpp
 
 OBJ_DIR = obj
 OBJS = $(SRC:%.cpp=$(OBJ_DIR)/%.o)
