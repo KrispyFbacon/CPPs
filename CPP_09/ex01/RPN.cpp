@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 17:28:26 by frbranda          #+#    #+#             */
-/*   Updated: 2026/07/27 19:08:25 by frbranda         ###   ########.fr       */
+/*   Updated: 2026/07/27 20:38:22 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ RPN& RPN::operator=(const RPN& other)
 
 RPN::~RPN() {}
 
-int RPN::calculate(const std::string& expression) const
+int	RPN::calculate(const std::string& expression) const
 {
 	std::stack<int, std::list<int> > stack;
 	std::istringstream	ss(expression);
@@ -43,7 +43,7 @@ int RPN::calculate(const std::string& expression) const
 		else if (isOperator(token))
 		{
 			if (stack.size() < 2)
-				throw std::runtime_error("insufficient operands(numbers)");
+				throw std::runtime_error("insufficient operands");
 
 			int b = stack.top();
 			stack.pop();
@@ -67,19 +67,19 @@ int RPN::calculate(const std::string& expression) const
 
 /* ================================= PRIVATE =============================== */
 
-bool RPN::isOperator(const std::string& token) const
+bool	RPN::isOperator(const std::string& token) const
 {
 	return ((token == "+" || token == "-" || token == "*" || token == "/")
 			&& token.length() == 1);
 }
 
-bool RPN::isNumber(const std::string& token) const
+bool	RPN::isNumber(const std::string& token) const
 {
 	return ( token.length() == 1 
 			&& std::isdigit(static_cast<unsigned char>(token[0])));
 }
 
-int  RPN::applyOperator(int a, int b, const std::string& op) const
+int	RPN::applyOperator(int a, int b, const std::string& op) const
 {
 	if (op == "+")
 		return a + b;
