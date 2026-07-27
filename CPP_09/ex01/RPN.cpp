@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 17:28:26 by frbranda          #+#    #+#             */
-/*   Updated: 2026/07/27 19:03:05 by frbranda         ###   ########.fr       */
+/*   Updated: 2026/07/27 19:08:25 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ RPN::~RPN() {}
 int RPN::calculate(const std::string& expression) const
 {
 	std::stack<int, std::list<int> > stack;
-	std::stringstream	ss(expression);
+	std::istringstream	ss(expression);
 	std::string			token;
 
 	while (ss >> token) // just like std::cin but instead of reading from keyboard it reads from string
@@ -43,7 +43,7 @@ int RPN::calculate(const std::string& expression) const
 		else if (isOperator(token))
 		{
 			if (stack.size() < 2)
-				throw std::runtime_error("insuficcient operands(numbers)");
+				throw std::runtime_error("insufficient operands(numbers)");
 
 			int b = stack.top();
 			stack.pop();
@@ -75,8 +75,8 @@ bool RPN::isOperator(const std::string& token) const
 
 bool RPN::isNumber(const std::string& token) const
 {
-	return (std::isdigit(static_cast<unsigned char>(token[0])) 
-			&& token.length() == 1);
+	return ( token.length() == 1 
+			&& std::isdigit(static_cast<unsigned char>(token[0])));
 }
 
 int  RPN::applyOperator(int a, int b, const std::string& op) const
