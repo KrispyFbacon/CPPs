@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/05 11:47:36 by frbranda          #+#    #+#             */
-/*   Updated: 2026/07/18 18:23:29 by frbranda         ###   ########.fr       */
+/*   Updated: 2026/07/29 14:00:45 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void PmergeMe::sort()
 	printContainer(_vector);
 	std::cout << std::endl;
 	
-	std::cout << std::fixed << std::setprecision(5);
+	//std::cout << std::fixed << std::setprecision(5);
 	std::cout << "Time to process a range of " << _vector.size()
 			  << " elements with std::vector : " << vectorEnd << " us\n";
 	std::cout << "Time to process a range of " << _deque.size()

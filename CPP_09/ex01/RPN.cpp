@@ -6,7 +6,7 @@
 /*   By: frbranda <frbranda@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 17:28:26 by frbranda          #+#    #+#             */
-/*   Updated: 2026/07/27 20:38:22 by frbranda         ###   ########.fr       */
+/*   Updated: 2026/07/29 13:40:04 by frbranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ int	RPN::applyOperator(int a, int b, const std::string& op) const
 
 // Notes:
 
-// NOTE 1:
+// ---- NOTE 1 ----:
 
 //template <class T, class Container = std::deque<T> >
 // class stack;
@@ -112,7 +112,7 @@ int	RPN::applyOperator(int a, int b, const std::string& op) const
 
 
 
-// ---- NOTE 2:
+// ---- NOTE 2 ----:
 
 // std::stack<int, std::list<int> > stack;
 
@@ -125,7 +125,7 @@ int	RPN::applyOperator(int a, int b, const std::string& op) const
 
 
 
-// NOTE 3:
+// ---- NOTE 3 ---- :
 
 //By default:
 // std::stack<int> s;
